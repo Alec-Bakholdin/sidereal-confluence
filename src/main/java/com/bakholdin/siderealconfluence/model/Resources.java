@@ -1,8 +1,10 @@
 package com.bakholdin.siderealconfluence.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 @Data
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 public class Resources {
     private int green;
     private int white;

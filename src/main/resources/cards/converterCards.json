@@ -8,6 +8,7 @@
           "green": 1,
           "yellow": 2
         },
+        "phase": "Economy",
         "output": {
           "octagon": 1,
           "points": 2
@@ -24,6 +25,7 @@
           "green": 3,
           "yellow": 2
         },
+        "phase": "Trade",
         "output": {
           "octagon": 1,
           "points": 2
