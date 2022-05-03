@@ -5,6 +5,7 @@ import com.bakholdin.siderealconfluence.model.cards.ConverterCard;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -20,6 +21,7 @@ import java.util.stream.Collectors;
 @Log4j2
 @Service
 public class CardService {
+    @Getter
     private final Map<String, Card> cards = new HashMap<>();
 
     @Value(value = "classpath:cards/converterCards.json")
