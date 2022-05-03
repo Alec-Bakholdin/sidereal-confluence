@@ -1,5 +1,12 @@
 package com.bakholdin.siderealconfluence.model.cards;
 
-public interface Card {
-    void flip();
+import lombok.Data;
+
+@Data
+public abstract class Card {
+    private String id;
+    private String name;
+    private CardType type;
+
+    public abstract void flip();
 }

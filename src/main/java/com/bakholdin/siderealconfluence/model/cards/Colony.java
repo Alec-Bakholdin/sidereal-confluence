@@ -2,9 +2,13 @@ package com.bakholdin.siderealconfluence.model.cards;
 
 import com.bakholdin.siderealconfluence.model.Converter;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 @Data
-public class Colony implements Card {
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
+public class Colony extends Card {
     private String name;
     private boolean isUpgraded;
 

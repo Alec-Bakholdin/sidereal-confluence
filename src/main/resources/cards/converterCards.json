@@ -1,0 +1,36 @@
+[
+  {
+    "id": "converterCard_1",
+    "name": "Converter Card 1",
+    "type": "ConverterCard",
+    "frontConverters": [
+      {
+        "input": {
+          "green": 1,
+          "yellow": 2
+        },
+        "output": {
+          "octagon": 1,
+          "points": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "converterCard_2",
+    "name": "Converter Card 2",
+    "type": "ConverterCard",
+    "frontConverters": [
+      {
+        "input": {
+          "green": 3,
+          "yellow": 2
+        },
+        "output": {
+          "octagon": 1,
+          "points": 2
+        }
+      }
+    ]
+  }
+]
