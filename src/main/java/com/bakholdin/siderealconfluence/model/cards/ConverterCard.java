@@ -11,6 +11,8 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 public class ConverterCard extends Card {
+    private CardType type = CardType.ConverterCard;
+    
     private boolean isUpgraded = false;
     private List<Converter> upgradeOptions;
     private List<Converter> acquisitionOptions;

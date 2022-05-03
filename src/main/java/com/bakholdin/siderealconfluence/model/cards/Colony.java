@@ -9,7 +9,7 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 public class Colony extends Card {
-    private String name;
+    private CardType type = CardType.Colony;
     private boolean isUpgraded;
 
     private Converter frontConverter;

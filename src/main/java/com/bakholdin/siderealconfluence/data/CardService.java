@@ -36,7 +36,7 @@ public class CardService {
 
         log.info("Loaded {} cards", cards.size());
     }
-    
+
     public Card getCard(String id) {
         return cards.get(id);
     }

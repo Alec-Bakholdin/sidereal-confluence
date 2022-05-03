@@ -11,7 +11,8 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 public class ResearchTeam extends Card {
-    private String name;
+    private CardType type = CardType.ResearchTeam;
+
     private String resultingTechnology;
     private List<Converter> converters;
     private boolean isResearched = false;

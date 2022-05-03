@@ -2,7 +2,6 @@
   {
     "id": "converterCard_1",
     "name": "Converter Card 1",
-    "type": "ConverterCard",
     "frontConverters": [
       {
         "input": {
@@ -19,7 +18,6 @@
   {
     "id": "converterCard_2",
     "name": "Converter Card 2",
-    "type": "ConverterCard",
     "frontConverters": [
       {
         "input": {
