@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    url: jdbc:h2:./data/stock_data;AUTO_SERVER=TRUE
+    username: sidereal-confluence
+    password: password
+    driver-class-name: org.h2.Driver
