@@ -10,8 +10,13 @@ public class GameStateService {
 
     public GameState getGameState() {
         if (gameState == null) {
-            gameState = new GameState();
+            return startNewGame();
         }
+        return gameState;
+    }
+
+    public GameState startNewGame() {
+        gameState = new GameState();
         return gameState;
     }
 

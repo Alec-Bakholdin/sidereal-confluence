@@ -10,7 +10,7 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class Colony extends Card {
     private CardType type = CardType.Colony;
-    private boolean isUpgraded;
+    private boolean isUpgraded = false;
 
     private Converter frontConverter;
     private Converter upgradeConverter;

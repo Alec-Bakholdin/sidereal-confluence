@@ -12,8 +12,9 @@ import java.util.List;
 @ToString(callSuper = true)
 public class ConverterCard extends Card {
     private CardType type = CardType.ConverterCard;
-    
+
     private boolean isUpgraded = false;
+    private boolean isConsumed = false;
     private List<Converter> upgradeOptions;
     private List<Converter> acquisitionOptions;
 

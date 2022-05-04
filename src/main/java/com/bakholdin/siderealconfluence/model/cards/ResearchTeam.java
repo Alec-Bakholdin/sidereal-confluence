@@ -1,6 +1,6 @@
 package com.bakholdin.siderealconfluence.model.cards;
 
-import com.bakholdin.siderealconfluence.model.Converter;
+import com.bakholdin.siderealconfluence.model.Resources;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -14,7 +14,8 @@ public class ResearchTeam extends Card {
     private CardType type = CardType.ResearchTeam;
 
     private String resultingTechnology;
-    private List<Converter> converters;
+    private List<Resources> researchOptions;
+    private int points;
     private boolean isResearched = false;
 
     public void flip() {

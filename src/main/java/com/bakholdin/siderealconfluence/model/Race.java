@@ -1,7 +1,8 @@
 package com.bakholdin.siderealconfluence.model;
 
-import com.bakholdin.siderealconfluence.model.Resources;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class Race {
@@ -11,4 +12,7 @@ public class Race {
     private int startingColonies;
     private int startingResearchTeams;
     private Resources startingResources;
+
+    private List<String> startingConverterCards;
+    private List<String> availableConverterCards;
 }

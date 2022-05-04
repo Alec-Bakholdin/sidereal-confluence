@@ -1,0 +1,16 @@
+[
+  {
+    "id": "researchTeam_1",
+    "name": "Linguistic Analysts",
+    "resultingTechnology": "Universal Translator",
+    "points": 1,
+    "researchOptions": [
+      {
+        "green": 6
+      },
+      {
+        "black": 4
+      }
+    ]
+  }
+]

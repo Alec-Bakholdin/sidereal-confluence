@@ -4,8 +4,8 @@ import com.bakholdin.siderealconfluence.model.Player;
 import com.bakholdin.siderealconfluence.model.Race;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Map;
 import java.util.UUID;
 
@@ -19,7 +19,7 @@ public class PlayerService {
                 .name(name)
                 .race(race)
                 .resources(race.getStartingResources())
-                .cards(new LinkedList<>())
+                .cards(new ArrayList<>(race.getStartingConverterCards()))
                 .build();
 
         players.put(newPlayer.getId(), newPlayer);

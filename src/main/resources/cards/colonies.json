@@ -1,0 +1,25 @@
+[
+  {
+    "id": "colony_1",
+    "name": "Shaula",
+    "frontConverter": {
+      "output": {
+        "black": 1
+      },
+      "phase": "Economy"
+    },
+    "backConverter": {
+      "output": {
+        "black": 1,
+        "green": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "green": 2
+      },
+      "phase": "Trade"
+    }
+  }
+]

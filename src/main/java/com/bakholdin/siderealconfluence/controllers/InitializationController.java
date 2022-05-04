@@ -29,14 +29,19 @@ public class InitializationController {
     private final PlayerService playerService;
     private final RaceService raceService;
 
-    @GetMapping("/initializeGame")
-    public GameState initializeGame() {
+    @GetMapping("/getGame")
+    public GameState getGame() {
         return gameStateService.getGameState();
+    }
+
+    @PostMapping("/startNewGame")
+    public GameState startNewGame() {
+        return gameStateService.startNewGame();
     }
 
     @GetMapping("/allCards")
     public Map<String, Card> getAllCards() {
-        return cardService.getCards();
+        return cardService.getCurrentGameCards();
     }
 
     @PostMapping("/joinGame")
