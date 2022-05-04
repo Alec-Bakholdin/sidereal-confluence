@@ -1,15 +1,17 @@
 package com.bakholdin.siderealconfluence.model;
 
-import com.bakholdin.siderealconfluence.model.cards.Colony;
-import com.bakholdin.siderealconfluence.model.cards.ResearchTeam;
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.List;
+import java.util.UUID;
 
 @Data
+@Builder
 public class Player {
+    private UUID id;
     private String name;
     private Resources resources;
-    private List<ResearchTeam> researchTeams;
-    private List<Colony> colonies;
+    private Race race;
+    private List<String> cards;
 }

@@ -14,7 +14,7 @@ public class Resources {
     private int yellow;
     private int blue;
 
-    private int octagons;
+    private int octagon;
 
     private int points;
 
@@ -25,7 +25,7 @@ public class Resources {
                 this.black >= resources.getBlack() &&
                 this.yellow >= resources.getYellow() &&
                 this.blue >= resources.getBlue() &&
-                this.octagons >= resources.getOctagons() &&
+                this.octagon >= resources.getOctagon() &&
                 this.points >= resources.getPoints();
     }
 
@@ -36,7 +36,7 @@ public class Resources {
         this.black += resources.getBlack();
         this.yellow += resources.getYellow();
         this.blue += resources.getBlue();
-        this.octagons += resources.getOctagons();
+        this.octagon += resources.getOctagon();
         this.points += resources.getPoints();
         return true;
     }
@@ -51,7 +51,7 @@ public class Resources {
         this.black -= resources.getBlack();
         this.yellow -= resources.getYellow();
         this.blue -= resources.getBlue();
-        this.octagons -= resources.getOctagons();
+        this.octagon -= resources.getOctagon();
         this.points -= resources.getPoints();
         return true;
     }

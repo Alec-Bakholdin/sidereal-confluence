@@ -1,18 +1,13 @@
 package com.bakholdin.siderealconfluence.model;
 
-import com.bakholdin.siderealconfluence.model.cards.Colony;
-import com.bakholdin.siderealconfluence.model.cards.ResearchTeam;
 import lombok.Data;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 @Data
 public class GameState {
-    private int turn;
-    private Phase currentPhase;
-    private List<Confluence> confluenceCards;
-
-    private List<Player> players;
-    private List<ResearchTeam> availableResearchTeams;
-    private List<Colony> availableColonies;
+    private int turn = 1;
+    private Map<UUID, Player> players = new HashMap<>();
 }
