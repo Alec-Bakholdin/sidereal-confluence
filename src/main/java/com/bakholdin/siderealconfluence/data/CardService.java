@@ -14,9 +14,11 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 @Log4j2
@@ -31,30 +33,33 @@ public class CardService {
     private Resource coloniesResource;
 
     private Map<String, Card> allCards = null;
-    private Map<String, Colony> colonies = null;
-    private Map<String, ConverterCard> converterCards = null;
-    private Map<String, ResearchTeam> researchTeams = null;
+    private List<Colony> availableColonies = null;
+    private List<Colony> takenColonies = null;
+    private List<ResearchTeam> availableResearchTeams = null;
+    private List<ResearchTeam> takenResearchTeams = null;
 
 
     public Map<String, Card> resetCards() {
         ObjectMapper objectMapper = configureObjectMapper();
         allCards = new HashMap<>();
+        takenColonies = new ArrayList<>();
+        takenResearchTeams = new ArrayList<>();
         try {
             List<ConverterCard> converterCardList = objectMapper.readValue(converterCardsResource.getFile(), new TypeReference<>() {
             });
-            converterCards = converterCardList.stream().collect(Collectors.toMap(Card::getId, card -> card));
-            allCards.putAll(converterCards);
+            Map<String, ConverterCard> converterCardMap = converterCardList.stream().collect(Collectors.toMap(Card::getId, card -> card));
+            allCards.putAll(converterCardMap);
 
-            List<ResearchTeam> researchTeamList = objectMapper.readValue(researchTeamsResource.getFile(), new TypeReference<>() {
+            availableResearchTeams = objectMapper.readValue(researchTeamsResource.getFile(), new TypeReference<>() {
             });
-            researchTeams = researchTeamList.stream().collect(Collectors.toMap(Card::getId, card -> card));
-            allCards.putAll(researchTeams);
+            Map<String, ResearchTeam> researchTeamMap = availableResearchTeams.stream().collect(Collectors.toMap(Card::getId, card -> card));
+            allCards.putAll(researchTeamMap);
 
-            List<Colony> colonyList = objectMapper.readValue(coloniesResource.getFile(), new TypeReference<>() {
+            availableColonies = objectMapper.readValue(coloniesResource.getFile(), new TypeReference<>() {
             });
-            colonies = colonyList.stream().collect(Collectors.toMap(Card::getId, card -> card));
-            allCards.putAll(colonies);
-            log.info("Loaded {} converter cards, {} research teams, and {} colonies", converterCards.size(), researchTeams.size(), colonies.size());
+            Map<String, Colony> colonyMap = availableColonies.stream().collect(Collectors.toMap(Card::getId, card -> card));
+            allCards.putAll(colonyMap);
+            log.info("Loaded {} converter cards, {} research teams, and {} colonies", converterCardMap.size(), researchTeamMap.size(), colonyMap.size());
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
@@ -71,6 +76,26 @@ public class CardService {
 
     public Card get(String id) {
         return getCurrentGameCards().get(id);
+    }
+
+    public Colony extractRandomColony() {
+        if (availableColonies.isEmpty()) {
+            throw new RuntimeException("No more colonies available");
+        }
+        int index = new Random().nextInt(availableColonies.size());
+        Colony colony = availableColonies.remove(index);
+        takenColonies.add(colony);
+        return colony;
+    }
+
+    public ResearchTeam extractRandomResearchTeam() {
+        if (availableResearchTeams.isEmpty()) {
+            throw new RuntimeException("No more research teams available");
+        }
+        int index = new Random().nextInt(availableResearchTeams.size());
+        ResearchTeam researchTeam = availableResearchTeams.remove(index);
+        takenResearchTeams.add(researchTeam);
+        return researchTeam;
     }
 
     private ObjectMapper configureObjectMapper() {

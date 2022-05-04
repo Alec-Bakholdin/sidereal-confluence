@@ -46,8 +46,9 @@ public class InitializationController {
 
     @PostMapping("/joinGame")
     public Player joinGame(@RequestBody JoinGamePayload payload) {
-        Player player = playerService.createPlayer(payload.getPlayerName(), raceService.get(RaceEnum.Caylion));
-        gameStateService.addPlayerToGame(gameStateService.getGameState(), player);
+        GameState gameState = gameStateService.getGameState();
+        Player player = playerService.createPlayer(payload.getPlayerName(), RaceEnum.Caylion);
+        gameStateService.addPlayerToGame(gameState, player);
         return player;
     }
 }

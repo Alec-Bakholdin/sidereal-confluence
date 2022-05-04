@@ -16,6 +16,8 @@ public class Colony extends Card {
     private Converter upgradeConverter;
     private Converter backConverter;
 
+    private ColonyType frontType;
+    private ColonyType backType;
 
     @Override
     public void flip() {
