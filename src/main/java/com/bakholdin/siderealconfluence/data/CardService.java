@@ -14,12 +14,12 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
-import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 @Log4j2
@@ -35,32 +35,15 @@ public class CardService {
 
     private Map<String, Card> allCards = new HashMap<>();
     private List<Colony> availableColonies = new LinkedList<>();
-    private List<Colony> takenColonies = new LinkedList<>();
     private List<ResearchTeam> availableResearchTeams = new LinkedList<>();
-    private List<ResearchTeam> takenResearchTeams = new LinkedList<>();
 
 
     public Map<String, Card> resetCards() {
-        ObjectMapper objectMapper = configureObjectMapper();
         allCards = new HashMap<>();
-        takenColonies = new ArrayList<>();
-        takenResearchTeams = new ArrayList<>();
         try {
-            List<ConverterCard> converterCardList = objectMapper.readValue(converterCardsResource.getFile(), new TypeReference<>() {
-            });
-            Map<String, ConverterCard> converterCardMap = converterCardList.stream().collect(Collectors.toMap(Card::getId, card -> card));
-            allCards.putAll(converterCardMap);
-
-            availableResearchTeams = objectMapper.readValue(researchTeamsResource.getFile(), new TypeReference<>() {
-            });
-            Map<String, ResearchTeam> researchTeamMap = availableResearchTeams.stream().collect(Collectors.toMap(Card::getId, card -> card));
-            allCards.putAll(researchTeamMap);
-
-            availableColonies = objectMapper.readValue(coloniesResource.getFile(), new TypeReference<>() {
-            });
-            Map<String, Colony> colonyMap = availableColonies.stream().collect(Collectors.toMap(Card::getId, card -> card));
-            allCards.putAll(colonyMap);
-            log.info("Loaded {} converter cards, {} research teams, and {} colonies", converterCardMap.size(), researchTeamMap.size(), colonyMap.size());
+            loadConverterCards();
+            loadResearchTeams();
+            loadColonies();
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
@@ -83,20 +66,47 @@ public class CardService {
         if (availableColonies.isEmpty()) {
             throw new RuntimeException("No more colonies available");
         }
-        int index = new Random().nextInt(availableColonies.size());
-        Colony colony = availableColonies.remove(index);
-        takenColonies.add(colony);
-        return colony;
+        return availableColonies.remove(0);
     }
 
     public ResearchTeam extractRandomResearchTeam() {
         if (availableResearchTeams.isEmpty()) {
             throw new RuntimeException("No more research teams available");
         }
-        int index = new Random().nextInt(availableResearchTeams.size());
-        ResearchTeam researchTeam = availableResearchTeams.remove(index);
-        takenResearchTeams.add(researchTeam);
-        return researchTeam;
+        return availableResearchTeams.remove(0);
+    }
+
+
+    private void loadColonies() throws IOException {
+        ObjectMapper objectMapper = configureObjectMapper();
+        availableColonies = objectMapper.readValue(coloniesResource.getFile(), new TypeReference<>() {
+        });
+        Map<String, Colony> colonyMap = availableColonies.stream().collect(Collectors.toMap(Card::getId, card -> card));
+        allCards.putAll(colonyMap);
+        Collections.shuffle(availableColonies);
+        log.info("Loaded {} colonies", availableColonies.size());
+    }
+
+    private void loadResearchTeams() throws IOException {
+        ObjectMapper objectMapper = configureObjectMapper();
+        availableResearchTeams = objectMapper.readValue(researchTeamsResource.getFile(), new TypeReference<>() {
+        });
+        Map<String, ResearchTeam> researchTeamMap = availableResearchTeams.stream().collect(Collectors.toMap(Card::getId, card -> card));
+        allCards.putAll(researchTeamMap);
+
+        // order randomly within each era
+        Collections.shuffle(availableResearchTeams);
+        availableResearchTeams.sort(Comparator.comparingInt(ResearchTeam::getEra));
+        log.info("Loaded {} research teams", availableResearchTeams.size());
+    }
+
+    private void loadConverterCards() throws IOException {
+        ObjectMapper objectMapper = configureObjectMapper();
+        List<ConverterCard> converterCardList = objectMapper.readValue(converterCardsResource.getFile(), new TypeReference<>() {
+        });
+        Map<String, ConverterCard> converterCardMap = converterCardList.stream().collect(Collectors.toMap(Card::getId, card -> card));
+        allCards.putAll(converterCardMap);
+        log.info("Loaded {} converter cards", converterCardList.size());
     }
 
     private ObjectMapper configureObjectMapper() {
