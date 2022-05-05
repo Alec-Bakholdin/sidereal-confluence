@@ -2,13 +2,14 @@ package com.bakholdin.siderealconfluence.controllers;
 
 import com.bakholdin.siderealconfluence.controllers.model.JoinGamePayload;
 import com.bakholdin.siderealconfluence.controllers.model.JoinGameResponse;
+import com.bakholdin.siderealconfluence.controllers.model.RejoinGamePayload;
 import com.bakholdin.siderealconfluence.data.CardService;
 import com.bakholdin.siderealconfluence.data.GameStateService;
 import com.bakholdin.siderealconfluence.data.PlayerService;
 import com.bakholdin.siderealconfluence.data.RaceService;
 import com.bakholdin.siderealconfluence.model.GameState;
 import com.bakholdin.siderealconfluence.model.Player;
-import com.bakholdin.siderealconfluence.model.RaceEnum;
+import com.bakholdin.siderealconfluence.model.RaceName;
 import com.bakholdin.siderealconfluence.model.cards.Card;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
+import java.util.UUID;
 
 @Log4j2
 @CrossOrigin(origins = "http://localhost:3000")
@@ -47,9 +49,25 @@ public class InitializationController {
 
     @PostMapping("/joinGame")
     public JoinGameResponse joinGame(@RequestBody JoinGamePayload payload) {
-        GameState gameState = gameStateService.getGameState();
-        Player player = playerService.createPlayer(payload.getPlayerName(), RaceEnum.Caylion);
-        gameStateService.addPlayerToGame(gameState, player);
-        return JoinGameResponse.builder().gameState(gameState).playerId(player.getId()).build();
+        Player player = gameStateService.addNewPlayerToGame(payload.getPlayerName(), RaceName.Caylion);
+        return JoinGameResponse.builder()
+                .gameState(gameStateService.getGameState())
+                .playerName(player.getName())
+                .playerId(player.getId())
+                .build();
+    }
+
+    @PostMapping("/rejoinGame")
+    public JoinGameResponse rejoinGame(@RequestBody RejoinGamePayload payload) {
+        UUID playerUUID = UUID.fromString(payload.getPlayerId());
+        Player player = gameStateService.getGameState().getPlayers().get(playerUUID);
+        if (player == null) {
+            player = gameStateService.addNewPlayerToGame(payload.getPlayerName(), RaceName.Caylion);
+        }
+        return JoinGameResponse.builder()
+                .playerId(player.getId())
+                .playerName(player.getName())
+                .gameState(gameStateService.getGameState())
+                .build();
     }
 }

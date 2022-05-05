@@ -1,5 +1,5 @@
 package com.bakholdin.siderealconfluence.model;
 
-public enum RaceEnum {
+public enum RaceName {
     Caylion
 }

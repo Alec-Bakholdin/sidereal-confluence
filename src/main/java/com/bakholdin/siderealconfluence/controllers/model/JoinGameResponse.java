@@ -10,5 +10,6 @@ import java.util.UUID;
 @Builder
 public class JoinGameResponse {
     private UUID playerId;
+    private String playerName;
     private GameState gameState;
 }
