@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -32,11 +33,11 @@ public class CardService {
     @Value(value = "classpath:cards/colonies.json")
     private Resource coloniesResource;
 
-    private Map<String, Card> allCards = null;
-    private List<Colony> availableColonies = null;
-    private List<Colony> takenColonies = null;
-    private List<ResearchTeam> availableResearchTeams = null;
-    private List<ResearchTeam> takenResearchTeams = null;
+    private Map<String, Card> allCards = new HashMap<>();
+    private List<Colony> availableColonies = new LinkedList<>();
+    private List<Colony> takenColonies = new LinkedList<>();
+    private List<ResearchTeam> availableResearchTeams = new LinkedList<>();
+    private List<ResearchTeam> takenResearchTeams = new LinkedList<>();
 
 
     public Map<String, Card> resetCards() {
