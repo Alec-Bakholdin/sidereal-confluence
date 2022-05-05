@@ -1,6 +1,7 @@
 package com.bakholdin.siderealconfluence.controllers;
 
 import com.bakholdin.siderealconfluence.controllers.model.JoinGamePayload;
+import com.bakholdin.siderealconfluence.controllers.model.JoinGameResponse;
 import com.bakholdin.siderealconfluence.data.CardService;
 import com.bakholdin.siderealconfluence.data.GameStateService;
 import com.bakholdin.siderealconfluence.data.PlayerService;
@@ -45,10 +46,10 @@ public class InitializationController {
     }
 
     @PostMapping("/joinGame")
-    public Player joinGame(@RequestBody JoinGamePayload payload) {
+    public JoinGameResponse joinGame(@RequestBody JoinGamePayload payload) {
         GameState gameState = gameStateService.getGameState();
         Player player = playerService.createPlayer(payload.getPlayerName(), RaceEnum.Caylion);
         gameStateService.addPlayerToGame(gameState, player);
-        return player;
+        return JoinGameResponse.builder().gameState(gameState).playerId(player.getId()).build();
     }
 }

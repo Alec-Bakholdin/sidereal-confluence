@@ -13,7 +13,6 @@ public class GameStateService {
 
     public GameState getGameState() {
         if (gameState == null) {
-            cardService.resetCards();
             return startNewGame();
         }
         return gameState;
@@ -21,6 +20,7 @@ public class GameStateService {
 
     public GameState startNewGame() {
         gameState = new GameState();
+        cardService.resetCards();
         return gameState;
     }
 
