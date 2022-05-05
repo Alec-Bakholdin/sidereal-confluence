@@ -13,6 +13,7 @@ import java.util.List;
 public class ResearchTeam extends Card {
     private CardType type = CardType.ResearchTeam;
 
+    private int era;
     private String resultingTechnology;
     private List<Resources> researchOptions;
     private int points;
