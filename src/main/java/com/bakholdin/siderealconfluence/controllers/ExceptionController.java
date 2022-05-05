@@ -16,6 +16,6 @@ public class ExceptionController {
                 .error(ex.getMessage())
                 .httpStatusCode(HttpStatus.INTERNAL_SERVER_ERROR.value())
                 .build();
-        return ResponseEntity.badRequest().body(payload);
+        return ResponseEntity.internalServerError().body(payload);
     }
 }
