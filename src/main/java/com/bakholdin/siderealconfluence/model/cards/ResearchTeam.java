@@ -5,8 +5,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
-import java.util.List;
-
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
@@ -15,7 +13,7 @@ public class ResearchTeam extends Card {
 
     private int era;
     private String resultingTechnology;
-    private List<Resources> researchOptions;
+    private Resources researchOptions;
     private int points;
     private boolean isResearched = false;
 

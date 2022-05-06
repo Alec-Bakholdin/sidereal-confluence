@@ -13,6 +13,7 @@ import com.bakholdin.siderealconfluence.model.RaceName;
 import com.bakholdin.siderealconfluence.model.cards.Card;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,6 +32,7 @@ public class InitializationController {
     private final CardService cardService;
     private final PlayerService playerService;
     private final RaceService raceService;
+    private final SimpMessagingTemplate simpMessagingTemplate;
 
     @GetMapping("/getGame")
     public GameState getGame() {
@@ -53,6 +55,7 @@ public class InitializationController {
             throw new RuntimeException("Player name cannot be empty");
         }
         Player player = gameStateService.addNewPlayerToGame(payload.getPlayerName(), RaceName.Caylion);
+        simpMessagingTemplate.convertAndSend("/topic/joinedGame", player);
         return JoinGameResponse.builder()
                 .gameState(gameStateService.getGameState())
                 .playerName(player.getName())
@@ -67,6 +70,7 @@ public class InitializationController {
         if (player == null) {
             player = gameStateService.addNewPlayerToGame(payload.getPlayerName(), RaceName.Caylion);
         }
+        simpMessagingTemplate.convertAndSend("/topic/joinedGame", player);
         return JoinGameResponse.builder()
                 .playerId(player.getId())
                 .playerName(player.getName())

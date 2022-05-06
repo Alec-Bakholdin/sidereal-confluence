@@ -2,8 +2,8 @@
   "Caylion": {
     "colonySupport": 1,
     "tiebreaker": 1,
-    "startingColonies": 1,
-    "startingResearchTeams": 1,
+    "startingColonies": 10,
+    "startingResearchTeams": 10,
     "startingResources": {
       "green": 1,
       "yellow": 2,

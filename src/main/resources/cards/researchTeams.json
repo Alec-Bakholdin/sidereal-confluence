@@ -5,14 +5,10 @@
     "era": 1,
     "points": 1,
     "resultingTechnology": "Nanotechnology",
-    "researchOptions": [
-      {
-        "yellow": "4"
-      },
-      {
-        "octagon": "2"
-      }
-    ]
+    "researchOptions": {
+      "yellow": "4",
+      "octagon": "2"
+    }
   },
   {
     "id": "researchTeam_320",
@@ -20,14 +16,10 @@
     "era": 1,
     "points": 1,
     "resultingTechnology": "Quantum Computers",
-    "researchOptions": [
-      {
-        "white": "6"
-      },
-      {
-        "blue": "4"
-      }
-    ]
+    "researchOptions": {
+      "white": "6",
+      "blue": "4"
+    }
   },
   {
     "id": "researchTeam_321",
@@ -35,14 +27,10 @@
     "era": 1,
     "points": 1,
     "resultingTechnology": "Universal Translator",
-    "researchOptions": [
-      {
-        "green": "6"
-      },
-      {
-        "black": "4"
-      }
-    ]
+    "researchOptions": {
+      "green": "6",
+      "black": "4"
+    }
   },
   {
     "id": "researchTeam_322",
@@ -50,14 +38,10 @@
     "era": 1,
     "points": 1,
     "resultingTechnology": "Genetic Engineering",
-    "researchOptions": [
-      {
-        "brown": "6"
-      },
-      {
-        "blue": "4"
-      }
-    ]
+    "researchOptions": {
+      "brown": "6",
+      "blue": "4"
+    }
   },
   {
     "id": "researchTeam_323",
@@ -65,14 +49,10 @@
     "era": 1,
     "points": 1,
     "resultingTechnology": "Clinical Immortality",
-    "researchOptions": [
-      {
-        "green": "6"
-      },
-      {
-        "octagon": "2"
-      }
-    ]
+    "researchOptions": {
+      "green": "6",
+      "octagon": "2"
+    }
   },
   {
     "id": "researchTeam_324",
@@ -80,14 +60,10 @@
     "era": 1,
     "points": 1,
     "resultingTechnology": "Ubiquitous Cultural Repository",
-    "researchOptions": [
-      {
-        "white": "6"
-      },
-      {
-        "black": "4"
-      }
-    ]
+    "researchOptions": {
+      "white": "6",
+      "black": "4"
+    }
   },
   {
     "id": "researchTeam_325",
@@ -95,14 +71,10 @@
     "era": 1,
     "points": 1,
     "resultingTechnology": "Atomic Transmutation",
-    "researchOptions": [
-      {
-        "brown": "6"
-      },
-      {
-        "yellow": "4"
-      }
-    ]
+    "researchOptions": {
+      "brown": "6",
+      "yellow": "4"
+    }
   },
   {
     "id": "researchTeam_326",
@@ -110,14 +82,10 @@
     "era": 2,
     "points": 3,
     "resultingTechnology": "Interspecies Medical Exchange",
-    "researchOptions": [
-      {
-        "brown": "9"
-      },
-      {
-        "black": "6"
-      }
-    ]
+    "researchOptions": {
+      "brown": "9",
+      "black": "6"
+    }
   },
   {
     "id": "researchTeam_327",
@@ -125,14 +93,10 @@
     "era": 2,
     "points": 4,
     "resultingTechnology": "Hyperspace Mining",
-    "researchOptions": [
-      {
-        "blue": "8"
-      },
-      {
-        "octagon": "4"
-      }
-    ]
+    "researchOptions": {
+      "blue": "8",
+      "octagon": "4"
+    }
   },
   {
     "id": "researchTeam_328",
@@ -140,14 +104,10 @@
     "era": 2,
     "points": 4,
     "resultingTechnology": "Singularity Control",
-    "researchOptions": [
-      {
-        "brown": "12"
-      },
-      {
-        "green": "12"
-      }
-    ]
+    "researchOptions": {
+      "brown": "12",
+      "green": "12"
+    }
   },
   {
     "id": "researchTeam_329",
@@ -155,14 +115,10 @@
     "era": 2,
     "points": 4,
     "resultingTechnology": "Cross Species Ethical Equality",
-    "researchOptions": [
-      {
-        "yellow": "7"
-      },
-      {
-        "black": "7"
-      }
-    ]
+    "researchOptions": {
+      "yellow": "7",
+      "black": "7"
+    }
   },
   {
     "id": "researchTeam_330",
@@ -170,14 +126,10 @@
     "era": 2,
     "points": 3,
     "resultingTechnology": "Antimatter Power",
-    "researchOptions": [
-      {
-        "green": "9"
-      },
-      {
-        "blue": "6"
-      }
-    ]
+    "researchOptions": {
+      "green": "9",
+      "blue": "6"
+    }
   },
   {
     "id": "researchTeam_331",
@@ -185,14 +137,10 @@
     "era": 2,
     "points": 4,
     "resultingTechnology": "Achronal Analysis",
-    "researchOptions": [
-      {
-        "white": "12"
-      },
-      {
-        "octagon": "4"
-      }
-    ]
+    "researchOptions": {
+      "white": "12",
+      "octagon": "4"
+    }
   },
   {
     "id": "researchTeam_332",
@@ -200,14 +148,10 @@
     "era": 2,
     "points": 3,
     "resultingTechnology": "Organic Construction",
-    "researchOptions": [
-      {
-        "white": "9"
-      },
-      {
-        "yellow": "6"
-      }
-    ]
+    "researchOptions": {
+      "white": "9",
+      "yellow": "6"
+    }
   },
   {
     "id": "researchTeam_333",
@@ -215,14 +159,10 @@
     "era": 3,
     "points": 11,
     "resultingTechnology": "Megastructures",
-    "researchOptions": [
-      {
-        "blue": "14"
-      },
-      {
-        "yellow": "14"
-      }
-    ]
+    "researchOptions": {
+      "blue": "14",
+      "yellow": "14"
+    }
   },
   {
     "id": "researchTeam_334",
@@ -230,14 +170,10 @@
     "era": 3,
     "points": 9,
     "resultingTechnology": "Social Exodus",
-    "researchOptions": [
-      {
-        "black": "12"
-      },
-      {
-        "octagon": "6"
-      }
-    ]
+    "researchOptions": {
+      "black": "12",
+      "octagon": "6"
+    }
   },
   {
     "id": "researchTeam_335",
@@ -245,14 +181,10 @@
     "era": 3,
     "points": 9,
     "resultingTechnology": "Matter Generation",
-    "researchOptions": [
-      {
-        "green": "18"
-      },
-      {
-        "white": "18"
-      }
-    ]
+    "researchOptions": {
+      "green": "18",
+      "white": "18"
+    }
   },
   {
     "id": "researchTeam_336",
@@ -260,14 +192,10 @@
     "era": 3,
     "points": 9,
     "resultingTechnology": "Galactic Telecomm Control",
-    "researchOptions": [
-      {
-        "brown": "18"
-      },
-      {
-        "white": "18"
-      }
-    ]
+    "researchOptions": {
+      "brown": "18",
+      "white": "18"
+    }
   },
   {
     "id": "researchTeam_337",
@@ -275,14 +203,10 @@
     "era": 3,
     "points": 8,
     "resultingTechnology": "Poly Species Corporations",
-    "researchOptions": [
-      {
-        "blue": "11"
-      },
-      {
-        "black": "11"
-      }
-    ]
+    "researchOptions": {
+      "blue": "11",
+      "black": "11"
+    }
   },
   {
     "id": "researchTeam_338",
@@ -290,14 +214,10 @@
     "era": 3,
     "points": 7,
     "resultingTechnology": "Xeno Cultural Exchange",
-    "researchOptions": [
-      {
-        "green": "15"
-      },
-      {
-        "yellow": "10"
-      }
-    ]
+    "researchOptions": {
+      "green": "15",
+      "yellow": "10"
+    }
   },
   {
     "id": "researchTeam_339",
@@ -305,353 +225,229 @@
     "era": 3,
     "points": 9,
     "resultingTechnology": "Temporal Dilation",
-    "researchOptions": [
-      {
-        "brown": "18"
-      },
-      {
-        "octagon": "6"
-      }
-    ]
+    "researchOptions": {
+      "brown": "18",
+      "octagon": "6"
+    }
   },
   {
     "id": "researchTeam_340",
     "name": "Cultural Polymorphologists",
     "era": 4,
     "points": 8,
-    "researchOptions": [
-      {
-        "white": "18"
-      },
-      {
-        "brown": "18"
-      },
-      {
-        "octagon": "6"
-      }
-    ]
+    "researchOptions": {
+      "white": "18",
+      "brown": "18",
+      "octagon": "6"
+    }
   },
   {
     "id": "researchTeam_341",
     "name": "Reconstructive Paleobotanists",
     "era": 4,
     "points": 10,
-    "researchOptions": [
-      {
-        "white": "21"
-      },
-      {
-        "green": "21"
-      },
-      {
-        "octagon": "7"
-      }
-    ]
+    "researchOptions": {
+      "white": "21",
+      "green": "21",
+      "octagon": "7"
+    }
   },
   {
     "id": "researchTeam_342",
     "name": "Abiotic Pathologists",
     "era": 4,
     "points": 12,
-    "researchOptions": [
-      {
-        "white": "24"
-      },
-      {
-        "yellow": "16"
-      },
-      {
-        "octagon": "8"
-      }
-    ]
+    "researchOptions": {
+      "white": "24",
+      "yellow": "16",
+      "octagon": "8"
+    }
   },
   {
     "id": "researchTeam_343",
     "name": "Interphasal Theoreticians",
     "era": 4,
     "points": 12,
-    "researchOptions": [
-      {
-        "brown": "24"
-      },
-      {
-        "green": "24"
-      },
-      {
-        "octagon": "8"
-      }
-    ]
+    "researchOptions": {
+      "brown": "24",
+      "green": "24",
+      "octagon": "8"
+    }
   },
   {
     "id": "researchTeam_344",
     "name": "Mesoscale Geoengineers",
     "era": 4,
     "points": 14,
-    "researchOptions": [
-      {
-        "brown": "27"
-      },
-      {
-        "yellow": "18"
-      },
-      {
-        "octagon": "9"
-      }
-    ]
+    "researchOptions": {
+      "brown": "27",
+      "yellow": "18",
+      "octagon": "9"
+    }
   },
   {
     "id": "researchTeam_345",
     "name": "Sapience Developers",
     "era": 4,
     "points": 10,
-    "researchOptions": [
-      {
-        "white": "21"
-      },
-      {
-        "yellow": "14"
-      },
-      {
-        "black": "14"
-      }
-    ]
+    "researchOptions": {
+      "white": "21",
+      "yellow": "14",
+      "black": "14"
+    }
   },
   {
     "id": "researchTeam_346",
     "name": "Autonomic Teleoperators",
     "era": 4,
     "points": 8,
-    "researchOptions": [
-      {
-        "blue": "12"
-      },
-      {
-        "yellow": "12"
-      },
-      {
-        "black": "12"
-      }
-    ]
+    "researchOptions": {
+      "blue": "12",
+      "yellow": "12",
+      "black": "12"
+    }
   },
   {
     "id": "researchTeam_347",
     "name": "Fractal Microbiologists",
     "era": 4,
     "points": 10,
-    "researchOptions": [
-      {
-        "white": "21"
-      },
-      {
-        "green": "21"
-      },
-      {
-        "blue": "14"
-      }
-    ]
+    "researchOptions": {
+      "white": "21",
+      "green": "21",
+      "blue": "14"
+    }
   },
   {
     "id": "researchTeam_348",
     "name": "Stellar Plasma Flow Engineers",
     "era": 4,
     "points": 10,
-    "researchOptions": [
-      {
-        "white": "21"
-      },
-      {
-        "blue": "14"
-      },
-      {
-        "black": "14"
-      }
-    ]
+    "researchOptions": {
+      "white": "21",
+      "blue": "14",
+      "black": "14"
+    }
   },
   {
     "id": "researchTeam_349",
     "name": "Chaos Theoreticians",
     "era": 4,
     "points": 8,
-    "researchOptions": [
-      {
-        "green": "18"
-      },
-      {
-        "yellow": "12"
-      },
-      {
-        "black": "12"
-      }
-    ]
+    "researchOptions": {
+      "green": "18",
+      "yellow": "12",
+      "black": "12"
+    }
   },
   {
     "id": "researchTeam_350",
     "name": "Oceanographic Biotechnicians",
     "era": 4,
     "points": 8,
-    "researchOptions": [
-      {
-        "brown": "18"
-      },
-      {
-        "blue": "12"
-      },
-      {
-        "octagon": "6"
-      }
-    ]
+    "researchOptions": {
+      "brown": "18",
+      "blue": "12",
+      "octagon": "6"
+    }
   },
   {
     "id": "researchTeam_351",
     "name": "Recursive Metatheoreticians",
     "era": 4,
     "points": 16,
-    "researchOptions": [
-      {
-        "white": "30"
-      },
-      {
-        "brown": "30"
-      },
-      {
-        "black": "20"
-      }
-    ]
+    "researchOptions": {
+      "white": "30",
+      "brown": "30",
+      "black": "20"
+    }
   },
   {
     "id": "researchTeam_352",
     "name": "Singularity Control Technicians",
     "era": 4,
     "points": 16,
-    "researchOptions": [
-      {
-        "black": "20"
-      },
-      {
-        "blue": "20"
-      },
-      {
-        "octagon": "10"
-      }
-    ]
+    "researchOptions": {
+      "black": "20",
+      "blue": "20",
+      "octagon": "10"
+    }
   },
   {
     "id": "researchTeam_353",
     "name": "Applied Topologists",
     "era": 4,
     "points": 16,
-    "researchOptions": [
-      {
-        "white": "30"
-      },
-      {
-        "brown": "30"
-      },
-      {
-        "yellow": "20"
-      }
-    ]
+    "researchOptions": {
+      "white": "30",
+      "brown": "30",
+      "yellow": "20"
+    }
   },
   {
     "id": "researchTeam_354",
     "name": "Metacognitive Ecologists",
     "era": 4,
     "points": 16,
-    "researchOptions": [
-      {
-        "green": "30"
-      },
-      {
-        "blue": "20"
-      },
-      {
-        "octagon": "10"
-      }
-    ]
+    "researchOptions": {
+      "green": "30",
+      "blue": "20",
+      "octagon": "10"
+    }
   },
   {
     "id": "researchTeam_355",
     "name": "Plasma Auxonologists",
     "era": 4,
     "points": 12,
-    "researchOptions": [
-      {
-        "green": "24"
-      },
-      {
-        "brown": "24"
-      },
-      {
-        "yellow": "16"
-      }
-    ]
+    "researchOptions": {
+      "green": "24",
+      "brown": "24",
+      "yellow": "16"
+    }
   },
   {
     "id": "researchTeam_356",
     "name": "Psychohistorial Ethicists",
     "era": 4,
     "points": 14,
-    "researchOptions": [
-      {
-        "green": "27"
-      },
-      {
-        "white": "27"
-      },
-      {
-        "black": "18"
-      }
-    ]
+    "researchOptions": {
+      "green": "27",
+      "white": "27",
+      "black": "18"
+    }
   },
   {
     "id": "researchTeam_357",
-    "name": "TAchyon Astrotechnicians",
+    "name": "Tachyon Astrotechnicians",
     "era": 4,
     "points": 16,
-    "researchOptions": [
-      {
-        "green": "30"
-      },
-      {
-        "yellow": "20"
-      },
-      {
-        "blue": "20"
-      }
-    ]
+    "researchOptions": {
+      "green": "30",
+      "yellow": "20",
+      "blue": "20"
+    }
   },
   {
     "id": "researchTeam_358",
     "name": "In Situ Genetic Editors",
     "era": 4,
     "points": 12,
-    "researchOptions": [
-      {
-        "green": "24"
-      },
-      {
-        "brown": "24"
-      },
-      {
-        "black": "16"
-      }
-    ]
+    "researchOptions": {
+      "green": "24",
+      "brown": "24",
+      "black": "16"
+    }
   },
   {
     "id": "researchTeam_359",
     "name": "Macroscale Biophysicists",
     "era": 4,
     "points": 14,
-    "researchOptions": [
-      {
-        "brown": "27"
-      },
-      {
-        "black": "18"
-      },
-      {
-        "blue": "18"
-      }
-    ]
+    "researchOptions": {
+      "brown": "27",
+      "black": "18",
+      "blue": "18"
+    }
   }
 ]
