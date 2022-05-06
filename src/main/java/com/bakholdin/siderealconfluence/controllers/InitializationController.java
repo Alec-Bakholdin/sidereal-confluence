@@ -56,7 +56,7 @@ public class InitializationController {
             throw new RuntimeException("Player name cannot be empty");
         }
         Player player = gameStateService.addNewPlayerToGame(payload.getPlayerName(), RaceName.Caylion);
-        simpMessagingTemplate.convertAndSend(SocketTopics.PLAYER_JOINED_GAME, player);
+        simpMessagingTemplate.convertAndSend(SocketTopics.TOPIC_PLAYER_JOINED_GAME, player);
         return JoinGameResponse.builder()
                 .gameState(gameStateService.getGameState())
                 .playerName(player.getName())
@@ -71,7 +71,7 @@ public class InitializationController {
         if (player == null) {
             player = gameStateService.addNewPlayerToGame(payload.getPlayerName(), RaceName.Caylion);
         }
-        simpMessagingTemplate.convertAndSend(SocketTopics.PLAYER_JOINED_GAME, player);
+        simpMessagingTemplate.convertAndSend(SocketTopics.TOPIC_PLAYER_JOINED_GAME, player);
         return JoinGameResponse.builder()
                 .playerId(player.getId())
                 .playerName(player.getName())
