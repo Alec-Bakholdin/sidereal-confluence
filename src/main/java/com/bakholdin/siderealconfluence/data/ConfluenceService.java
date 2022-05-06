@@ -1,6 +1,9 @@
 package com.bakholdin.siderealconfluence.data;
 
+import com.bakholdin.siderealconfluence.model.BidTrackType;
 import com.bakholdin.siderealconfluence.model.Confluence;
+import com.bakholdin.siderealconfluence.model.ConfluenceBidTrack;
+import com.fasterxml.jackson.core.type.TypeReference;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
@@ -14,20 +17,41 @@ import java.util.stream.Collectors;
 public class ConfluenceService {
     @Value(value = "classpath:game_data/confluenceCards.json")
     private Resource confluenceCardResource;
+    @Value(value = "classpath:game_data/confluenceBidTracks.json")
+    private Resource confluenceBidTrackResource;
+
     private List<Confluence> confluenceCards = null;
+    private List<ConfluenceBidTrack> confluenceBidTracks = null;
 
     @PostConstruct
     private void init() {
-        confluenceCards = ResourceUtils.loadListFromResource(confluenceCardResource);
+        confluenceCards = ResourceUtils.loadListFromResource(confluenceCardResource, new TypeReference<>() {
+        });
+        confluenceBidTracks = ResourceUtils.loadListFromResource(confluenceBidTrackResource, new TypeReference<>() {
+        });
     }
 
     public List<Confluence> getConfluenceCards(int numPlayers) {
-        if (numPlayers < 4 || numPlayers > 10) {
-            throw new IllegalArgumentException("Invalid number of players: " + numPlayers);
-        }
+        validateNumberOfPlayers(numPlayers);
         return confluenceCards.stream()
                 .filter(card -> card.getPlayerCounts().contains(numPlayers))
                 .sorted(Comparator.comparingInt(Confluence::getTurn))
                 .collect(Collectors.toList());
+    }
+
+    public List<Integer> getBidSlots(int numPlayers, BidTrackType type) {
+        validateNumberOfPlayers(numPlayers);
+        return confluenceBidTracks.stream()
+                .filter(track -> track.getType() == type && track.getPlayerCounts().contains(numPlayers))
+                .sorted(Comparator.comparingInt(ConfluenceBidTrack::getOrder))
+                .map(ConfluenceBidTrack::getShipMinima)
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
+    }
+
+    private void validateNumberOfPlayers(int numPlayers) {
+        if (numPlayers < 4 || numPlayers > 10) {
+            throw new IllegalArgumentException("Invalid number of players: " + numPlayers);
+        }
     }
 }

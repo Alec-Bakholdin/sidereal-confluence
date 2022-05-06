@@ -45,11 +45,14 @@ public class GameStateService {
     public GameState startGame() {
         GameState gameState = getGameState();
         int numPlayers = gameState.getPlayers().size();
+
         List<Confluence> confluenceList = confluenceService.getConfluenceCards(numPlayers);
         gameState.setConfluenceList(confluenceList);
+
         gameState.setTurn(1);
         gameState.setPhase(Phase.Trade);
-        gameState.setGameInSession(true);
+        gameState.setGameStarted(true);
+        gameState.setGameOver(false);
         return gameState;
     }
 }

@@ -11,11 +11,10 @@ import java.util.List;
 
 public class ResourceUtils {
 
-    public static <T> List<T> loadListFromResource(Resource resource) {
+    public static <T> List<T> loadListFromResource(Resource resource, TypeReference<List<T>> typeReference) {
         ObjectMapper objectMapper = configureObjectMapper();
         try {
-            return objectMapper.readValue(resource.getFile(), new TypeReference<>() {
-            });
+            return objectMapper.readValue(resource.getFile(), typeReference);
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }

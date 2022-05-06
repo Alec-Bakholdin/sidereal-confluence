@@ -11,9 +11,15 @@ import java.util.UUID;
 @Data
 public class GameState {
     private int turn = 0;
-    private boolean gameInSession = false;
-    private boolean gameOver = false;
-    private List<Confluence> confluenceList = new LinkedList<>();
     private Phase phase = Phase.Trade;
+    private boolean isGameStarted = false;
+    private boolean isGameOver = false;
+
+    private List<Confluence> confluenceList = new LinkedList<>();
+    private List<String> availableColonies = new LinkedList<>();
+    private List<String> availableResearchTeams = new LinkedList<>();
+    private List<Integer> colonyBidTrack = new LinkedList<>();
+    private List<Integer> researchTeamBidTrack = new LinkedList<>();
+
     private Map<UUID, Player> players = new HashMap<>();
 }

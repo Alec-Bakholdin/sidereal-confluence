@@ -22,6 +22,9 @@ public class GameStateController {
         return UpdateGameStateServerMessage.builder()
                 .phase(gameState.getPhase())
                 .turn(gameState.getTurn())
+                .isGameOver(gameState.isGameOver())
+                .isGameStarted(gameState.isGameStarted())
+                .confluenceList(gameState.getConfluenceList())
                 .build();
     }
 }

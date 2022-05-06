@@ -13,5 +13,6 @@ public class Player {
     private String name;
     private Resources resources;
     private Race race;
+    private boolean isReady;
     private List<String> cards;
 }

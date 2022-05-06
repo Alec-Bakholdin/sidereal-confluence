@@ -4,6 +4,7 @@ import com.bakholdin.siderealconfluence.model.cards.Card;
 import com.bakholdin.siderealconfluence.model.cards.Colony;
 import com.bakholdin.siderealconfluence.model.cards.ConverterCard;
 import com.bakholdin.siderealconfluence.model.cards.ResearchTeam;
+import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -69,7 +70,8 @@ public class CardService {
 
 
     private void loadColonies() {
-        availableColonies = ResourceUtils.loadListFromResource(coloniesResource);
+        availableColonies = ResourceUtils.loadListFromResource(coloniesResource, new TypeReference<>() {
+        });
         Map<String, Colony> colonyMap = availableColonies.stream().collect(Collectors.toMap(Card::getId, card -> card));
         allCards.putAll(colonyMap);
         Collections.shuffle(availableColonies);
@@ -77,7 +79,8 @@ public class CardService {
     }
 
     private void loadResearchTeams() {
-        availableResearchTeams = ResourceUtils.loadListFromResource(researchTeamsResource);
+        availableResearchTeams = ResourceUtils.loadListFromResource(researchTeamsResource, new TypeReference<>() {
+        });
         Map<String, ResearchTeam> researchTeamMap = availableResearchTeams.stream().collect(Collectors.toMap(Card::getId, card -> card));
         allCards.putAll(researchTeamMap);
 
@@ -88,7 +91,8 @@ public class CardService {
     }
 
     private void loadConverterCards() {
-        List<ConverterCard> converterCardList = ResourceUtils.loadListFromResource(converterCardsResource);
+        List<ConverterCard> converterCardList = ResourceUtils.loadListFromResource(converterCardsResource, new TypeReference<>() {
+        });
         Map<String, ConverterCard> converterCardMap = converterCardList.stream().collect(Collectors.toMap(Card::getId, card -> card));
         allCards.putAll(converterCardMap);
         log.info("Loaded {} converter cards", converterCardList.size());

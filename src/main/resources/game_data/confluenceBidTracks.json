@@ -1,0 +1,183 @@
+[
+  {
+    "type": "Colony",
+    "order": 1,
+    "shipMinima": [
+      1,
+      1,
+      2
+    ],
+    "playerCounts": [
+      5
+    ]
+  },
+  {
+    "type": "Colony",
+    "order": 1,
+    "shipMinima": [
+      1,
+      1,
+      1,
+      2
+    ],
+    "playerCounts": [
+      6
+    ]
+  },
+  {
+    "type": "ResearchTeam",
+    "order": 2,
+    "shipMinima": [
+      3,
+      3
+    ],
+    "playerCounts": [
+      5,
+      6
+    ]
+  },
+  {
+    "type": "ResearchTeam",
+    "order": 1,
+    "shipMinima": [
+      1,
+      1,
+      1,
+      2
+    ],
+    "playerCounts": [
+      6
+    ]
+  },
+  {
+    "type": "ResearchTeam",
+    "order": 1,
+    "shipMinima": [
+      1,
+      1,
+      2
+    ],
+    "playerCounts": [
+      5
+    ]
+  },
+  {
+    "type": "Colony",
+    "order": 1,
+    "shipMinima": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "playerCounts": [
+      8,
+      10
+    ]
+  },
+  {
+    "type": "Colony",
+    "order": 1,
+    "shipMinima": [
+      1,
+      1,
+      1
+    ],
+    "playerCounts": [
+      7,
+      9
+    ]
+  },
+  {
+    "type": "ResearchTeam",
+    "order": 1,
+    "shipMinima": [
+      1,
+      1,
+      1
+    ],
+    "playerCounts": [
+      7,
+      9
+    ]
+  },
+  {
+    "type": "ResearchTeam",
+    "order": 1,
+    "shipMinima": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "playerCounts": [
+      8
+    ]
+  },
+  {
+    "type": "Colony",
+    "order": 2,
+    "shipMinima": [
+      1,
+      2,
+      2,
+      2
+    ],
+    "playerCounts": [
+      9,
+      10
+    ]
+  },
+  {
+    "type": "Colony",
+    "order": 2,
+    "shipMinima": [
+      3,
+      3
+    ],
+    "playerCounts": [
+      5,
+      6
+    ]
+  },
+  {
+    "type": "Colony",
+    "order": 1,
+    "shipMinima": [
+      1,
+      1,
+      2,
+      3
+    ],
+    "playerCounts": [
+      4
+    ]
+  },
+  {
+    "type": "ResearchTeam",
+    "order": 1,
+    "shipMinima": [
+      1,
+      1,
+      2,
+      3
+    ],
+    "playerCounts": [
+      4
+    ]
+  },
+  {
+    "type": "ResearchTeam",
+    "order": 2,
+    "shipMinima": [
+      1,
+      2,
+      2,
+      2
+    ],
+    "playerCounts": [
+      9,
+      10
+    ]
+  }
+]
