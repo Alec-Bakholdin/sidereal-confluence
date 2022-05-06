@@ -3,6 +3,7 @@ package com.bakholdin.siderealconfluence.controllers;
 import com.bakholdin.siderealconfluence.controllers.model.JoinGamePayload;
 import com.bakholdin.siderealconfluence.controllers.model.JoinGameResponse;
 import com.bakholdin.siderealconfluence.controllers.model.RejoinGamePayload;
+import com.bakholdin.siderealconfluence.controllers.model.SocketTopics;
 import com.bakholdin.siderealconfluence.data.CardService;
 import com.bakholdin.siderealconfluence.data.GameStateService;
 import com.bakholdin.siderealconfluence.data.PlayerService;
@@ -55,7 +56,7 @@ public class InitializationController {
             throw new RuntimeException("Player name cannot be empty");
         }
         Player player = gameStateService.addNewPlayerToGame(payload.getPlayerName(), RaceName.Caylion);
-        simpMessagingTemplate.convertAndSend("/topic/joinedGame", player);
+        simpMessagingTemplate.convertAndSend(SocketTopics.PLAYER_JOINED_GAME, player);
         return JoinGameResponse.builder()
                 .gameState(gameStateService.getGameState())
                 .playerName(player.getName())
@@ -70,7 +71,7 @@ public class InitializationController {
         if (player == null) {
             player = gameStateService.addNewPlayerToGame(payload.getPlayerName(), RaceName.Caylion);
         }
-        simpMessagingTemplate.convertAndSend("/topic/joinedGame", player);
+        simpMessagingTemplate.convertAndSend(SocketTopics.PLAYER_JOINED_GAME, player);
         return JoinGameResponse.builder()
                 .playerId(player.getId())
                 .playerName(player.getName())
