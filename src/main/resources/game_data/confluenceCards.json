@@ -1,0 +1,140 @@
+[
+  {
+    "id": "confluence_360",
+    "turn": 6,
+    "sharingBonus": 2,
+    "yengiiSharingBonus": 0,
+    "playerCounts": [
+      4
+    ]
+  },
+  {
+    "id": "confluence_361",
+    "turn": 6,
+    "sharingBonus": 0,
+    "yengiiSharingBonus": 0,
+    "playerCounts": [
+      7,
+      8,
+      9,
+      10
+    ]
+  },
+  {
+    "id": "confluence_362",
+    "turn": 6,
+    "sharingBonus": 1,
+    "yengiiSharingBonus": 0,
+    "playerCounts": [
+      5,
+      6
+    ]
+  },
+  {
+    "id": "confluence_363",
+    "turn": 1,
+    "sharingBonus": 7,
+    "yengiiSharingBonus": 2,
+    "playerCounts": [
+      7,
+      8,
+      9,
+      10
+    ]
+  },
+  {
+    "id": "confluence_364",
+    "turn": 1,
+    "sharingBonus": 6,
+    "yengiiSharingBonus": 3,
+    "playerCounts": [
+      4,
+      5,
+      6
+    ]
+  },
+  {
+    "id": "confluence_365",
+    "turn": 2,
+    "sharingBonus": 6,
+    "yengiiSharingBonus": 2,
+    "playerCounts": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  },
+  {
+    "id": "confluence_366",
+    "turn": 3,
+    "sharingBonus": 5,
+    "yengiiSharingBonus": 1,
+    "playerCounts": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  },
+  {
+    "id": "confluence_367",
+    "turn": 2,
+    "sharingBonus": 5,
+    "yengiiSharingBonus": 2,
+    "playerCounts": [
+      4
+    ]
+  },
+  {
+    "id": "confluence_368",
+    "turn": 4,
+    "sharingBonus": 4,
+    "yengiiSharingBonus": 1,
+    "playerCounts": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  },
+  {
+    "id": "confluence_369",
+    "turn": 3,
+    "sharingBonus": 4,
+    "yengiiSharingBonus": 2,
+    "playerCounts": [
+      4
+    ]
+  },
+  {
+    "id": "confluence_370",
+    "turn": 5,
+    "sharingBonus": 3,
+    "yengiiSharingBonus": 1,
+    "playerCounts": [
+      4,
+      5
+    ]
+  },
+  {
+    "id": "confluence_371",
+    "turn": 5,
+    "sharingBonus": 2,
+    "yengiiSharingBonus": 0,
+    "playerCounts": [
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  }
+]
