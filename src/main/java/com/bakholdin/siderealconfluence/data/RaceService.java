@@ -19,7 +19,7 @@ import java.util.Map;
 public class RaceService {
     private final Map<RaceName, Race> races = new HashMap<>();
 
-    @Value(value = "classpath:races.json")
+    @Value(value = "classpath:game_data/races.json")
     private Resource raceJson;
 
     @PostConstruct

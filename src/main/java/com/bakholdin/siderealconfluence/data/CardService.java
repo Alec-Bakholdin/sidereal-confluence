@@ -4,16 +4,11 @@ import com.bakholdin.siderealconfluence.model.cards.Card;
 import com.bakholdin.siderealconfluence.model.cards.Colony;
 import com.bakholdin.siderealconfluence.model.cards.ConverterCard;
 import com.bakholdin.siderealconfluence.model.cards.ResearchTeam;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-import java.io.UncheckedIOException;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -26,11 +21,11 @@ import java.util.stream.Collectors;
 @Service
 public class CardService {
 
-    @Value(value = "classpath:cards/converterCards.json")
+    @Value(value = "classpath:game_data/cards/converterCards.json")
     private Resource converterCardsResource;
-    @Value(value = "classpath:cards/researchTeams.json")
+    @Value(value = "classpath:game_data/cards/researchTeams.json")
     private Resource researchTeamsResource;
-    @Value(value = "classpath:cards/colonies.json")
+    @Value(value = "classpath:game_data/cards/colonies.json")
     private Resource coloniesResource;
 
     private Map<String, Card> allCards = new HashMap<>();
@@ -40,13 +35,9 @@ public class CardService {
 
     public Map<String, Card> resetCards() {
         allCards = new HashMap<>();
-        try {
-            loadConverterCards();
-            loadResearchTeams();
-            loadColonies();
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
-        }
+        loadConverterCards();
+        loadResearchTeams();
+        loadColonies();
 
         return allCards;
     }
@@ -77,20 +68,16 @@ public class CardService {
     }
 
 
-    private void loadColonies() throws IOException {
-        ObjectMapper objectMapper = configureObjectMapper();
-        availableColonies = objectMapper.readValue(coloniesResource.getFile(), new TypeReference<>() {
-        });
+    private void loadColonies() {
+        availableColonies = ResourceUtils.loadListFromResource(coloniesResource);
         Map<String, Colony> colonyMap = availableColonies.stream().collect(Collectors.toMap(Card::getId, card -> card));
         allCards.putAll(colonyMap);
         Collections.shuffle(availableColonies);
         log.info("Loaded {} colonies", availableColonies.size());
     }
 
-    private void loadResearchTeams() throws IOException {
-        ObjectMapper objectMapper = configureObjectMapper();
-        availableResearchTeams = objectMapper.readValue(researchTeamsResource.getFile(), new TypeReference<>() {
-        });
+    private void loadResearchTeams() {
+        availableResearchTeams = ResourceUtils.loadListFromResource(researchTeamsResource);
         Map<String, ResearchTeam> researchTeamMap = availableResearchTeams.stream().collect(Collectors.toMap(Card::getId, card -> card));
         allCards.putAll(researchTeamMap);
 
@@ -100,19 +87,12 @@ public class CardService {
         log.info("Loaded {} research teams", availableResearchTeams.size());
     }
 
-    private void loadConverterCards() throws IOException {
-        ObjectMapper objectMapper = configureObjectMapper();
-        List<ConverterCard> converterCardList = objectMapper.readValue(converterCardsResource.getFile(), new TypeReference<>() {
-        });
+    private void loadConverterCards() {
+        List<ConverterCard> converterCardList = ResourceUtils.loadListFromResource(converterCardsResource);
         Map<String, ConverterCard> converterCardMap = converterCardList.stream().collect(Collectors.toMap(Card::getId, card -> card));
         allCards.putAll(converterCardMap);
         log.info("Loaded {} converter cards", converterCardList.size());
     }
 
-    private ObjectMapper configureObjectMapper() {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        return objectMapper;
-    }
 
 }
