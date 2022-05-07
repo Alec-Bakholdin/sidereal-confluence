@@ -26,18 +26,6 @@
   },
   {
     "type": "ResearchTeam",
-    "order": 2,
-    "shipMinima": [
-      3,
-      3
-    ],
-    "playerCounts": [
-      5,
-      6
-    ]
-  },
-  {
-    "type": "ResearchTeam",
     "order": 1,
     "shipMinima": [
       1,
@@ -116,6 +104,44 @@
   },
   {
     "type": "Colony",
+    "order": 1,
+    "shipMinima": [
+      1,
+      1,
+      2,
+      3
+    ],
+    "playerCounts": [
+      4
+    ]
+  },
+  {
+    "type": "ResearchTeam",
+    "order": 1,
+    "shipMinima": [
+      1,
+      1,
+      2,
+      3
+    ],
+    "playerCounts": [
+      4
+    ]
+  },
+  {
+    "type": "ResearchTeam",
+    "order": 2,
+    "shipMinima": [
+      3,
+      3
+    ],
+    "playerCounts": [
+      5,
+      6
+    ]
+  },
+  {
+    "type": "Colony",
     "order": 2,
     "shipMinima": [
       1,
@@ -138,46 +164,6 @@
     "playerCounts": [
       5,
       6
-    ]
-  },
-  {
-    "type": "Colony",
-    "order": 1,
-    "shipMinima": [
-      1,
-      1,
-      2,
-      3
-    ],
-    "playerCounts": [
-      4
-    ]
-  },
-  {
-    "type": "ResearchTeam",
-    "order": 1,
-    "shipMinima": [
-      1,
-      1,
-      2,
-      3
-    ],
-    "playerCounts": [
-      4
-    ]
-  },
-  {
-    "type": "ResearchTeam",
-    "order": 2,
-    "shipMinima": [
-      1,
-      2,
-      2,
-      2
-    ],
-    "playerCounts": [
-      9,
-      10
     ]
   }
 ]
