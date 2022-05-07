@@ -1,14 +1,17 @@
 package com.bakholdin.siderealconfluence.data;
 
-import com.bakholdin.siderealconfluence.model.Confluence;
+import com.bakholdin.siderealconfluence.model.BidTrackType;
 import com.bakholdin.siderealconfluence.model.GameState;
 import com.bakholdin.siderealconfluence.model.Phase;
 import com.bakholdin.siderealconfluence.model.Player;
 import com.bakholdin.siderealconfluence.model.RaceName;
+import com.bakholdin.siderealconfluence.model.cards.Colony;
+import com.bakholdin.siderealconfluence.model.cards.ResearchTeam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -46,13 +49,21 @@ public class GameStateService {
         GameState gameState = getGameState();
         int numPlayers = gameState.getPlayers().size();
 
-        List<Confluence> confluenceList = confluenceService.getConfluenceCards(numPlayers);
-        gameState.setConfluenceList(confluenceList);
-
         gameState.setTurn(1);
         gameState.setPhase(Phase.Trade);
         gameState.setGameStarted(true);
         gameState.setGameOver(false);
+
+        gameState.setConfluenceList(confluenceService.getConfluenceCards(numPlayers));
+
+        gameState.setColonyBidTrack(confluenceService.getBidTrack(numPlayers, BidTrackType.Colony));
+        List<Colony> colonies = cardService.drawNColonies(numPlayers);
+        gameState.setAvailableColonies(colonies.stream().map(Colony::getId).collect(Collectors.toList()));
+
+        gameState.setResearchTeamBidTrack(confluenceService.getBidTrack(numPlayers, BidTrackType.ResearchTeam));
+        List<ResearchTeam> researchTeams = cardService.drawNResearchTeams(numPlayers);
+        gameState.setAvailableResearchTeams(researchTeams.stream().map(ResearchTeam::getId).collect(Collectors.toList()));
+
         return gameState;
     }
 }

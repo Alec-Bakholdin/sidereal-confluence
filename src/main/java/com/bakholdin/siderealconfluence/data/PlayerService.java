@@ -32,12 +32,12 @@ public class PlayerService {
                 .build();
 
         for (int i = 0; i < race.getStartingColonies(); i++) {
-            Colony colony = cardService.extractRandomColony();
+            Colony colony = cardService.drawColonyCard();
             newPlayer.getCards().add(colony.getId());
         }
 
         for (int i = 0; i < race.getStartingResearchTeams(); i++) {
-            ResearchTeam researchTeam = cardService.extractRandomResearchTeam();
+            ResearchTeam researchTeam = cardService.drawResearchTeamCard();
             newPlayer.getCards().add(researchTeam.getId());
         }
 

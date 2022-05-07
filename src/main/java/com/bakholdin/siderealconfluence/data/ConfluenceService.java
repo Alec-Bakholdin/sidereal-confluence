@@ -39,7 +39,7 @@ public class ConfluenceService {
                 .collect(Collectors.toList());
     }
 
-    public List<Integer> getBidSlots(int numPlayers, BidTrackType type) {
+    public List<Integer> getBidTrack(int numPlayers, BidTrackType type) {
         validateNumberOfPlayers(numPlayers);
         return confluenceBidTracks.stream()
                 .filter(track -> track.getType() == type && track.getPlayerCounts().contains(numPlayers))

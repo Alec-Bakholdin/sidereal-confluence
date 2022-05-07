@@ -25,6 +25,10 @@ public class GameStateController {
                 .isGameOver(gameState.isGameOver())
                 .isGameStarted(gameState.isGameStarted())
                 .confluenceList(gameState.getConfluenceList())
+                .availableResearchTeams(gameState.getAvailableResearchTeams())
+                .researchTeamBidTrack(gameState.getResearchTeamBidTrack())
+                .availableColonies(gameState.getAvailableColonies())
+                .colonyBidTrack(gameState.getColonyBidTrack())
                 .build();
     }
 }
