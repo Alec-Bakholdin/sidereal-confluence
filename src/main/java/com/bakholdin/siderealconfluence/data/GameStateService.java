@@ -66,4 +66,40 @@ public class GameStateService {
 
         return gameState;
     }
+
+    public GameState advancePhase() {
+        GameState gameState = getGameState();
+        gameState.setPhase(getNextPhase(gameState.getPhase()));
+        if (gameState.getPhase() == Phase.Trade) {
+            advanceTurn(gameState);
+        } else if (gameState.getPhase() == Phase.Confluence) {
+            resolveEconomy(gameState);
+        }
+        return gameState;
+    }
+
+    private void advanceTurn(GameState gameState) {
+        if (gameState.getTurn() == 6) {
+            gameState.setGameOver(true);
+        } else {
+            gameState.setTurn(gameState.getTurn() + 1);
+        }
+    }
+
+    private void resolveEconomy(GameState gameState) {
+
+    }
+
+    private Phase getNextPhase(Phase phase) {
+        switch (phase) {
+            case Trade:
+                return Phase.Economy;
+            case Economy:
+                return Phase.Confluence;
+            case Confluence:
+                return Phase.Trade;
+            default:
+                throw new IllegalArgumentException("Unknown phase: " + phase);
+        }
+    }
 }

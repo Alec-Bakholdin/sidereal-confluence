@@ -31,4 +31,18 @@ public class GameStateController {
                 .colonyBidTrack(gameState.getColonyBidTrack())
                 .build();
     }
+
+    @MessageMapping(SocketTopics.APP_NEXT_PHASE)
+    @SendTo(SocketTopics.TOPIC_UPDATE_GAME_STATE)
+    public UpdateGameStateServerMessage nextPhase() {
+        if (gameStateService.getGameState().isGameOver()) {
+            throw new UnsupportedOperationException("Game is over");
+        }
+        GameState gameState = gameStateService.advancePhase();
+        return UpdateGameStateServerMessage.builder()
+                .phase(gameState.getPhase())
+                .turn(gameState.getTurn())
+                .isGameOver(gameState.isGameOver())
+                .build();
+    }
 }
