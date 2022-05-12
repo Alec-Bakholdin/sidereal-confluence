@@ -62,19 +62,19 @@ public class CardService {
         return availableColonies.remove(0);
     }
 
-    public ResearchTeam drawResearchTeamCard() {
-        if (availableResearchTeams.isEmpty()) {
-            throw new RuntimeException("No more research teams available");
-        }
-        return availableResearchTeams.remove(0);
-    }
-
     public List<Colony> drawNColonies(int n) {
         List<Colony> result = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             result.add(drawColonyCard());
         }
         return result;
+    }
+
+    public ResearchTeam drawResearchTeamCard() {
+        if (availableResearchTeams.isEmpty()) {
+            throw new RuntimeException("No more research teams available");
+        }
+        return availableResearchTeams.remove(0);
     }
 
     public List<ResearchTeam> drawNResearchTeams(int n) {
