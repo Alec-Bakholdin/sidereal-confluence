@@ -1,6 +1,8 @@
 package com.bakholdin.siderealconfluence.controllers;
 
 import com.bakholdin.siderealconfluence.controllers.model.SocketTopics;
+import com.bakholdin.siderealconfluence.controllers.model.TransferCardClientMessage;
+import com.bakholdin.siderealconfluence.controllers.model.TransferCardServerMessage;
 import com.bakholdin.siderealconfluence.controllers.model.UpdatePlayerResourcesClientMessage;
 import com.bakholdin.siderealconfluence.controllers.model.UpdatePlayerResourcesServerMessage;
 import com.bakholdin.siderealconfluence.data.PlayerService;
@@ -28,6 +30,26 @@ public class PlayerController {
         return UpdatePlayerResourcesServerMessage.builder()
                 .resources(payload.getResources())
                 .playerId(payload.getPlayerId())
+                .build();
+    }
+
+    @MessageMapping(SocketTopics.APP_TRANSFER_CARD)
+    @SendTo(SocketTopics.TOPIC_TRANSFER_CARD)
+    public TransferCardServerMessage transferCard(TransferCardClientMessage payload) {
+        Player currentOwner = playerService.get(UUID.fromString(payload.getCurrentOwnerPlayerId()));
+        Player newOwner = playerService.get(UUID.fromString(payload.getNewOwnerPlayerId()));
+        if (currentOwner == null || newOwner == null) {
+            throw new IllegalArgumentException("Player not found");
+        }
+        if (!currentOwner.getCards().contains(payload.getCardId())) {
+            throw new IllegalArgumentException("Card not found in owner's possession");
+        }
+        currentOwner.getCards().remove(payload.getCardId());
+        newOwner.getCards().add(payload.getCardId());
+        return TransferCardServerMessage.builder()
+                .currentOwnerPlayerId(payload.getCurrentOwnerPlayerId())
+                .newOwnerPlayerId(payload.getNewOwnerPlayerId())
+                .cardId(payload.getCardId())
                 .build();
     }
 }
