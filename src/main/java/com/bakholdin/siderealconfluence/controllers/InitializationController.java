@@ -55,6 +55,9 @@ public class InitializationController {
         if (payload.getPlayerName() == null || payload.getPlayerName().isEmpty()) {
             throw new RuntimeException("Player name cannot be empty");
         }
+        if (gameStateService.gameIsInSession()) {
+            throw new RuntimeException("Game is already in session");
+        }
         Player player = gameStateService.addNewPlayerToGame(payload.getPlayerName(), RaceName.Caylion);
         simpMessagingTemplate.convertAndSend(SocketTopics.TOPIC_PLAYER_JOINED_GAME, player);
         return JoinGameResponse.builder()

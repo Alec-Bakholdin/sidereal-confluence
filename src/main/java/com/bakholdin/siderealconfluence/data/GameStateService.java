@@ -40,9 +40,16 @@ public class GameStateService {
     }
 
     public Player addNewPlayerToGame(String playerName, RaceName raceName) {
+        if (gameIsInSession()) {
+            throw new RuntimeException("Game is already in session");
+        }
         Player player = playerService.createPlayer(playerName, raceName);
         getGameState().getPlayers().put(player.getId(), player);
         return player;
+    }
+
+    public boolean gameIsInSession() {
+        return gameState.isGameStarted() && !gameState.isGameOver();
     }
 
     public GameState startGame() {
