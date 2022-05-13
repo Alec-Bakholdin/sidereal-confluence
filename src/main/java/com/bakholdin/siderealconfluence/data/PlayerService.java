@@ -29,7 +29,7 @@ public class PlayerService {
                 .id(UUID.randomUUID())
                 .name(name)
                 .race(race)
-                .resources(race.getStartingResources())
+                .resources(DataUtils.deepCopy(race.getStartingResources()))
                 .cards(CardService.startingCards(cards))
                 .availableCards(CardService.nonStartingCards(cards))
                 .build();

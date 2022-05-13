@@ -41,6 +41,9 @@ public class EconomyService {
             Resources econOutput = new Resources();
 
             economyActions.forEach(economyAction -> {
+                if (!player.getCards().contains(economyAction.getCardId())) {
+                    return;
+                }
                 Card card = cardService.get(economyAction.getCardId());
                 Converter converter = card.activeConverters().get(economyAction.getConverterIndex());
                 if (converter.getPhase() == Phase.Economy) {
@@ -48,12 +51,12 @@ public class EconomyService {
                     econOutput.add(converter.getOutput());
                 }
             });
-            playerSocketService.sendUpdatePlayerResourcesToClient(player);
 
 
             if (econInput.resourceTotal() > 0 || econOutput.resourceTotal() > 0) {
                 player.getResources().subtract(econInput);
                 player.getResources().add(econOutput);
+                playerSocketService.sendUpdatePlayerResourcesToClient(player);
                 log.info("Economy step: {} pays {} resources and receives {}", player.getName(), econInput.resourceTotal(), econOutput.resourceTotal());
             }
         });

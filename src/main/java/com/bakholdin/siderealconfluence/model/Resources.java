@@ -3,9 +3,11 @@ package com.bakholdin.siderealconfluence.model;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
 @JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class Resources {
+public class Resources implements Serializable {
     private int green;
     private int white;
     private int brown;
