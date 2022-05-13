@@ -19,6 +19,7 @@ public class GameStateService {
     private final CardService cardService;
     private final PlayerService playerService;
     private final ConfluenceService confluenceService;
+    private final EconomyService economyService;
     private GameState gameState = null;
 
     public GameState getGameState() {
@@ -80,7 +81,7 @@ public class GameStateService {
         if (gameState.getPhase() == Phase.Trade) {
             advanceTurn(gameState);
         } else if (gameState.getPhase() == Phase.Confluence) {
-            resolveEconomy(gameState);
+            economyService.resolveEconomyStep();
         }
         return gameState;
     }
@@ -91,10 +92,6 @@ public class GameStateService {
         } else {
             gameState.setTurn(gameState.getTurn() + 1);
         }
-    }
-
-    private void resolveEconomy(GameState gameState) {
-
     }
 
     private Phase getNextPhase(Phase phase) {

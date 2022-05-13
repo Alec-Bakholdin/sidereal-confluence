@@ -1,6 +1,9 @@
 package com.bakholdin.siderealconfluence.model.cards;
 
+import com.bakholdin.siderealconfluence.model.Converter;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public abstract class Card {
@@ -9,4 +12,6 @@ public abstract class Card {
     private CardType type;
 
     public abstract void flip();
+
+    public abstract List<Converter> activeConverters();
 }

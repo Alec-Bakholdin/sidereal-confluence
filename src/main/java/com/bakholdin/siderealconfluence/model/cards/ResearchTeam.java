@@ -1,9 +1,12 @@
 package com.bakholdin.siderealconfluence.model.cards;
 
+import com.bakholdin.siderealconfluence.model.Converter;
 import com.bakholdin.siderealconfluence.model.Resources;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+
+import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -22,5 +25,10 @@ public class ResearchTeam extends Card {
             return;
         }
         isResearched = true;
+    }
+
+    @Override
+    public List<Converter> activeConverters() {
+        throw new UnsupportedOperationException("Research teams do not have active converters");
     }
 }

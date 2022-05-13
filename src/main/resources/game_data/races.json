@@ -1,5 +1,6 @@
-{
-  "Caylion": {
+[
+  {
+    "name": "Caylion",
     "colonySupport": 1,
     "tiebreaker": 1,
     "startingColonies": 1,
@@ -9,12 +10,6 @@
       "yellow": 2,
       "black": 3,
       "octagon": 1
-    },
-    "startingConverterCards": [
-      "converterCard_1"
-    ],
-    "availableConverterCards": [
-      "converterCard_2"
-    ]
+    }
   }
-}
+]

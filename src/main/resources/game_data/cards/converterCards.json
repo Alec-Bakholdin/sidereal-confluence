@@ -1,36 +1,389 @@
 [
   {
     "id": "converterCard_1",
-    "name": "Converter Card 1",
+    "name": "Nanotechnology",
+    "upgradeTech1": "Genetic Engineering",
+    "upgradeTech2": "Atomic Transmutation",
+    "upgradedName": "Nanofabricators",
     "frontConverters": [
       {
-        "input": {
-          "green": 1,
-          "yellow": 2
-        },
         "phase": "Economy",
+        "input": {
+          "brown": "3"
+        },
         "output": {
-          "octagon": 1,
-          "points": 2
+          "octagon": "1",
+          "green": "1"
         }
       }
-    ]
+    ],
+    "backConverters": [
+      {
+        "phase": "Economy",
+        "input": {
+          "brown": "3"
+        },
+        "output": {
+          "octagon": "1",
+          "yellow": "1",
+          "green": "1"
+        }
+      }
+    ],
+    "era": 1,
+    "starting": false,
+    "race": "Caylion"
   },
   {
     "id": "converterCard_2",
-    "name": "Converter Card 2",
+    "name": "Genetic Engineering",
+    "upgradeTech1": "Nanotechnology",
+    "upgradeTech2": "Clinical Immortality",
+    "upgradedName": "Genetic Resynthesis",
     "frontConverters": [
       {
+        "phase": "Economy",
         "input": {
-          "green": 3,
-          "yellow": 2
+          "green": "3"
         },
-        "phase": "Trade",
         "output": {
-          "octagon": 1,
-          "points": 2
+          "yellow": "1",
+          "black": "1",
+          "brown": "1"
         }
       }
-    ]
+    ],
+    "backConverters": [
+      {
+        "phase": "Economy",
+        "input": {
+          "green": "3"
+        },
+        "output": {
+          "yellow": "2",
+          "black": "1",
+          "brown": "1"
+        }
+      }
+    ],
+    "era": 1,
+    "starting": false,
+    "race": "Caylion"
+  },
+  {
+    "id": "converterCard_3",
+    "name": "Universal Translator",
+    "upgradeTech1": "Ubiquitous Cultural Repository",
+    "upgradeTech2": "Quantum Computers",
+    "upgradedName": "Universal Empathetic Communication",
+    "frontConverters": [
+      {
+        "phase": "Economy",
+        "input": {
+          "white": "3"
+        },
+        "output": {
+          "points": "1",
+          "black": "1"
+        }
+      }
+    ],
+    "backConverters": [
+      {
+        "phase": "Economy",
+        "input": {
+          "white": "3"
+        },
+        "output": {
+          "points": "1",
+          "black": "1",
+          "white": "1",
+          "brown": "1"
+        }
+      }
+    ],
+    "era": 1,
+    "starting": false,
+    "race": "Caylion"
+  },
+  {
+    "id": "converterCard_9",
+    "name": "Planetary Ecological Dominance",
+    "upgradeTech1": "",
+    "upgradeTech2": "Genetic Engineering",
+    "upgradedName": "Systemwide Gravitic Dominance",
+    "frontConverters": [
+      {
+        "phase": "Economy",
+        "output": {
+          "ships": "1",
+          "green": "3",
+          "white": "1"
+        }
+      }
+    ],
+    "backConverters": [
+      {
+        "phase": "Economy",
+        "output": {
+          "ships": "1",
+          "blue": "1",
+          "green": "3",
+          "white": "1"
+        }
+      }
+    ],
+    "era": 1,
+    "starting": true,
+    "race": "Caylion"
+  },
+  {
+    "id": "converterCard_10",
+    "name": "Quantum Computing",
+    "upgradeTech1": "Universal Translator",
+    "upgradeTech2": "Clinical Immortality",
+    "upgradedName": "Nondeterministic Polynomial Collapse",
+    "frontConverters": [
+      {
+        "phase": "Economy",
+        "input": {
+          "black": "2"
+        },
+        "output": {
+          "blue": "1",
+          "yellow": "1",
+          "green": "1"
+        }
+      }
+    ],
+    "backConverters": [
+      {
+        "phase": "Economy",
+        "input": {
+          "black": "2"
+        },
+        "output": {
+          "blue": "1",
+          "yellow": "2",
+          "green": "1"
+        }
+      }
+    ],
+    "era": 1,
+    "starting": false,
+    "race": "Caylion"
+  },
+  {
+    "id": "converterCard_11",
+    "name": "Clinical Immortality",
+    "upgradeTech1": "Genetic Engineering",
+    "upgradeTech2": "Atomic Transmutation",
+    "upgradedName": "Practical Immortality",
+    "frontConverters": [
+      {
+        "phase": "Economy",
+        "input": {
+          "blue": "2"
+        },
+        "output": {
+          "points": "1",
+          "white": "1"
+        }
+      }
+    ],
+    "backConverters": [
+      {
+        "phase": "Economy",
+        "input": {
+          "blue": "2"
+        },
+        "output": {
+          "points": "1",
+          "yellow": "1",
+          "white": "1"
+        }
+      }
+    ],
+    "era": 1,
+    "starting": false,
+    "race": "Caylion"
+  },
+  {
+    "id": "converterCard_12",
+    "name": "Ubiquitous Cultural Repository",
+    "upgradeTech1": "Universal Translator",
+    "upgradeTech2": "Quantum Computers",
+    "upgradedName": "Memetic Lifeforms",
+    "frontConverters": [
+      {
+        "phase": "Economy",
+        "input": {
+          "yellow": "2"
+        },
+        "output": {
+          "points": "1",
+          "green": "1"
+        }
+      }
+    ],
+    "backConverters": [
+      {
+        "phase": "Economy",
+        "input": {
+          "yellow": "2"
+        },
+        "output": {
+          "points": "1",
+          "black": "1",
+          "green": "1"
+        }
+      }
+    ],
+    "era": 1,
+    "starting": false,
+    "race": "Caylion"
+  },
+  {
+    "id": "converterCard_19",
+    "name": "Lunar Mining Consortium",
+    "upgradeTech1": "",
+    "upgradeTech2": "Organic Construction",
+    "upgradedName": "Auxonic Outersystem Harvesting",
+    "frontConverters": [
+      {
+        "phase": "Economy",
+        "input": {
+          "blue": "2"
+        },
+        "output": {
+          "ships": "2",
+          "black": "1",
+          "white": "1"
+        }
+      }
+    ],
+    "backConverters": [
+      {
+        "phase": "Economy",
+        "input": {
+          "blue": "2"
+        },
+        "output": {
+          "ships": "2",
+          "black": "1",
+          "yellow": "1",
+          "white": "1"
+        }
+      }
+    ],
+    "era": 2,
+    "starting": true,
+    "race": "Caylion"
+  },
+  {
+    "id": "converterCard_21",
+    "name": "Atomic Transmutation",
+    "upgradeTech1": "Ubiquitous Cultural Repository",
+    "upgradeTech2": "Nanotechnology",
+    "upgradedName": "Pseudomaterials",
+    "frontConverters": [
+      {
+        "phase": "Economy",
+        "input": {
+          "octagon": "1"
+        },
+        "output": {
+          "yellow": "1",
+          "blue": "1",
+          "brown": "1"
+        }
+      }
+    ],
+    "backConverters": [
+      {
+        "phase": "Economy",
+        "input": {
+          "octagon": "1"
+        },
+        "output": {
+          "yellow": "1",
+          "blue": "2",
+          "brown": "1"
+        }
+      }
+    ],
+    "era": 1,
+    "starting": false,
+    "race": "Caylion"
+  },
+  {
+    "id": "converterCard_22",
+    "name": "Oceanic Processing",
+    "upgradeTech1": "",
+    "upgradeTech2": "Antimatter Power",
+    "upgradedName": "Planetwide Industrial Mariculture",
+    "frontConverters": [
+      {
+        "phase": "Economy",
+        "input": {
+          "green": "2"
+        },
+        "output": {
+          "blue": "1",
+          "brown": "1"
+        }
+      }
+    ],
+    "backConverters": [
+      {
+        "phase": "Economy",
+        "input": {
+          "green": "2"
+        },
+        "output": {
+          "black": "1",
+          "blue": "1",
+          "green": "1"
+        }
+      }
+    ],
+    "era": 2,
+    "starting": true,
+    "race": "Caylion"
+  },
+  {
+    "id": "converterCard_23",
+    "name": "Distributed Telenet",
+    "upgradeTech1": "",
+    "upgradeTech2": "Ubiquitous Cultural Repository",
+    "upgradedName": "Ansible Driven Intersystem Society",
+    "frontConverters": [
+      {
+        "phase": "Economy",
+        "input": {
+          "black": "1"
+        },
+        "output": {
+          "brown": "1",
+          "white": "1"
+        }
+      }
+    ],
+    "backConverters": [
+      {
+        "phase": "Economy",
+        "input": {
+          "black": "1"
+        },
+        "output": {
+          "blue": "1",
+          "brown": "1",
+          "white": "1"
+        }
+      }
+    ],
+    "era": 1,
+    "starting": true,
+    "race": "Caylion"
   }
 ]

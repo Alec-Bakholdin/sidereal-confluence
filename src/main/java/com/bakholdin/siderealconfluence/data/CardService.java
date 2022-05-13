@@ -1,5 +1,6 @@
 package com.bakholdin.siderealconfluence.data;
 
+import com.bakholdin.siderealconfluence.model.RaceName;
 import com.bakholdin.siderealconfluence.model.cards.Card;
 import com.bakholdin.siderealconfluence.model.cards.Colony;
 import com.bakholdin.siderealconfluence.model.cards.ConverterCard;
@@ -14,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -30,25 +30,68 @@ public class CardService {
     @Value(value = "classpath:game_data/cards/colonies.json")
     private Resource coloniesResource;
 
-    private Map<String, Card> allCards = new HashMap<>();
-    private List<Colony> availableColonies = new LinkedList<>();
-    private List<ResearchTeam> availableResearchTeams = new LinkedList<>();
+    private Map<String, Card> gameCards = new HashMap<>();
+    private List<Colony> availableColonies = new ArrayList<>();
+    private List<ResearchTeam> availableResearchTeams = new ArrayList<>();
+    private Map<RaceName, Integer> numberOfRaceInstancesInGame = new HashMap<>();
 
+    public static List<String> startingCards(List<ConverterCard> converterCards) {
+        return converterCards.stream()
+                .filter(ConverterCard::isStarting)
+                .map(Card::getId)
+                .collect(Collectors.toList());
+    }
+
+    public static List<String> nonStartingCards(List<ConverterCard> converterCards) {
+        return converterCards.stream()
+                .filter(converterCard -> !converterCard.isStarting())
+                .map(Card::getId)
+                .collect(Collectors.toList());
+    }
 
     public Map<String, Card> resetCards() {
-        allCards = new HashMap<>();
-        loadConverterCards();
+        gameCards = new HashMap<>();
+        numberOfRaceInstancesInGame = new HashMap<>();
         loadResearchTeams();
         loadColonies();
 
-        return allCards;
+        return gameCards;
     }
 
     public Map<String, Card> getCurrentGameCards() {
-        if (allCards == null) {
+        if (gameCards == null) {
             return resetCards();
         }
-        return allCards;
+        return gameCards;
+    }
+
+    public List<ConverterCard> fetchAndAddRaceConverterCardsToGame(RaceName race) {
+        List<ConverterCard> raceConverters = loadConverterCardsForRace(race);
+
+        // basically, when adding duplicate races, we need to add a suffix _1, _2, etc. to the end of the ids
+        // so that if update/upgrades are made to one card, it only affects that individual card and
+        // not all instances of the race
+        int raceOccurrenceInGame = getNumberOfTimesRaceHasBeenAddedToGame(race);
+        String occurrenceSuffix = raceOccurrenceInGame == 0 ? "" : String.format("_%s", raceOccurrenceInGame);
+        raceConverters.forEach(card -> card.setId(card.getId() + occurrenceSuffix));
+
+        addRaceConverterListToGame(raceConverters, raceOccurrenceInGame);
+        return raceConverters;
+    }
+
+    private int getNumberOfTimesRaceHasBeenAddedToGame(RaceName race) {
+        if (!numberOfRaceInstancesInGame.containsKey(race)) {
+            numberOfRaceInstancesInGame.put(race, 0);
+        }
+        int raceOccurrenceInGame = numberOfRaceInstancesInGame.get(race);
+        numberOfRaceInstancesInGame.replace(race, raceOccurrenceInGame + 1);
+        return raceOccurrenceInGame;
+    }
+
+    private void addRaceConverterListToGame(List<ConverterCard> raceConverters, int raceOccurrenceInGame) {
+        Map<String, Card> raceConverterMap = raceConverters.stream()
+                .collect(Collectors.toMap(Card::getId, card -> card));
+        gameCards.putAll(raceConverterMap);
     }
 
     public Card get(String id) {
@@ -85,21 +128,20 @@ public class CardService {
         return result;
     }
 
-
     private void loadColonies() {
-        availableColonies = ResourceUtils.loadListFromResource(coloniesResource, new TypeReference<>() {
+        availableColonies = DataUtils.loadListFromResource(coloniesResource, new TypeReference<>() {
         });
         Map<String, Colony> colonyMap = availableColonies.stream().collect(Collectors.toMap(Card::getId, card -> card));
-        allCards.putAll(colonyMap);
+        gameCards.putAll(colonyMap);
         Collections.shuffle(availableColonies);
         log.info("Loaded {} colonies", availableColonies.size());
     }
 
     private void loadResearchTeams() {
-        availableResearchTeams = ResourceUtils.loadListFromResource(researchTeamsResource, new TypeReference<>() {
+        availableResearchTeams = DataUtils.loadListFromResource(researchTeamsResource, new TypeReference<>() {
         });
         Map<String, ResearchTeam> researchTeamMap = availableResearchTeams.stream().collect(Collectors.toMap(Card::getId, card -> card));
-        allCards.putAll(researchTeamMap);
+        gameCards.putAll(researchTeamMap);
 
         // order randomly within each era
         Collections.shuffle(availableResearchTeams);
@@ -107,12 +149,12 @@ public class CardService {
         log.info("Loaded {} research teams", availableResearchTeams.size());
     }
 
-    private void loadConverterCards() {
-        List<ConverterCard> converterCardList = ResourceUtils.loadListFromResource(converterCardsResource, new TypeReference<>() {
+    private List<ConverterCard> loadConverterCardsForRace(RaceName race) {
+        List<ConverterCard> converterCardList = DataUtils.loadListFromResource(converterCardsResource, new TypeReference<>() {
         });
-        Map<String, ConverterCard> converterCardMap = converterCardList.stream().collect(Collectors.toMap(Card::getId, card -> card));
-        allCards.putAll(converterCardMap);
-        log.info("Loaded {} converter cards", converterCardList.size());
+        List<ConverterCard> converterCardWithRace = converterCardList.stream().filter(card -> card.getRace().equals(race)).collect(Collectors.toList());
+        log.info("Loaded {} converter cards for {}", converterCardWithRace.size(), race);
+        return converterCardWithRace;
     }
 
 

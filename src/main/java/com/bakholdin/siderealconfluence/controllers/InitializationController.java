@@ -3,7 +3,6 @@ package com.bakholdin.siderealconfluence.controllers;
 import com.bakholdin.siderealconfluence.controllers.model.JoinGamePayload;
 import com.bakholdin.siderealconfluence.controllers.model.JoinGameResponse;
 import com.bakholdin.siderealconfluence.controllers.model.RejoinGamePayload;
-import com.bakholdin.siderealconfluence.controllers.model.SocketTopics;
 import com.bakholdin.siderealconfluence.data.CardService;
 import com.bakholdin.siderealconfluence.data.GameStateService;
 import com.bakholdin.siderealconfluence.data.PlayerService;
@@ -12,6 +11,7 @@ import com.bakholdin.siderealconfluence.model.GameState;
 import com.bakholdin.siderealconfluence.model.Player;
 import com.bakholdin.siderealconfluence.model.RaceName;
 import com.bakholdin.siderealconfluence.model.cards.Card;
+import com.bakholdin.siderealconfluence.service.model.OutgoingSocketTopics;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
@@ -59,7 +59,7 @@ public class InitializationController {
             throw new RuntimeException("Game is already in session");
         }
         Player player = gameStateService.addNewPlayerToGame(payload.getPlayerName(), RaceName.Caylion);
-        simpMessagingTemplate.convertAndSend(SocketTopics.TOPIC_PLAYER_JOINED_GAME, player);
+        simpMessagingTemplate.convertAndSend(OutgoingSocketTopics.TOPIC_PLAYER_JOINED_GAME, player);
         return JoinGameResponse.builder()
                 .gameState(gameStateService.getGameState())
                 .playerName(player.getName())
@@ -74,7 +74,7 @@ public class InitializationController {
         if (player == null) {
             player = gameStateService.addNewPlayerToGame(payload.getPlayerName(), RaceName.Caylion);
         }
-        simpMessagingTemplate.convertAndSend(SocketTopics.TOPIC_PLAYER_JOINED_GAME, player);
+        simpMessagingTemplate.convertAndSend(OutgoingSocketTopics.TOPIC_PLAYER_JOINED_GAME, player);
         return JoinGameResponse.builder()
                 .playerId(player.getId())
                 .playerName(player.getName())

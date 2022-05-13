@@ -25,9 +25,9 @@ public class ConfluenceService {
 
     @PostConstruct
     private void init() {
-        confluenceCards = ResourceUtils.loadListFromResource(confluenceCardResource, new TypeReference<>() {
+        confluenceCards = DataUtils.loadListFromResource(confluenceCardResource, new TypeReference<>() {
         });
-        confluenceBidTracks = ResourceUtils.loadListFromResource(confluenceBidTrackResource, new TypeReference<>() {
+        confluenceBidTracks = DataUtils.loadListFromResource(confluenceBidTrackResource, new TypeReference<>() {
         });
     }
 

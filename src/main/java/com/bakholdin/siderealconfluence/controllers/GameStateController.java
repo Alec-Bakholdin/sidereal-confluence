@@ -1,9 +1,10 @@
 package com.bakholdin.siderealconfluence.controllers;
 
-import com.bakholdin.siderealconfluence.controllers.model.SocketTopics;
+import com.bakholdin.siderealconfluence.controllers.model.IncomingSocketTopics;
 import com.bakholdin.siderealconfluence.controllers.model.UpdateGameStateServerMessage;
 import com.bakholdin.siderealconfluence.data.GameStateService;
 import com.bakholdin.siderealconfluence.model.GameState;
+import com.bakholdin.siderealconfluence.service.model.OutgoingSocketTopics;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -15,8 +16,8 @@ public class GameStateController {
 
     private final GameStateService gameStateService;
 
-    @MessageMapping(SocketTopics.APP_START_GAME)
-    @SendTo(SocketTopics.TOPIC_UPDATE_GAME_STATE)
+    @MessageMapping(IncomingSocketTopics.APP_START_GAME)
+    @SendTo(OutgoingSocketTopics.TOPIC_UPDATE_GAME_STATE)
     public UpdateGameStateServerMessage startGame() {
         GameState gameState = gameStateService.startGame();
         return UpdateGameStateServerMessage.builder()
@@ -32,8 +33,8 @@ public class GameStateController {
                 .build();
     }
 
-    @MessageMapping(SocketTopics.APP_NEXT_PHASE)
-    @SendTo(SocketTopics.TOPIC_UPDATE_GAME_STATE)
+    @MessageMapping(IncomingSocketTopics.APP_NEXT_PHASE)
+    @SendTo(OutgoingSocketTopics.TOPIC_UPDATE_GAME_STATE)
     public UpdateGameStateServerMessage nextPhase() {
         if (gameStateService.getGameState().isGameOver()) {
             throw new UnsupportedOperationException("Game is over");

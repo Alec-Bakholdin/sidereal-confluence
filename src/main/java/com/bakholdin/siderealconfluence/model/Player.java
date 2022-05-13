@@ -15,4 +15,5 @@ public class Player {
     private Race race;
     private boolean isReady;
     private List<String> cards;
+    private List<String> availableCards;
 }

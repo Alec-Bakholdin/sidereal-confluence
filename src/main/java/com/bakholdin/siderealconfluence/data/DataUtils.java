@@ -9,12 +9,22 @@ import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.util.List;
 
-public class ResourceUtils {
+public class DataUtils {
 
     public static <T> List<T> loadListFromResource(Resource resource, TypeReference<List<T>> typeReference) {
         ObjectMapper objectMapper = configureObjectMapper();
         try {
             return objectMapper.readValue(resource.getFile(), typeReference);
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
+    }
+
+    public static <T> T deepCopy(T obj) {
+        ObjectMapper objectMapper = configureObjectMapper();
+        try {
+            return objectMapper.readValue(objectMapper.writeValueAsString(obj), new TypeReference<>() {
+            });
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }

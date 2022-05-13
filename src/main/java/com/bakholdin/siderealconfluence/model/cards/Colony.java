@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import java.util.List;
+
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
@@ -22,5 +24,13 @@ public class Colony extends Card {
     @Override
     public void flip() {
         isUpgraded = true;
+    }
+
+    @Override
+    public List<Converter> activeConverters() {
+        if (isUpgraded) {
+            return List.of(upgradeConverter);
+        }
+        return List.of(frontConverter);
     }
 }
