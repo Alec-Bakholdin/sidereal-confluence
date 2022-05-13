@@ -1,4 +1,4 @@
-package com.bakholdin.siderealconfluence.controllers.model;
+package com.bakholdin.siderealconfluence.service.model;
 
 import lombok.Builder;
 import lombok.Data;

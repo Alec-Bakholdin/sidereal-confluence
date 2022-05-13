@@ -2,18 +2,15 @@ package com.bakholdin.siderealconfluence.controllers;
 
 import com.bakholdin.siderealconfluence.controllers.model.IncomingSocketTopics;
 import com.bakholdin.siderealconfluence.controllers.model.TransferCardClientMessage;
-import com.bakholdin.siderealconfluence.controllers.model.TransferCardServerMessage;
 import com.bakholdin.siderealconfluence.controllers.model.UpdateEconomyActionsClientMessage;
 import com.bakholdin.siderealconfluence.controllers.model.UpdatePlayerResourcesClientMessage;
 import com.bakholdin.siderealconfluence.data.EconomyService;
 import com.bakholdin.siderealconfluence.data.PlayerService;
 import com.bakholdin.siderealconfluence.model.Player;
 import com.bakholdin.siderealconfluence.service.PlayerSocketService;
-import com.bakholdin.siderealconfluence.service.model.OutgoingSocketTopics;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 
 import java.util.UUID;
@@ -33,7 +30,7 @@ public class PlayerController {
             throw new IllegalArgumentException("Player not found");
         }
         player.setResources(payload.getResources());
-        playerSocketService.sendUpdatePlayerResourcesToClient(player);
+        playerSocketService.notifyClientOfUpdatedResources(player);
     }
 
     @MessageMapping(IncomingSocketTopics.APP_UPDATE_ECONOMY_ACTIONS)
@@ -47,10 +44,9 @@ public class PlayerController {
     }
 
     @MessageMapping(IncomingSocketTopics.APP_TRANSFER_CARD)
-    @SendTo(OutgoingSocketTopics.TOPIC_TRANSFER_CARD)
-    public TransferCardServerMessage transferCard(TransferCardClientMessage payload) {
-        Player currentOwner = playerService.get(UUID.fromString(payload.getCurrentOwnerPlayerId()));
-        Player newOwner = playerService.get(UUID.fromString(payload.getNewOwnerPlayerId()));
+    public void transferCard(TransferCardClientMessage payload) {
+        Player currentOwner = playerService.get(payload.getCurrentOwnerPlayerId());
+        Player newOwner = playerService.get(payload.getNewOwnerPlayerId());
         if (currentOwner == null || newOwner == null) {
             throw new IllegalArgumentException("Player not found");
         }
@@ -59,11 +55,7 @@ public class PlayerController {
         }
         currentOwner.getCards().remove(payload.getCardId());
         newOwner.getCards().add(payload.getCardId());
-        return TransferCardServerMessage.builder()
-                .currentOwnerPlayerId(payload.getCurrentOwnerPlayerId())
-                .newOwnerPlayerId(payload.getNewOwnerPlayerId())
-                .cardId(payload.getCardId())
-                .build();
+        playerSocketService.notifyClientOfCardTransfer(currentOwner, newOwner, payload.getCardId());
     }
 
 }

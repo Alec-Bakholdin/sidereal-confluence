@@ -1,10 +1,10 @@
 package com.bakholdin.siderealconfluence.controllers;
 
 import com.bakholdin.siderealconfluence.controllers.model.IncomingSocketTopics;
-import com.bakholdin.siderealconfluence.controllers.model.UpdateGameStateServerMessage;
 import com.bakholdin.siderealconfluence.data.GameStateService;
 import com.bakholdin.siderealconfluence.model.GameState;
 import com.bakholdin.siderealconfluence.service.model.OutgoingSocketTopics;
+import com.bakholdin.siderealconfluence.service.model.UpdateGameStateServerMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;

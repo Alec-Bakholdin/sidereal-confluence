@@ -1,4 +1,4 @@
-package com.bakholdin.siderealconfluence.controllers.model;
+package com.bakholdin.siderealconfluence.service.model;
 
 import com.bakholdin.siderealconfluence.model.Confluence;
 import com.bakholdin.siderealconfluence.model.Phase;

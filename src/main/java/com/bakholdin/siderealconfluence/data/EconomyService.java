@@ -56,7 +56,7 @@ public class EconomyService {
             if (econInput.resourceTotal() > 0 || econOutput.resourceTotal() > 0) {
                 player.getResources().subtract(econInput);
                 player.getResources().add(econOutput);
-                playerSocketService.sendUpdatePlayerResourcesToClient(player);
+                playerSocketService.notifyClientOfUpdatedResources(player);
                 log.info("Economy step: {} pays {} resources and receives {}", player.getName(), econInput.resourceTotal(), econOutput.resourceTotal());
             }
         });
