@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @ControllerAdvice
 @RestController
-public class ExceptionController {
+public class RestExceptionController {
     @ExceptionHandler(RuntimeException.class)
     public final ResponseEntity<ExceptionPayload> handleIOException(RuntimeException ex) {
         ExceptionPayload payload = ExceptionPayload.builder()

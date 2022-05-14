@@ -165,5 +165,69 @@
       5,
       6
     ]
+  },
+  {
+    "type": "ResearchTeam",
+    "order": 2,
+    "shipMinima": [
+      2,
+      2,
+      3,
+      4
+    ],
+    "playerCounts": [
+      7,
+      8
+    ]
+  },
+  {
+    "type": "ResearchTeam",
+    "order": 2,
+    "shipMinima": [
+      1,
+      2,
+      2,
+      3
+    ],
+    "playerCounts": [
+      9
+    ]
+  },
+  {
+    "type": "Colony",
+    "order": 2,
+    "shipMinima": [
+      2,
+      2,
+      3,
+      4
+    ],
+    "playerCounts": [
+      7,
+      8
+    ]
+  },
+  {
+    "type": "ResearchTeam",
+    "order": 3,
+    "shipMinima": [
+      4,
+      4
+    ],
+    "playerCounts": [
+      9
+    ]
+  },
+  {
+    "type": "Colony",
+    "order": 3,
+    "shipMinima": [
+      4,
+      4
+    ],
+    "playerCounts": [
+      9,
+      10
+    ]
   }
 ]

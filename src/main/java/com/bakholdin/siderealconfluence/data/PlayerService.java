@@ -57,7 +57,7 @@ public class PlayerService {
     }
 
     public Player get(String id) {
-        return get(UUID.fromString(id));
+        return id == null ? null : get(UUID.fromString(id));
     }
 
     public boolean contains(UUID id) {
@@ -65,7 +65,7 @@ public class PlayerService {
     }
 
     public boolean contains(String id) {
-        return contains(UUID.fromString(id));
+        return id != null && contains(UUID.fromString(id));
     }
 
 }

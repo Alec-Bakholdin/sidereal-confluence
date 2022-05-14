@@ -29,10 +29,6 @@ public class EconomyService {
         economyActionMap.merge(playerId, economyActions, (oldValue, newValue) -> newValue);
     }
 
-    public void resetEconomyActions() {
-        economyActionMap.clear();
-    }
-
     public void resolveEconomyStep() {
         log.info("Resolving economy step");
         economyActionMap.forEach((playerId, economyActions) -> {
@@ -41,7 +37,7 @@ public class EconomyService {
             Resources econOutput = new Resources();
 
             economyActions.forEach(economyAction -> {
-                if (!player.getCards().contains(economyAction.getCardId())) {
+                if (player == null || !player.getCards().contains(economyAction.getCardId())) {
                     return;
                 }
                 Card card = cardService.get(economyAction.getCardId());
@@ -60,6 +56,5 @@ public class EconomyService {
                 log.info("Economy step: {} pays {} resources and receives {}", player.getName(), econInput.resourceTotal(), econOutput.resourceTotal());
             }
         });
-        economyActionMap.clear();
     }
 }

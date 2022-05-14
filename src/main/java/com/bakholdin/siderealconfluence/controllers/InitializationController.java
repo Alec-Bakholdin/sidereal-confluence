@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.UUID;
 
 @Log4j2
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000", "http://71.187.248.226:3000"})
 @RestController()
 @RequiredArgsConstructor
 public class InitializationController {
@@ -57,6 +57,9 @@ public class InitializationController {
         }
         if (gameStateService.gameIsInSession()) {
             throw new RuntimeException("Game is already in session");
+        }
+        if (gameStateService.getGameState().getPlayers().size() >= 9) {
+            throw new RuntimeException("Game is full");
         }
         Player player = gameStateService.addNewPlayerToGame(payload.getPlayerName(), RaceName.Caylion);
         simpMessagingTemplate.convertAndSend(OutgoingSocketTopics.TOPIC_PLAYER_JOINED_GAME, player);
