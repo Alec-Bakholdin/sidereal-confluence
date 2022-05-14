@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 @Log4j2
 @Service
-public class ColonyService {
+public class ColonyCardService {
     @Value(value = "classpath:game_data/cards/colonies.json")
     private Resource coloniesResource;
     private List<Colony> availableColonies = new ArrayList<>();
@@ -32,14 +32,14 @@ public class ColonyService {
     }
 
 
-    public String draw() {
+    protected String draw() {
         if (availableColonies.isEmpty()) {
             throw new RuntimeException("No more colonies available");
         }
         return availableColonies.remove(0).getId();
     }
 
-    public List<String> draw(int n) {
+    protected List<String> draw(int n) {
         List<String> result = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             result.add(draw());

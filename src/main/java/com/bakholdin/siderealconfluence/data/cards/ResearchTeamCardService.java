@@ -18,11 +18,11 @@ import java.util.stream.Collectors;
 
 @Log4j2
 @Service
-public class ResearchTeamService {
-
-    private List<ResearchTeam> availableResearchTeams = new ArrayList<>();
+public class ResearchTeamCardService {
     @Value(value = "classpath:game_data/cards/researchTeams.json")
     private Resource researchTeamsResource;
+
+    private List<ResearchTeam> availableResearchTeams = new ArrayList<>();
 
     protected String draw() {
         if (availableResearchTeams.isEmpty()) {
@@ -38,6 +38,7 @@ public class ResearchTeamService {
         }
         return result;
     }
+
 
     protected Map<String, ResearchTeam> reset() {
         availableResearchTeams = DataUtils.loadListFromResource(researchTeamsResource, new TypeReference<>() {

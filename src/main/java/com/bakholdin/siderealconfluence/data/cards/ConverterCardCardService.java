@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 @Log4j2
 @Service
-public class ConverterCardService {
+public class ConverterCardCardService {
     private final Map<RaceName, Integer> numberOfRaceInstancesInGame = new HashMap<>();
 
     @Value(value = "classpath:game_data/cards/converterCards.json")
