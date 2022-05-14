@@ -21,6 +21,8 @@ public class Resources implements Serializable {
     private int points;
 
     public void add(Resources resources) {
+        if (resources == null) return;
+
         this.green += resources.getGreen();
         this.white += resources.getWhite();
         this.brown += resources.getBrown();
@@ -35,6 +37,8 @@ public class Resources implements Serializable {
     }
 
     public void subtract(Resources resources) {
+        if (resources == null) return;
+
         this.green -= resources.getGreen();
         this.white -= resources.getWhite();
         this.brown -= resources.getBrown();
@@ -49,6 +53,8 @@ public class Resources implements Serializable {
     }
 
     public boolean canPayFor(Resources cost) {
+        if (cost == null) return true;
+
         return this.green >= cost.getGreen() &&
                 this.white >= cost.getWhite() &&
                 this.brown >= cost.getBrown() &&

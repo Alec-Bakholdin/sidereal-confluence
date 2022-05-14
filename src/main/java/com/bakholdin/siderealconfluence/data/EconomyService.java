@@ -7,7 +7,6 @@ import com.bakholdin.siderealconfluence.model.Phase;
 import com.bakholdin.siderealconfluence.model.Player;
 import com.bakholdin.siderealconfluence.model.Resources;
 import com.bakholdin.siderealconfluence.model.cards.Card;
-import com.bakholdin.siderealconfluence.service.PlayerSocketService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -22,7 +21,6 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class EconomyService {
     private final PlayerService playerService;
-    private final PlayerSocketService playerSocketService;
     private final CardService cardService;
     private final Map<UUID, List<EconomyAction>> economyActionMap = new HashMap<>();
 
@@ -33,29 +31,33 @@ public class EconomyService {
     public void resolveEconomyStep() {
         log.info("Resolving economy step");
         economyActionMap.forEach((playerId, economyActions) -> {
+            if (!playerService.contains(playerId)) {
+                return;
+            }
             Player player = playerService.get(playerId);
             Resources econInput = new Resources();
             Resources econOutput = new Resources();
 
-            economyActions.forEach(economyAction -> {
-                if (player == null || !player.getCards().contains(economyAction.getCardId())) {
-                    return;
-                }
-                Card card = cardService.get(economyAction.getCardId());
-                Converter converter = card.activeConverters().get(economyAction.getConverterIndex());
-                if (converter.getPhase() == Phase.Economy) {
-                    econInput.add(converter.getInput());
-                    econOutput.add(converter.getOutput());
-                }
-            });
-
+            for (EconomyAction economyAction : economyActions) {
+                addEconActionToTotal(playerId, econInput, econOutput, economyAction);
+            }
 
             if (econInput.resourceTotal() > 0 || econOutput.resourceTotal() > 0) {
-                player.getResources().subtract(econInput);
-                player.getResources().add(econOutput);
-                playerSocketService.notifyClientOfUpdatedResources(player);
+                playerService.updatePlayerResources(playerId, econInput, econOutput);
                 log.info("Economy step: {} pays {} resources and receives {}", player.getName(), econInput.resourceTotal(), econOutput.resourceTotal());
             }
         });
+    }
+
+    private void addEconActionToTotal(UUID playerId, Resources econInput, Resources econOutput, EconomyAction economyAction) {
+        if (!playerService.ownsCard(playerId, economyAction.getCardId())) {
+            return;
+        }
+        Card card = cardService.get(economyAction.getCardId());
+        Converter converter = card.activeConverters().get(economyAction.getConverterIndex());
+        if (converter.getPhase() == Phase.Economy) {
+            econInput.add(converter.getInput());
+            econOutput.add(converter.getOutput());
+        }
     }
 }
