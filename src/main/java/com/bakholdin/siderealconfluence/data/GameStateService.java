@@ -2,11 +2,14 @@ package com.bakholdin.siderealconfluence.data;
 
 import com.bakholdin.siderealconfluence.data.cards.CardService;
 import com.bakholdin.siderealconfluence.model.BidTrackType;
+import com.bakholdin.siderealconfluence.model.Confluence;
 import com.bakholdin.siderealconfluence.model.GameState;
 import com.bakholdin.siderealconfluence.model.Phase;
 import com.bakholdin.siderealconfluence.model.Player;
 import com.bakholdin.siderealconfluence.model.RaceName;
 import com.bakholdin.siderealconfluence.model.cards.CardType;
+import com.bakholdin.siderealconfluence.service.GameStateSocketService;
+import com.bakholdin.siderealconfluence.service.model.UpdateGameStateServerMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +20,8 @@ public class GameStateService {
     private final PlayerService playerService;
     private final ConfluenceService confluenceService;
     private final EconomyService economyService;
+    private final GameStateSocketService gameStateSocketService;
+
     private GameState gameState = null;
 
     public GameState getGameState() {
@@ -46,8 +51,18 @@ public class GameStateService {
         return player;
     }
 
+    public Confluence getCurrentConfluence() {
+        GameState gameState = getGameState();
+        int index = Math.max(0, gameState.getTurn() - 1);
+        return gameState.getConfluenceList().get(index);
+    }
+
     public void addResearchedTechnology(String technologyName) {
-        getGameState().getPendingResearches().add(technologyName);
+        GameState gameState = getGameState();
+        gameState.getPendingResearches().add(technologyName);
+        gameStateSocketService.updateGameState(UpdateGameStateServerMessage.builder()
+                .pendingResearches(gameState.getPendingResearches())
+                .build());
     }
 
     public boolean gameIsInSession() {
