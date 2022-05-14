@@ -9,6 +9,7 @@ import com.bakholdin.siderealconfluence.model.Resources;
 import com.bakholdin.siderealconfluence.model.cards.Card;
 import com.bakholdin.siderealconfluence.model.cards.CardType;
 import com.bakholdin.siderealconfluence.model.cards.ResearchTeam;
+import com.bakholdin.siderealconfluence.service.CardSocketService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,7 @@ public class CardActionService {
     private final CardService cardService;
     private final GameStateService gameStateService;
     private final PlayerService playerService;
+    private final CardSocketService cardSocketService;
 
     public void upgradeResearchTeam(String playerId, String cardId, Resources cost) {
         if (!gameStateService.gameIsInSession() || gameStateService.getGameState().getPhase() != Phase.Trade) {
@@ -41,6 +43,7 @@ public class CardActionService {
         }
         Player player = playerService.get(playerId);
         researchTeam.setResearched(true);
+        cardSocketService.notifyClientOfUpdatedCard(researchTeam);
         Card newConverterCard = player.getInactiveCards().stream()
                 .filter(c -> c.getType() == CardType.ConverterCard && researchTeam.getResultingTechnology().equals(c.getName()))
                 .findFirst()
