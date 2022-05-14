@@ -1,5 +1,6 @@
 package com.bakholdin.siderealconfluence.data;
 
+import com.bakholdin.siderealconfluence.data.cards.CardService;
 import com.bakholdin.siderealconfluence.model.Race;
 import com.bakholdin.siderealconfluence.model.RaceName;
 import com.fasterxml.jackson.core.type.TypeReference;
