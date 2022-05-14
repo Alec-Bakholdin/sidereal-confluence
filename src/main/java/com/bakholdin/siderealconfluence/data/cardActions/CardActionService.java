@@ -3,6 +3,7 @@ package com.bakholdin.siderealconfluence.data.cardActions;
 import com.bakholdin.siderealconfluence.data.GameStateService;
 import com.bakholdin.siderealconfluence.data.PlayerService;
 import com.bakholdin.siderealconfluence.data.cards.CardService;
+import com.bakholdin.siderealconfluence.model.Phase;
 import com.bakholdin.siderealconfluence.model.Player;
 import com.bakholdin.siderealconfluence.model.Resources;
 import com.bakholdin.siderealconfluence.model.cards.Card;
@@ -21,6 +22,9 @@ public class CardActionService {
     private final PlayerService playerService;
 
     public void upgradeResearchTeam(String playerId, String cardId, Resources cost) {
+        if (!gameStateService.gameIsInSession() || gameStateService.getGameState().getPhase() != Phase.Trade) {
+            throw new UnsupportedOperationException("Cannot upgrade research team unless in trade phase");
+        }
         if (!cardService.contains(cardId)) {
             throw new IllegalArgumentException("Card with id " + cardId + " does not exist");
         }

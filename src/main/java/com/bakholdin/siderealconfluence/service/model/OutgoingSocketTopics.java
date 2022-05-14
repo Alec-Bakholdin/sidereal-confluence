@@ -8,4 +8,5 @@ public class OutgoingSocketTopics {
     public static final String TOPIC_TRANSFER_CARD = "/topic/transferCard";
     public static final String TOPIC_ACQUIRED_CARD = "/topic/acquireCard";
     public static final String TOPIC_REMOVED_ACTIVE_CARD = "/topic/removeActiveCard";
+    public static final String TOPIC_ERROR = "/topic/error";
 }
