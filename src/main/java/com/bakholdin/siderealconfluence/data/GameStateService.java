@@ -6,6 +6,7 @@ import com.bakholdin.siderealconfluence.model.GameState;
 import com.bakholdin.siderealconfluence.model.Phase;
 import com.bakholdin.siderealconfluence.model.Player;
 import com.bakholdin.siderealconfluence.model.RaceName;
+import com.bakholdin.siderealconfluence.model.cards.CardType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -46,7 +47,7 @@ public class GameStateService {
     }
 
     public boolean gameIsInSession() {
-        return gameState.isGameStarted() && !gameState.isGameOver();
+        return getGameState().isGameStarted() && !gameState.isGameOver();
     }
 
     public GameState startGame() {
@@ -61,10 +62,10 @@ public class GameStateService {
         gameState.setConfluenceList(confluenceService.getConfluenceCards(numPlayers));
 
         gameState.setColonyBidTrack(confluenceService.getBidTrack(numPlayers, BidTrackType.Colony));
-        gameState.setAvailableColonies(cardService.drawColonies(numPlayers));
+        gameState.setAvailableColonies(cardService.drawIds(numPlayers, CardType.Colony));
 
         gameState.setResearchTeamBidTrack(confluenceService.getBidTrack(numPlayers, BidTrackType.ResearchTeam));
-        gameState.setAvailableResearchTeams(cardService.drawResearchTeams(numPlayers));
+        gameState.setAvailableResearchTeams(cardService.drawIds(numPlayers, CardType.ResearchTeam));
 
         return gameState;
     }

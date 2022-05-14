@@ -24,15 +24,15 @@ public class ResearchTeamCardService {
 
     private List<ResearchTeam> availableResearchTeams = new ArrayList<>();
 
-    protected String draw() {
+    protected ResearchTeam draw() {
         if (availableResearchTeams.isEmpty()) {
             throw new RuntimeException("No more research teams available");
         }
-        return availableResearchTeams.remove(0).getId();
+        return availableResearchTeams.remove(0);
     }
 
-    protected List<String> draw(int n) {
-        List<String> result = new ArrayList<>();
+    protected List<ResearchTeam> draw(int n) {
+        List<ResearchTeam> result = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             result.add(draw());
         }

@@ -32,15 +32,15 @@ public class ColonyCardService {
     }
 
 
-    protected String draw() {
+    protected Colony draw() {
         if (availableColonies.isEmpty()) {
             throw new RuntimeException("No more colonies available");
         }
-        return availableColonies.remove(0).getId();
+        return availableColonies.remove(0);
     }
 
-    protected List<String> draw(int n) {
-        List<String> result = new ArrayList<>();
+    protected List<Colony> draw(int n) {
+        List<Colony> result = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             result.add(draw());
         }

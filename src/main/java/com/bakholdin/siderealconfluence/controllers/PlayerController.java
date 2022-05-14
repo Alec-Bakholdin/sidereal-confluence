@@ -45,17 +45,10 @@ public class PlayerController {
 
     @MessageMapping(IncomingSocketTopics.APP_TRANSFER_CARD)
     public void transferCard(TransferCardClientMessage payload) {
-        Player currentOwner = playerService.get(payload.getCurrentOwnerPlayerId());
-        Player newOwner = playerService.get(payload.getNewOwnerPlayerId());
-        if (currentOwner == null || newOwner == null) {
-            throw new IllegalArgumentException("Player not found");
-        }
-        if (!currentOwner.getCards().contains(payload.getCardId())) {
-            throw new IllegalArgumentException("Card not found in owner's possession");
-        }
-        currentOwner.getCards().remove(payload.getCardId());
-        newOwner.getCards().add(payload.getCardId());
-        playerSocketService.notifyClientOfCardTransfer(currentOwner, newOwner, payload.getCardId());
+        String currentOwner = payload.getCurrentOwnerPlayerId();
+        String newOwner = payload.getNewOwnerPlayerId();
+        String cardId = payload.getCardId();
+        playerService.transferCard(currentOwner, newOwner, cardId);
     }
 
 }
