@@ -40,7 +40,44 @@ public class PlayerService {
         return newPlayer;
     }
 
-    //public void addResearchTechFromAvailableCards
+    public void acquireCard(UUID playerId, String cardId) {
+        if (!ownsCard(playerId, cardId)) {
+            throw new IllegalArgumentException("Player does not own card");
+        }
+        if (hasCardActive(playerId, cardId)) {
+            log.warn("Player {} already has active card {}", playerId, cardId);
+            return;
+        }
+        Player player = get(playerId);
+        Card card = cardService.get(cardId);
+        player.getInactiveCards().remove(card);
+        player.getCards().add(card);
+        playerSocketService.notifyClientOfAcquiredCard(player, card);
+    }
+
+    public void acquireCard(String playerId, String cardId) {
+        if (playerId == null) {
+            throw new IllegalArgumentException("Player id cannot be null");
+        }
+        acquireCard(UUID.fromString(playerId), cardId);
+    }
+
+    public void removeCardFromActive(UUID playerId, String cardId) {
+        if (!ownsCard(playerId, cardId)) {
+            throw new IllegalArgumentException("Player does not own card");
+        }
+        Player player = get(playerId);
+        Card card = cardService.get(cardId);
+        player.getCards().remove(card);
+        playerSocketService.notifyClientOfRemovedActiveCard(player, card);
+    }
+
+    public void removeCardFromActive(String playerId, String cardId) {
+        if (playerId == null) {
+            throw new IllegalArgumentException("Player id cannot be null");
+        }
+        removeCardFromActive(UUID.fromString(playerId), cardId);
+    }
 
     public void updatePlayerResources(UUID playerId, Resources cost, Resources output) {
         if (!contains(playerId)) {
@@ -66,8 +103,8 @@ public class PlayerService {
         if (!contains(currentOwnerPlayerId) || !contains(newOwnerPlayerId)) {
             throw new IllegalArgumentException("PlayerId does not exist");
         }
-        if (!cardService.contains(cardId)) {
-            throw new IllegalArgumentException("CardId does not exist");
+        if (!hasCardActive(currentOwnerPlayerId, cardId)) {
+            throw new IllegalArgumentException("Current owner does not own card with id " + cardId);
         }
         Player currentOwner = get(currentOwnerPlayerId);
         Player newOwner = get(newOwnerPlayerId);
@@ -81,11 +118,27 @@ public class PlayerService {
     }
 
     public boolean ownsCard(UUID playerId, String cardId) {
-        return contains(playerId) && get(playerId).cardIds().contains(cardId);
+        return hasCardActive(playerId, cardId) || hasCardInactive(playerId, cardId);
     }
 
     public boolean ownsCard(String playerId, String cardId) {
         return playerId != null && ownsCard(UUID.fromString(playerId), cardId);
+    }
+
+    public boolean hasCardInactive(UUID playerId, String cardId) {
+        return contains(playerId) && cardService.contains(cardId) && get(playerId).getInactiveCards().contains(cardService.get(cardId));
+    }
+
+    public boolean hasCardInactive(String playerId, String cardId) {
+        return playerId != null && hasCardInactive(UUID.fromString(playerId), cardId);
+    }
+
+    public boolean hasCardActive(UUID playerId, String cardId) {
+        return contains(playerId) && cardService.contains(cardId) && get(playerId).cardIds().contains(cardId);
+    }
+
+    public boolean hasCardActive(String playerId, String cardId) {
+        return playerId != null && hasCardActive(UUID.fromString(playerId), cardId);
     }
 
     public void resetPlayers() {

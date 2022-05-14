@@ -50,7 +50,7 @@ public class EconomyService {
     }
 
     private void addEconActionToTotal(UUID playerId, Resources econInput, Resources econOutput, EconomyAction economyAction) {
-        if (!playerService.ownsCard(playerId, economyAction.getCardId())) {
+        if (!playerService.hasCardActive(playerId, economyAction.getCardId())) {
             return;
         }
         Card card = cardService.get(economyAction.getCardId());

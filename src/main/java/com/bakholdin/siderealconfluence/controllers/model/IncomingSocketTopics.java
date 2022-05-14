@@ -7,4 +7,5 @@ public class IncomingSocketTopics {
     public static final String APP_UPDATE_PLAYER_READY_STATUS = "/updatePlayerReadyStatus";
     public static final String APP_TRANSFER_CARD = "/transferCard";
     public static final String APP_UPDATE_ECONOMY_ACTIONS = "/updateEconomyActions";
+    public static final String APP_FLIP_RESEARCH_TEAM = "/flipResearchTeam";
 }

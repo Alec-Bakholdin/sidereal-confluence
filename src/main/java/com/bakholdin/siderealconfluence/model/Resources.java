@@ -68,6 +68,28 @@ public class Resources implements Serializable {
                 this.points >= cost.getPoints();
     }
 
+
+    /**
+     * @param parent resources containing this set
+     * @return true if this is a combination of the parent's resources, false otherwise
+     * For example, {1 green} is an option of {1 green, 1 white} but not {1 black, 1 octagon}
+     */
+    public boolean isAnOptionOf(Resources parent) {
+        if (parent == null) return false;
+
+        return this.green == parent.getGreen() ||
+                this.white == parent.getWhite() ||
+                this.brown == parent.getBrown() ||
+
+                this.black == parent.getBlack() ||
+                this.yellow == parent.getYellow() ||
+                this.blue == parent.getBlue() ||
+
+                this.octagon == parent.getOctagon() ||
+                this.ships == parent.getShips() ||
+                this.points == parent.getPoints();
+    }
+
     public int resourceTotal() {
         return green + white + brown + black + yellow + blue + octagon + ships + points;
     }

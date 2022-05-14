@@ -46,6 +46,10 @@ public class GameStateService {
         return player;
     }
 
+    public void addResearchedTechnology(String technologyName) {
+        getGameState().getPendingResearches().add(technologyName);
+    }
+
     public boolean gameIsInSession() {
         return getGameState().isGameStarted() && !gameState.isGameOver();
     }

@@ -22,4 +22,6 @@ public class UpdateGameStateServerMessage {
     private List<String> availableResearchTeams;
     private List<Integer> colonyBidTrack;
     private List<Integer> researchTeamBidTrack;
+
+    private List<String> pendingResearches;
 }

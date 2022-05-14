@@ -139,7 +139,7 @@
   },
   {
     "id": "converterCard_10",
-    "name": "Quantum Computing",
+    "name": "Quantum Computers",
     "upgradeTech1": "Universal Translator",
     "upgradeTech2": "Clinical Immortality",
     "upgradedName": "Nondeterministic Polynomial Collapse",

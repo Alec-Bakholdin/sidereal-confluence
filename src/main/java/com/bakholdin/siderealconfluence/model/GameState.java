@@ -2,8 +2,8 @@ package com.bakholdin.siderealconfluence.model;
 
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -15,11 +15,15 @@ public class GameState {
     private boolean isGameStarted = false;
     private boolean isGameOver = false;
 
-    private List<Confluence> confluenceList = new LinkedList<>();
-    private List<String> availableColonies = new LinkedList<>();
-    private List<String> availableResearchTeams = new LinkedList<>();
-    private List<Integer> colonyBidTrack = new LinkedList<>();
-    private List<Integer> researchTeamBidTrack = new LinkedList<>();
+    private List<Confluence> confluenceList = new ArrayList<>();
+    
+    private List<String> availableColonies = new ArrayList<>();
+    private List<String> availableResearchTeams = new ArrayList<>();
+
+    private List<Integer> colonyBidTrack = new ArrayList<>();
+    private List<Integer> researchTeamBidTrack = new ArrayList<>();
+
+    private List<String> pendingResearches = new ArrayList<>();
 
     private Map<UUID, Player> players = new HashMap<>();
 }
