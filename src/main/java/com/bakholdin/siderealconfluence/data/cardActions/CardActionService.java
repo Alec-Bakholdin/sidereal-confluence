@@ -46,18 +46,14 @@ public class CardActionService {
             throw new IllegalArgumentException(cost + " is an illegal option for researching " + researchTeam.getName());
         }
         Player player = playerService.get(playerId);
-        Card newConverterCard = player.getInactiveCards().stream()
-                .filter(c -> c.getType() == CardType.ConverterCard && researchTeam.getResultingTechnology().equals(c.getName()))
-                .findFirst()
-                .orElseThrow(() -> new UnsupportedOperationException("No converter card found for research team " + researchTeam.getName()));
 
+        playerService.tryAcquireTechnology(player.getId(), researchTeam.getResultingTechnology());
         researchTeam.setResearched(true);
         cardSocketService.notifyClientOfUpdatedCard(researchTeam);
         int currentSharingBonus = gameStateService.getCurrentConfluence().getSharingBonus();
         Resources points = Resources.builder().points(currentSharingBonus + researchTeam.getPoints()).build();
         playerService.updatePlayerResources(playerId, cost, points, null);
         playerService.removeCardFromActive(playerId, cardId);
-        playerService.acquireCardFromInactiveCards(playerId, newConverterCard.getId());
         gameStateService.addResearchedTechnology(researchTeam.getResultingTechnology());
     }
 

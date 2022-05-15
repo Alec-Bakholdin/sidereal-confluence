@@ -6,6 +6,7 @@ import com.bakholdin.siderealconfluence.model.Race;
 import com.bakholdin.siderealconfluence.model.RaceName;
 import com.bakholdin.siderealconfluence.model.Resources;
 import com.bakholdin.siderealconfluence.model.cards.Card;
+import com.bakholdin.siderealconfluence.model.cards.CardType;
 import com.bakholdin.siderealconfluence.service.PlayerSocketService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -61,6 +62,18 @@ public class PlayerService {
             throw new IllegalArgumentException("Player id cannot be null");
         }
         acquireCardFromInactiveCards(UUID.fromString(playerId), cardId);
+    }
+
+    public void tryAcquireTechnology(UUID playerId, String technology) {
+        if (!contains(playerId)) {
+            throw new IllegalArgumentException("Player does not exist");
+        }
+        Player player = get(playerId);
+        Card newConverterCard = player.getInactiveCards().stream()
+                .filter(c -> c.getType() == CardType.ConverterCard && c.getName().equals(technology))
+                .findFirst()
+                .orElseThrow(() -> new UnsupportedOperationException("No converter card found for technology " + technology));
+        acquireCardFromInactiveCards(playerId, newConverterCard.getId());
     }
 
     public void acquireCard(UUID playerId, String cardId) {

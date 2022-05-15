@@ -12,10 +12,12 @@ import com.bakholdin.siderealconfluence.model.cards.CardType;
 import com.bakholdin.siderealconfluence.service.GameStateSocketService;
 import com.bakholdin.siderealconfluence.service.model.UpdateGameStateServerMessage;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Log4j2
 @Service
 @RequiredArgsConstructor
 public class GameStateService {
@@ -106,6 +108,9 @@ public class GameStateService {
     public GameState startGame() {
         GameState gameState = getGameState();
         int numPlayers = gameState.getPlayers().size();
+        if (numPlayers < 4 || numPlayers > 9) {
+            throw new UnsupportedOperationException("Number of players must be between 4 and 9, inclusive");
+        }
 
         gameState.setTurn(1);
         gameState.setPhase(Phase.Trade);
@@ -135,6 +140,7 @@ public class GameStateService {
             msgBuilder.turn(gameState.getTurn());
             msgBuilder.availableColonies(gameState.getAvailableColonies());
             msgBuilder.availableResearchTeams(gameState.getAvailableResearchTeams());
+            msgBuilder.pendingResearches(gameState.getPendingResearches());
         } else if (gameState.getPhase() == Phase.Confluence) {
             economyService.resolveEconomyStep();
         }
@@ -152,6 +158,16 @@ public class GameStateService {
         gameState.setTurn(gameState.getTurn() + 1);
         resetBidTrack(gameState.getAvailableColonies(), gameState.getColonyBidTrack(), BidTrackType.Colony);
         resetBidTrack(gameState.getAvailableResearchTeams(), gameState.getResearchTeamBidTrack(), BidTrackType.ResearchTeam);
+        for (String pendingTech : gameState.getPendingResearches()) {
+            for (Player player : gameState.getPlayers().values()) {
+                try {
+                    playerService.tryAcquireTechnology(player.getId(), pendingTech);
+                } catch (UnsupportedOperationException e) {
+                    log.error("Could not acquire technology {} for player {}: {}", pendingTech, player.getId(), e.getMessage());
+                }
+            }
+        }
+        gameState.getPendingResearches().clear();
     }
 
     private void resetBidTrack(List<String> availableCards, List<Integer> bidTrack, BidTrackType bidTrackType) {

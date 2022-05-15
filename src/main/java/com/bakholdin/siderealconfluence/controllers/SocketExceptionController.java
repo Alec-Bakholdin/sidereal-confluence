@@ -34,6 +34,10 @@ public class SocketExceptionController extends DefaultHandlerExceptionResolver {
 
     private void handleException(Exception e, String prefix) {
         String payload = prefix == null ? e.getMessage() : String.format("%s: %s", prefix, e.getMessage());
+        if (payload == null) {
+            payload = "Unknown error";
+        }
+        log.error("failed", e);
         simpMessagingTemplate.convertAndSend(OutgoingSocketTopics.TOPIC_ERROR, payload);
     }
 }
