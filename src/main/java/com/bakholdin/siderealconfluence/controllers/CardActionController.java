@@ -5,7 +5,7 @@ import com.bakholdin.siderealconfluence.controllers.model.FlipResearchTeamClient
 import com.bakholdin.siderealconfluence.controllers.model.IncomingSocketTopics;
 import com.bakholdin.siderealconfluence.controllers.model.UpgradeColonyClientMessage;
 import com.bakholdin.siderealconfluence.controllers.model.UpgradeConverterCardClientMessage;
-import com.bakholdin.siderealconfluence.data.cardActions.CardActionService;
+import com.bakholdin.siderealconfluence.data.CardActionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.messaging.handler.annotation.MessageMapping;

@@ -6,6 +6,7 @@ import com.bakholdin.siderealconfluence.service.model.AcquireCardServerMessage;
 import com.bakholdin.siderealconfluence.service.model.OutgoingSocketTopics;
 import com.bakholdin.siderealconfluence.service.model.RemoveActiveCardServerMessage;
 import com.bakholdin.siderealconfluence.service.model.TransferCardServerMessage;
+import com.bakholdin.siderealconfluence.service.model.UpdatePlayerReadyStatusServerMessage;
 import com.bakholdin.siderealconfluence.service.model.UpdatePlayerResourcesServerMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -55,5 +56,14 @@ public class PlayerSocketService {
                 .build();
         log.info(msg);
         simpMessagingTemplate.convertAndSend(OutgoingSocketTopics.TOPIC_REMOVED_ACTIVE_CARD, msg);
+    }
+
+    public void notifyClientOfUpdateReadyStatus(Player player) {
+        UpdatePlayerReadyStatusServerMessage msg = UpdatePlayerReadyStatusServerMessage.builder()
+                .playerId(player.getId())
+                .ready(player.isReady())
+                .build();
+        log.info(msg);
+        simpMessagingTemplate.convertAndSend(OutgoingSocketTopics.TOPIC_UPDATE_READY_STATUS, msg);
     }
 }

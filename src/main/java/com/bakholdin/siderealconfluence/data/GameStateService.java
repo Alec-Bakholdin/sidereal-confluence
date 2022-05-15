@@ -52,9 +52,8 @@ public class GameStateService {
     }
 
     public Player addNewPlayerToGame(String playerName, RaceName raceName) {
-        if (gameIsInSession()) {
-            throw new RuntimeException("Game is already in session");
-        }
+        ValidationUtils.validateGameIsNotInSession(getGameState());
+
         Player player = playerService.createPlayer(playerName, raceName);
         getGameState().getPlayers().put(player.getId(), player);
         return player;
@@ -67,34 +66,22 @@ public class GameStateService {
     }
 
     public void removeConfluenceCard(String cardId) {
-        if (!cardService.contains(cardId)) {
-            throw new IllegalArgumentException("Card with id " + cardId + " does not exist");
-        }
+        ValidationUtils.validateCardExists(cardService, cardId);
         Card card = cardService.get(cardId);
         GameState gameState = getGameState();
-        if (card.getType() == CardType.ConverterCard) {
-            throw new IllegalArgumentException("Cannot remove ConverterCard");
-        } else if (card.getType() == CardType.Colony) {
-            int index = gameState.getAvailableColonies().indexOf(card.getId());
-            if (index == -1) {
-                throw new IllegalArgumentException("Card with id " + cardId + " is not available");
-            }
-            gameState.getAvailableColonies().set(index, null);
-            UpdateGameStateServerMessage msg = UpdateGameStateServerMessage.builder()
-                    .availableColonies(gameState.getAvailableColonies())
-                    .build();
-            gameStateSocketService.updateGameState(msg);
-        } else if (card.getType() == CardType.ResearchTeam) {
-            int index = gameState.getAvailableResearchTeams().indexOf(card.getId());
-            if (index == -1) {
-                throw new IllegalArgumentException("Card with id " + cardId + " is not available");
-            }
-            gameState.getAvailableResearchTeams().set(index, null);
-            UpdateGameStateServerMessage msg = UpdateGameStateServerMessage.builder()
-                    .availableResearchTeams(gameState.getAvailableResearchTeams())
-                    .build();
-            gameStateSocketService.updateGameState(msg);
+        ValidationUtils.validateCardType(CardType.ResearchTeam, CardType.Colony, card);
+
+        List<String> cards = card.getType() == CardType.ResearchTeam ? gameState.getAvailableResearchTeams() : gameState.getAvailableColonies();
+        int index = cards.indexOf(cardId);
+        if (index == -1) {
+            throw new IllegalArgumentException("Card with id " + cardId + " is not available in confluence bid track");
         }
+        cards.set(index, null);
+        UpdateGameStateServerMessage msg = UpdateGameStateServerMessage.builder()
+                .availableColonies(gameState.getAvailableColonies())
+                .availableResearchTeams(gameState.getAvailableResearchTeams())
+                .build();
+        gameStateSocketService.updateGameState(msg);
     }
 
     public void addResearchedTechnology(String technologyName) {
@@ -112,9 +99,7 @@ public class GameStateService {
     public void startGame() {
         GameState gameState = resetGame(true);
         int numPlayers = gameState.getPlayers().size();
-        if (numPlayers < 4 || numPlayers > 9) {
-            throw new UnsupportedOperationException("Number of players must be between 4 and 9, inclusive");
-        }
+        ValidationUtils.validatePlayerCount(numPlayers);
 
         gameState.setTurn(1);
         gameState.setPhase(Phase.Trade);

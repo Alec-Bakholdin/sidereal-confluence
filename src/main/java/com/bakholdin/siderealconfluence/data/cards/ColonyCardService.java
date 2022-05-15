@@ -34,7 +34,7 @@ public class ColonyCardService {
 
     protected Colony draw() {
         if (availableColonies.isEmpty()) {
-            throw new RuntimeException("No more colonies available");
+            throw new UnsupportedOperationException("No more colonies available");
         }
         return availableColonies.remove(0);
     }

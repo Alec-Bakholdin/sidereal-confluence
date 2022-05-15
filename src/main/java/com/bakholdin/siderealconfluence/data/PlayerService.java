@@ -39,9 +39,7 @@ public class PlayerService {
     }
 
     public void resetPlayerWithoutSocket(UUID playerId) {
-        if (!contains(playerId)) {
-            throw new IllegalArgumentException("Player does not exist");
-        }
+        ValidationUtils.validatePlayerExists(this, playerId);
         Player player = get(playerId);
         Race race = player.getRace();
         player.setInactiveCards(cardService.getInactiveCards(race));
@@ -50,10 +48,12 @@ public class PlayerService {
         player.setDonations(new Resources());
     }
 
+    public void setReadyStatus(UUID playerId, boolean ready) {
+
+    }
+
     public void acquireCardFromInactiveCards(UUID playerId, String cardId) {
-        if (!ownsCard(playerId, cardId)) {
-            throw new IllegalArgumentException("Player does not own card");
-        }
+        ValidationUtils.validateOwnsCard(this, playerId, cardId);
         if (hasCardActive(playerId, cardId)) {
             log.warn("Player {} already has active card {}", playerId, cardId);
             return;
@@ -66,16 +66,12 @@ public class PlayerService {
     }
 
     public void acquireCardFromInactiveCards(String playerId, String cardId) {
-        if (playerId == null) {
-            throw new IllegalArgumentException("Player id cannot be null");
-        }
+        ValidationUtils.validateNonNullPlayerId(playerId);
         acquireCardFromInactiveCards(UUID.fromString(playerId), cardId);
     }
 
     public void tryAcquireTechnology(UUID playerId, String technology) {
-        if (!contains(playerId)) {
-            throw new IllegalArgumentException("Player does not exist");
-        }
+        ValidationUtils.validatePlayerExists(this, playerId);
         Player player = get(playerId);
         Card newConverterCard = player.getInactiveCards().stream()
                 .filter(c -> c.getType() == CardType.ConverterCard && c.getName().equals(technology))
@@ -85,9 +81,7 @@ public class PlayerService {
     }
 
     public void acquireCard(UUID playerId, String cardId) {
-        if (!contains(playerId)) {
-            throw new IllegalArgumentException("Player does not exist");
-        }
+        ValidationUtils.validatePlayerExists(this, playerId);
         if (ownsCard(playerId, cardId)) {
             log.warn("Player {} already has card {}", playerId, cardId);
         }
@@ -98,16 +92,12 @@ public class PlayerService {
     }
 
     public void acquireCard(String playerId, String cardId) {
-        if (playerId == null) {
-            throw new IllegalArgumentException("Player id cannot be null");
-        }
+        ValidationUtils.validateNonNullPlayerId(playerId);
         acquireCard(UUID.fromString(playerId), cardId);
     }
 
     public void removeCardFromActive(UUID playerId, String cardId) {
-        if (!ownsCard(playerId, cardId)) {
-            throw new IllegalArgumentException("Player does not own card");
-        }
+        ValidationUtils.validateOwnsCard(this, playerId, cardId);
         Player player = get(playerId);
         Card card = cardService.get(cardId);
         player.getCards().remove(card);
@@ -115,16 +105,12 @@ public class PlayerService {
     }
 
     public void removeCardFromActive(String playerId, String cardId) {
-        if (playerId == null) {
-            throw new IllegalArgumentException("Player id cannot be null");
-        }
+        ValidationUtils.validateNonNullPlayerId(playerId);
         removeCardFromActive(UUID.fromString(playerId), cardId);
     }
 
     public void updatePlayerResources(UUID playerId, Resources cost, Resources output, Resources donations) {
-        if (!contains(playerId)) {
-            throw new IllegalArgumentException("Player does not exist");
-        }
+        ValidationUtils.validatePlayerExists(this, playerId);
         Player player = get(playerId);
         player.getResources().subtract(cost);
         player.getResources().add(output);
@@ -133,16 +119,13 @@ public class PlayerService {
     }
 
     public void updatePlayerResources(String playerId, Resources cost, Resources output, Resources donations) {
-        if (playerId == null) {
-            throw new IllegalArgumentException("Player id cannot be null");
-        }
+        ValidationUtils.validateNonNullPlayerId(playerId);
         updatePlayerResources(UUID.fromString(playerId), cost, output, donations);
     }
 
     public void setPlayerResources(UUID playerId, Resources total, Resources donations) {
-        if (!contains(playerId)) {
-            throw new IllegalArgumentException("Player does not exist");
-        }
+        ValidationUtils.validatePlayerExists(this, playerId);
+
         Player player = get(playerId);
         player.setResources(total);
         player.setDonations(donations);
@@ -150,22 +133,16 @@ public class PlayerService {
     }
 
     public void setPlayerResources(String playerId, Resources resources, Resources donations) {
-        if (playerId == null) {
-            throw new IllegalArgumentException("Player id cannot be null");
-        }
+        ValidationUtils.validateNonNullPlayerId(playerId);
+
         setPlayerResources(UUID.fromString(playerId), resources, donations);
     }
 
-    public void transferCard(String currentOwnerPlayerId, String newOwnerPlayerId, String cardId) {
-        if (currentOwnerPlayerId == null || newOwnerPlayerId == null || cardId == null) {
-            throw new IllegalArgumentException("PlayerService.transferCard: null argument");
-        }
-        if (!contains(currentOwnerPlayerId) || !contains(newOwnerPlayerId)) {
-            throw new IllegalArgumentException("PlayerId does not exist");
-        }
-        if (!hasCardActive(currentOwnerPlayerId, cardId)) {
-            throw new IllegalArgumentException("Current owner does not own card with id " + cardId);
-        }
+    public void transferCard(UUID currentOwnerPlayerId, UUID newOwnerPlayerId, String cardId) {
+        ValidationUtils.validatePlayerExists(this, currentOwnerPlayerId);
+        ValidationUtils.validatePlayerExists(this, newOwnerPlayerId);
+        ValidationUtils.validateCardIsActive(this, currentOwnerPlayerId, cardId);
+
         Player currentOwner = get(currentOwnerPlayerId);
         Player newOwner = get(newOwnerPlayerId);
         Card card = cardService.get(cardId);
@@ -175,6 +152,12 @@ public class PlayerService {
 
         playerSocketService.notifyClientOfCardTransfer(currentOwner, newOwner, cardId);
         log.info("Transferred {} from {} to {}", card.getId(), currentOwner.getName(), newOwner.getName());
+    }
+
+    public void transferCard(String currentOwnerPlayerId, String newOwnerPlayerId, String cardId) {
+        ValidationUtils.validateNonNullPlayerId(currentOwnerPlayerId);
+        ValidationUtils.validateNonNullPlayerId(newOwnerPlayerId);
+        transferCard(UUID.fromString(currentOwnerPlayerId), UUID.fromString(newOwnerPlayerId), cardId);
     }
 
     public boolean ownsCard(UUID playerId, String cardId) {
