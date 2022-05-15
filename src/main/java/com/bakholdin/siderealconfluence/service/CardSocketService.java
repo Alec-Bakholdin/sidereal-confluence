@@ -16,14 +16,17 @@ public class CardSocketService {
     private final SimpMessagingTemplate simpMessagingTemplate;
 
     public void notifyClientOfUpdatedCard(ResearchTeam card) {
+        log.info("Updating card: {}", card);
         simpMessagingTemplate.convertAndSend(OutgoingSocketTopics.TOPIC_UPDATE_CARD, card);
     }
 
     public void notifyClientOfUpdatedCard(Colony card) {
+        log.info("Updating card: {}", card);
         simpMessagingTemplate.convertAndSend(OutgoingSocketTopics.TOPIC_UPDATE_CARD, card);
     }
 
     public void notifyClientOfUpdatedCard(ConverterCard card) {
+        log.info("Updating card: {}", card);
         simpMessagingTemplate.convertAndSend(OutgoingSocketTopics.TOPIC_UPDATE_CARD, card);
     }
 }

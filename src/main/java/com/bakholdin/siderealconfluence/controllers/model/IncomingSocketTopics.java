@@ -8,4 +8,6 @@ public class IncomingSocketTopics {
     public static final String APP_TRANSFER_CARD = "/transferCard";
     public static final String APP_UPDATE_ECONOMY_ACTIONS = "/updateEconomyActions";
     public static final String APP_FLIP_RESEARCH_TEAM = "/flipResearchTeam";
+    public static final String APP_UPGRADE_COLONY = "/upgradeColony";
+    public static final String APP_UPGRADE_CONVERTER_CARD = "/upgradeConverterCard";
 }

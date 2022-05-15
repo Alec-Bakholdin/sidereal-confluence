@@ -40,7 +40,7 @@ public class PlayerService {
         return newPlayer;
     }
 
-    public void acquireCard(UUID playerId, String cardId) {
+    public void acquireCardFromInactiveCards(UUID playerId, String cardId) {
         if (!ownsCard(playerId, cardId)) {
             throw new IllegalArgumentException("Player does not own card");
         }
@@ -55,11 +55,24 @@ public class PlayerService {
         playerSocketService.notifyClientOfAcquiredCard(player, card);
     }
 
-    public void acquireCard(String playerId, String cardId) {
+    public void acquireCardFromInactiveCards(String playerId, String cardId) {
         if (playerId == null) {
             throw new IllegalArgumentException("Player id cannot be null");
         }
-        acquireCard(UUID.fromString(playerId), cardId);
+        acquireCardFromInactiveCards(UUID.fromString(playerId), cardId);
+    }
+
+    public void acquireCard(UUID playerId, String cardId) {
+        if (!contains(playerId)) {
+            throw new IllegalArgumentException("Player does not exist");
+        }
+        if (ownsCard(playerId, cardId)) {
+            log.warn("Player {} already has card {}", playerId, cardId);
+        }
+    }
+
+    public void acquireCard(String playerId, String cardId) {
+
     }
 
     public void removeCardFromActive(UUID playerId, String cardId) {
