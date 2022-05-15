@@ -14,6 +14,8 @@ import com.bakholdin.siderealconfluence.service.model.UpdateGameStateServerMessa
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class GameStateService {
@@ -121,22 +123,52 @@ public class GameStateService {
         return gameState;
     }
 
-    public GameState advancePhase() {
+    public void advancePhase() {
+        UpdateGameStateServerMessage.Builder msgBuilder = UpdateGameStateServerMessage.builder();
+
         GameState gameState = getGameState();
         gameState.setPhase(getNextPhase(gameState.getPhase()));
+        msgBuilder.phase(gameState.getPhase());
+
         if (gameState.getPhase() == Phase.Trade) {
             advanceTurn(gameState);
+            msgBuilder.turn(gameState.getTurn());
+            msgBuilder.availableColonies(gameState.getAvailableColonies());
+            msgBuilder.availableResearchTeams(gameState.getAvailableResearchTeams());
         } else if (gameState.getPhase() == Phase.Confluence) {
             economyService.resolveEconomyStep();
         }
-        return gameState;
+
+        msgBuilder.isGameOver(gameState.isGameOver());
+        gameStateSocketService.updateGameState(msgBuilder.build());
     }
 
     private void advanceTurn(GameState gameState) {
         if (gameState.getTurn() == 6) {
             gameState.setGameOver(true);
-        } else {
-            gameState.setTurn(gameState.getTurn() + 1);
+            return;
+        }
+
+        gameState.setTurn(gameState.getTurn() + 1);
+        resetBidTrack(gameState.getAvailableColonies(), gameState.getColonyBidTrack(), BidTrackType.Colony);
+        resetBidTrack(gameState.getAvailableResearchTeams(), gameState.getResearchTeamBidTrack(), BidTrackType.ResearchTeam);
+    }
+
+    private void resetBidTrack(List<String> availableCards, List<Integer> bidTrack, BidTrackType bidTrackType) {
+        CardType cardType = bidTrackType == BidTrackType.Colony ? CardType.Colony : CardType.ResearchTeam;
+        if (availableCards.size() != bidTrack.size()) {
+            throw new IllegalArgumentException("availableCards and bidTrack must be the same size");
+        }
+        int cardsLeft = 0;
+        for (int i = 0; i < availableCards.size(); i++) {
+            if (bidTrack.get(i) == 1) {
+                availableCards.set(0, null);
+            } else if (availableCards.get(i) != null) {
+                availableCards.set(cardsLeft++, availableCards.get(i));
+            }
+        }
+        for (Card card : cardService.draw(bidTrack.size() - cardsLeft, cardType)) {
+            availableCards.set(cardsLeft++, card.getId());
         }
     }
 

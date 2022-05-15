@@ -34,16 +34,10 @@ public class GameStateController {
     }
 
     @MessageMapping(IncomingSocketTopics.APP_NEXT_PHASE)
-    @SendTo(OutgoingSocketTopics.TOPIC_UPDATE_GAME_STATE)
-    public UpdateGameStateServerMessage nextPhase() {
+    public void nextPhase() {
         if (gameStateService.getGameState().isGameOver()) {
             throw new UnsupportedOperationException("Game is over");
         }
-        GameState gameState = gameStateService.advancePhase();
-        return UpdateGameStateServerMessage.builder()
-                .phase(gameState.getPhase())
-                .turn(gameState.getTurn())
-                .isGameOver(gameState.isGameOver())
-                .build();
+        gameStateService.advancePhase();
     }
 }

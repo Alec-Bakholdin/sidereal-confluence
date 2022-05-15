@@ -9,7 +9,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-@Builder
+@Builder(builderClassName = "Builder")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UpdateGameStateServerMessage {
     private Integer turn;
