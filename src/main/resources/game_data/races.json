@@ -1,15 +1,63 @@
 [
   {
     "name": "Caylion",
-    "colonySupport": 1,
+    "colonySupport": 3,
     "tiebreaker": 1,
+    "startingColonies": 1,
+    "startingResearchTeams": 0,
+    "startingResources": {
+      "black": 2,
+      "green": 5,
+      "white": 4,
+      "brown": 2,
+      "ships": 1
+    }
+  },
+  {
+    "name": "Faderan",
+    "colonySupport": 4,
+    "tiebreaker": 7,
     "startingColonies": 1,
     "startingResearchTeams": 1,
     "startingResources": {
-      "green": 1,
+      "octagon": 1,
+      "yellow": 1,
+      "blue": 1,
+      "white": 3,
+      "brown": 1,
+      "ships": 2
+    }
+  },
+  {
+    "name": "Yengii",
+    "colonySupport": 3,
+    "tiebreaker": 5,
+    "startingColonies": 1,
+    "startingResearchTeams": 1,
+    "startingResources": {
+      "octagon": 1,
+      "blue": 1,
       "yellow": 2,
-      "black": 3,
-      "octagon": 1
+      "black": 1,
+      "green": 1,
+      "white": 1,
+      "brown": 1
+    }
+  },
+  {
+    "name": "Kjasjavikalimm",
+    "colonySupport": 6,
+    "tiebreaker": 6,
+    "startingColonies": 2,
+    "startingResearchTeams": 0,
+    "startingResources": {
+      "blue": 1,
+      "yellow": 2,
+      "black": 2,
+      "ships": 4,
+      "green": 1,
+      "white": 1,
+      "brown": 2
     }
   }
 ]

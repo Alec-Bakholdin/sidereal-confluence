@@ -9,7 +9,6 @@ import com.bakholdin.siderealconfluence.data.RaceService;
 import com.bakholdin.siderealconfluence.data.cards.CardService;
 import com.bakholdin.siderealconfluence.model.GameState;
 import com.bakholdin.siderealconfluence.model.Player;
-import com.bakholdin.siderealconfluence.model.RaceName;
 import com.bakholdin.siderealconfluence.model.cards.Card;
 import com.bakholdin.siderealconfluence.service.model.OutgoingSocketTopics;
 import lombok.RequiredArgsConstructor;
@@ -61,12 +60,13 @@ public class InitializationController {
         if (gameStateService.getGameState().getPlayers().size() >= 9) {
             throw new RuntimeException("Game is full");
         }
-        Player player = gameStateService.addNewPlayerToGame(payload.getPlayerName(), RaceName.Caylion);
+        Player player = gameStateService.addNewPlayerToGame(payload.getPlayerName(), payload.getRaceName());
         simpMessagingTemplate.convertAndSend(OutgoingSocketTopics.TOPIC_PLAYER_JOINED_GAME, player);
         return JoinGameResponse.builder()
                 .gameState(gameStateService.getGameState())
                 .playerName(player.getName())
                 .playerId(player.getId())
+                .raceName(player.getRace().getName())
                 .build();
     }
 
@@ -75,12 +75,13 @@ public class InitializationController {
         UUID playerUUID = UUID.fromString(payload.getPlayerId());
         Player player = gameStateService.getGameState().getPlayers().get(playerUUID);
         if (player == null) {
-            player = gameStateService.addNewPlayerToGame(payload.getPlayerName(), RaceName.Caylion);
+            player = gameStateService.addNewPlayerToGame(payload.getPlayerName(), payload.getRaceName());
         }
         simpMessagingTemplate.convertAndSend(OutgoingSocketTopics.TOPIC_PLAYER_JOINED_GAME, player);
         return JoinGameResponse.builder()
                 .playerId(player.getId())
                 .playerName(player.getName())
+                .raceName(player.getRace().getName())
                 .gameState(gameStateService.getGameState())
                 .build();
     }
