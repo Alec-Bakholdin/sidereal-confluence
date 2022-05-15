@@ -1,6 +1,7 @@
 package com.bakholdin.siderealconfluence.controllers;
 
 import com.bakholdin.siderealconfluence.controllers.model.IncomingSocketTopics;
+import com.bakholdin.siderealconfluence.controllers.model.UpdatePlayerReadyStatusClientMessage;
 import com.bakholdin.siderealconfluence.data.GameStateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -26,5 +27,10 @@ public class GameStateController {
             throw new UnsupportedOperationException("Game is over");
         }
         gameStateService.advancePhase();
+    }
+
+    @MessageMapping(IncomingSocketTopics.APP_UPDATE_PLAYER_READY_STATUS)
+    public void updatePlayerReadyStatus(UpdatePlayerReadyStatusClientMessage message) {
+        gameStateService.setPlayerReadyStatus(message.getPlayerId(), message.isReady());
     }
 }

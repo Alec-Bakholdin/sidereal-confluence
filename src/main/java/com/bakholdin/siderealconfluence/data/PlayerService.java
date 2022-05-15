@@ -49,7 +49,15 @@ public class PlayerService {
     }
 
     public void setReadyStatus(UUID playerId, boolean ready) {
+        ValidationUtils.validatePlayerExists(this, playerId);
+        Player player = get(playerId);
+        player.setReady(ready);
+        playerSocketService.notifyClientOfUpdatedReadyStatus(player);
+    }
 
+    public void setReadyStatus(String playerId, boolean ready) {
+        ValidationUtils.validateNonNullPlayerId(playerId);
+        setReadyStatus(UUID.fromString(playerId), ready);
     }
 
     public void acquireCardFromInactiveCards(UUID playerId, String cardId) {

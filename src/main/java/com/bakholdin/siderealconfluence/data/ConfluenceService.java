@@ -32,7 +32,7 @@ public class ConfluenceService {
     }
 
     public List<Confluence> getConfluenceCards(int numPlayers) {
-        validateNumberOfPlayers(numPlayers);
+        ValidationUtils.validatePlayerCount(numPlayers);
         return confluenceCards.stream()
                 .filter(card -> card.getPlayerCounts().contains(numPlayers))
                 .sorted(Comparator.comparingInt(Confluence::getTurn))
@@ -40,18 +40,12 @@ public class ConfluenceService {
     }
 
     public List<Integer> getBidTrack(int numPlayers, BidTrackType type) {
-        validateNumberOfPlayers(numPlayers);
+        ValidationUtils.validatePlayerCount(numPlayers);
         return confluenceBidTracks.stream()
                 .filter(track -> track.getType() == type && track.getPlayerCounts().contains(numPlayers))
                 .sorted(Comparator.comparingInt(ConfluenceBidTrack::getOrder))
                 .map(ConfluenceBidTrack::getShipMinima)
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
-    }
-
-    private void validateNumberOfPlayers(int numPlayers) {
-        if (numPlayers < 4 || numPlayers > 10) {
-            throw new IllegalArgumentException("Invalid number of players: " + numPlayers);
-        }
     }
 }

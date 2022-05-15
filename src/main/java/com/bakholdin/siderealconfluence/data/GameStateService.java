@@ -96,6 +96,18 @@ public class GameStateService {
         return getGameState().isGameStarted() && !gameState.isGameOver();
     }
 
+    public void setPlayerReadyStatus(String playerId, boolean ready) {
+        GameState gameState = getGameState();
+        playerService.setReadyStatus(playerId, ready);
+        for (Player player : gameState.getPlayers().values()) {
+            if (!player.isReady()) {
+                return;
+            }
+        }
+        // only if all players are ready
+        advancePhase();
+    }
+
     public void startGame() {
         GameState gameState = resetGame(true);
         int numPlayers = gameState.getPlayers().size();
@@ -137,6 +149,9 @@ public class GameStateService {
             msgBuilder.pendingResearches(gameState.getPendingResearches());
         } else if (gameState.getPhase() == Phase.Confluence) {
             economyService.resolveEconomyStep();
+        }
+        for (Player player : gameState.getPlayers().values()) {
+            playerService.setReadyStatus(player.getId(), false);
         }
 
         msgBuilder.gameOver(gameState.isGameOver());

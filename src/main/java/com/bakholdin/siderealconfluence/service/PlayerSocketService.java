@@ -58,7 +58,7 @@ public class PlayerSocketService {
         simpMessagingTemplate.convertAndSend(OutgoingSocketTopics.TOPIC_REMOVED_ACTIVE_CARD, msg);
     }
 
-    public void notifyClientOfUpdateReadyStatus(Player player) {
+    public void notifyClientOfUpdatedReadyStatus(Player player) {
         UpdatePlayerReadyStatusServerMessage msg = UpdatePlayerReadyStatusServerMessage.builder()
                 .playerId(player.getId())
                 .ready(player.isReady())

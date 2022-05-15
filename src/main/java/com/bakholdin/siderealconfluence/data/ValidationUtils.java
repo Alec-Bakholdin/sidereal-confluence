@@ -75,7 +75,7 @@ public class ValidationUtils {
     }
 
     public static void validatePlayerCount(int numPlayers) {
-        if (numPlayers < 4 || numPlayers > 9) {
+        if (numPlayers < 1 || numPlayers > 9) {
             throw new UnsupportedOperationException("Number of players must be between 4 and 9, inclusive");
         }
     }
