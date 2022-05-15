@@ -7,6 +7,7 @@ import com.bakholdin.siderealconfluence.model.GameState;
 import com.bakholdin.siderealconfluence.model.Phase;
 import com.bakholdin.siderealconfluence.model.Player;
 import com.bakholdin.siderealconfluence.model.RaceName;
+import com.bakholdin.siderealconfluence.model.cards.Card;
 import com.bakholdin.siderealconfluence.model.cards.CardType;
 import com.bakholdin.siderealconfluence.service.GameStateSocketService;
 import com.bakholdin.siderealconfluence.service.model.UpdateGameStateServerMessage;
@@ -55,6 +56,37 @@ public class GameStateService {
         GameState gameState = getGameState();
         int index = Math.max(0, gameState.getTurn() - 1);
         return gameState.getConfluenceList().get(index);
+    }
+
+    public void removeConfluenceCard(String cardId) {
+        if (!cardService.contains(cardId)) {
+            throw new IllegalArgumentException("Card with id " + cardId + " does not exist");
+        }
+        Card card = cardService.get(cardId);
+        GameState gameState = getGameState();
+        if (card.getType() == CardType.ConverterCard) {
+            throw new IllegalArgumentException("Cannot remove ConverterCard");
+        } else if (card.getType() == CardType.Colony) {
+            int index = gameState.getAvailableColonies().indexOf(card.getId());
+            if (index == -1) {
+                throw new IllegalArgumentException("Card with id " + cardId + " is not available");
+            }
+            gameState.getAvailableColonies().set(index, null);
+            UpdateGameStateServerMessage msg = UpdateGameStateServerMessage.builder()
+                    .availableColonies(gameState.getAvailableColonies())
+                    .build();
+            gameStateSocketService.updateGameState(msg);
+        } else if (card.getType() == CardType.ResearchTeam) {
+            int index = gameState.getAvailableResearchTeams().indexOf(card.getId());
+            if (index == -1) {
+                throw new IllegalArgumentException("Card with id " + cardId + " is not available");
+            }
+            gameState.getAvailableResearchTeams().set(index, null);
+            UpdateGameStateServerMessage msg = UpdateGameStateServerMessage.builder()
+                    .availableResearchTeams(gameState.getAvailableResearchTeams())
+                    .build();
+            gameStateSocketService.updateGameState(msg);
+        }
     }
 
     public void addResearchedTechnology(String technologyName) {

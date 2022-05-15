@@ -125,10 +125,7 @@ public class CardActionService {
         if (!playerService.contains(playerId)) {
             throw new IllegalArgumentException("Player with id " + playerId + " does not exist");
         }
-        if (card.getType() == CardType.Colony) {
-            gameState.getAvailableColonies().remove(card.getId());
-        } else if (card.getType() == CardType.ResearchTeam) {
-            gameState.getAvailableResearchTeams().remove(card.getId());
-        }
+        gameStateService.removeConfluenceCard(cardId);
+        playerService.acquireCard(playerId, cardId);
     }
 }

@@ -69,10 +69,17 @@ public class PlayerService {
         if (ownsCard(playerId, cardId)) {
             log.warn("Player {} already has card {}", playerId, cardId);
         }
+        Player player = get(playerId);
+        Card card = cardService.get(cardId);
+        player.getCards().add(card);
+        playerSocketService.notifyClientOfAcquiredCard(player, card);
     }
 
     public void acquireCard(String playerId, String cardId) {
-
+        if (playerId == null) {
+            throw new IllegalArgumentException("Player id cannot be null");
+        }
+        acquireCard(UUID.fromString(playerId), cardId);
     }
 
     public void removeCardFromActive(UUID playerId, String cardId) {

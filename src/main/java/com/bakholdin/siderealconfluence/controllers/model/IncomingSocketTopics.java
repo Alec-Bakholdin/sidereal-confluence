@@ -10,4 +10,5 @@ public class IncomingSocketTopics {
     public static final String APP_FLIP_RESEARCH_TEAM = "/flipResearchTeam";
     public static final String APP_UPGRADE_COLONY = "/upgradeColony";
     public static final String APP_UPGRADE_CONVERTER_CARD = "/upgradeConverterCard";
+    public static final String APP_ACQUIRE_CONFLUENCE_CARD = "/acquireConfluenceCard";
 }
