@@ -55,7 +55,7 @@ public class CardActionService {
         cardSocketService.notifyClientOfUpdatedCard(researchTeam);
         int currentSharingBonus = gameStateService.getCurrentConfluence().getSharingBonus();
         Resources points = Resources.builder().points(currentSharingBonus + researchTeam.getPoints()).build();
-        playerService.updatePlayerResources(playerId, cost, points);
+        playerService.updatePlayerResources(playerId, cost, points, null);
         playerService.removeCardFromActive(playerId, cardId);
         playerService.acquireCardFromInactiveCards(playerId, newConverterCard.getId());
         gameStateService.addResearchedTechnology(researchTeam.getResultingTechnology());
@@ -77,7 +77,7 @@ public class CardActionService {
             throw new IllegalArgumentException("Colony with id " + cardId + " is already upgraded");
         }
         Converter converter = colony.getUpgradeConverter();
-        playerService.updatePlayerResources(playerId, converter.getInput(), converter.getOutput());
+        playerService.updatePlayerResources(playerId, converter.getInput(), converter.getOutput(), converter.getDonations());
         colony.setUpgraded(true);
         cardSocketService.notifyClientOfUpdatedCard(colony);
     }

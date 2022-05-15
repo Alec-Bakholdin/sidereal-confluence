@@ -22,6 +22,7 @@ public class PlayerSocketService {
     public void notifyClientOfUpdatedResources(Player player) {
         UpdatePlayerResourcesServerMessage msg = UpdatePlayerResourcesServerMessage.builder()
                 .resources(player.getResources())
+                .donations(player.getDonations())
                 .playerId(player.getId().toString())
                 .build();
         log.info(msg);

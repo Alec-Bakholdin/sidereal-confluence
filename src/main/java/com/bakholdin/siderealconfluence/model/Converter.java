@@ -11,12 +11,9 @@ import lombok.Data;
 public class Converter {
     private Resources input = new Resources();
     private Resources output = new Resources();
+    private Resources donations = new Resources();
     @JsonIgnore
     private SideEffect sideEffect;
 
     private Phase phase;
-
-    public void resolve(Player player) {
-
-    }
 }

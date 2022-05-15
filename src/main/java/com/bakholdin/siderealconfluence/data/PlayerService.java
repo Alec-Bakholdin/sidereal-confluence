@@ -32,6 +32,7 @@ public class PlayerService {
                 .name(name)
                 .race(race)
                 .resources(DataUtils.deepCopy(race.getStartingResources()))
+                .donations(new Resources())
                 .cards(cardService.getStartingCards(race))
                 .inactiveCards(cardService.getInactiveCards(race))
                 .build();
@@ -99,21 +100,22 @@ public class PlayerService {
         removeCardFromActive(UUID.fromString(playerId), cardId);
     }
 
-    public void updatePlayerResources(UUID playerId, Resources cost, Resources output) {
+    public void updatePlayerResources(UUID playerId, Resources cost, Resources output, Resources donations) {
         if (!contains(playerId)) {
             return;
         }
         Player player = get(playerId);
         player.getResources().subtract(cost);
         player.getResources().add(output);
+        player.getDonations().add(donations);
         playerSocketService.notifyClientOfUpdatedResources(player);
     }
 
-    public void updatePlayerResources(String playerId, Resources cost, Resources output) {
+    public void updatePlayerResources(String playerId, Resources cost, Resources output, Resources donations) {
         if (playerId == null) {
             return;
         }
-        updatePlayerResources(UUID.fromString(playerId), cost, output);
+        updatePlayerResources(UUID.fromString(playerId), cost, output, donations);
     }
 
     public void transferCard(String currentOwnerPlayerId, String newOwnerPlayerId, String cardId) {

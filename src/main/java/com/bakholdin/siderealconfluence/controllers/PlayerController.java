@@ -29,7 +29,11 @@ public class PlayerController {
         if (player == null) {
             throw new IllegalArgumentException("Player not found");
         }
-        player.setResources(payload.getResources());
+        if (payload.isDonations()) {
+            player.setDonations(payload.getResources());
+        } else {
+            player.setResources(payload.getResources());
+        }
         playerSocketService.notifyClientOfUpdatedResources(player);
     }
 

@@ -9,4 +9,5 @@ import lombok.Data;
 public class UpdatePlayerResourcesServerMessage {
     private String playerId;
     private Resources resources;
+    private Resources donations;
 }

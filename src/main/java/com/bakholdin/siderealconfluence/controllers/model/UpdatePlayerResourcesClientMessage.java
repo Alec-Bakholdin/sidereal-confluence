@@ -7,4 +7,5 @@ import lombok.Data;
 public class UpdatePlayerResourcesClientMessage {
     private String playerId;
     private Resources resources;
+    private boolean donations;
 }

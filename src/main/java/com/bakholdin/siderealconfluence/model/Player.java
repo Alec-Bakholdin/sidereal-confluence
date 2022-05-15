@@ -16,6 +16,7 @@ public class Player {
     private UUID id;
     private String name;
     private Resources resources;
+    private Resources donations;
     private Race race;
     private boolean isReady;
     @JsonIgnore

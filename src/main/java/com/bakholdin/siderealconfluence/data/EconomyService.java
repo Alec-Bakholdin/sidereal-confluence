@@ -37,19 +37,20 @@ public class EconomyService {
             Player player = playerService.get(playerId);
             Resources econInput = new Resources();
             Resources econOutput = new Resources();
+            Resources econDonations = new Resources();
 
             for (EconomyAction economyAction : economyActions) {
-                addEconActionToTotal(playerId, econInput, econOutput, economyAction);
+                addEconActionToTotal(playerId, econInput, econOutput, econDonations, economyAction);
             }
 
             if (econInput.resourceTotal() > 0 || econOutput.resourceTotal() > 0) {
-                playerService.updatePlayerResources(playerId, econInput, econOutput);
+                playerService.updatePlayerResources(playerId, econInput, econOutput, econDonations);
                 log.info("Economy step: {} pays {} resources and receives {}", player.getName(), econInput.resourceTotal(), econOutput.resourceTotal());
             }
         });
     }
 
-    private void addEconActionToTotal(UUID playerId, Resources econInput, Resources econOutput, EconomyAction economyAction) {
+    private void addEconActionToTotal(UUID playerId, Resources econInput, Resources econOutput, Resources econDonations, EconomyAction economyAction) {
         if (!playerService.hasCardActive(playerId, economyAction.getCardId())) {
             return;
         }
@@ -58,6 +59,7 @@ public class EconomyService {
         if (converter.getPhase() == Phase.Economy) {
             econInput.add(converter.getInput());
             econOutput.add(converter.getOutput());
+            econDonations.add(converter.getDonations());
         }
     }
 }
