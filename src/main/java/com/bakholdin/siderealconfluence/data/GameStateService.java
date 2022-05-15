@@ -203,7 +203,7 @@ public class GameStateService {
 
         if (gameState.getPhase() == Phase.Trade) {
             advanceTurn(gameState, msgBuilder);
-        } else if (gameState.getPhase() == Phase.Economy) {
+        } else if (gameState.getPhase() == Phase.Confluence) {
             economyService.resolveEconomyStep();
         }
         for (Player player : gameState.getPlayers().values()) {

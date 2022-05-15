@@ -47,7 +47,7 @@ public class PlayerService {
         player.setReady(false);
         player.setInactiveCards(cardService.getInactiveCards(race));
         player.setCards(cardService.getStartingCards(player.getInactiveCards(), race));
-        player.setResources(race.getStartingResources());
+        player.setResources(DataUtils.deepCopy(race.getStartingResources()));
         player.setDonations(new Resources());
     }
 
@@ -66,6 +66,9 @@ public class PlayerService {
     public void setPlayerBid(UUID playerId, double colonyBid, double researchTeamBid) {
         ValidationUtils.validatePlayerExists(this, playerId);
         Player player = get(playerId);
+        if (player.getRace().getName() == RaceName.Caylion) {
+            colonyBid /= 2;
+        }
         PlayerBid playerBid = PlayerBid.builder()
                 .playerId(player.getId())
                 .colonyBid(colonyBid)

@@ -39,7 +39,7 @@ public class ValidationUtils {
     }
 
     protected static void validateOwnsCard(PlayerService playerService, UUID playerId, String cardId) {
-        if (playerService.ownsCard(playerId, cardId)) {
+        if (!playerService.ownsCard(playerId, cardId)) {
             throw new IllegalArgumentException("Card does not exist");
         }
     }

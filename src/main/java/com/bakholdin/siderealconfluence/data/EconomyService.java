@@ -7,6 +7,8 @@ import com.bakholdin.siderealconfluence.model.Phase;
 import com.bakholdin.siderealconfluence.model.Player;
 import com.bakholdin.siderealconfluence.model.Resources;
 import com.bakholdin.siderealconfluence.model.cards.Card;
+import com.bakholdin.siderealconfluence.model.cards.CardType;
+import com.bakholdin.siderealconfluence.model.cards.Colony;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -54,9 +56,15 @@ public class EconomyService {
         if (!playerService.hasCardActive(playerId, economyAction.getCardId())) {
             return;
         }
+
         Card card = cardService.get(economyAction.getCardId());
         Converter converter = card.activeConverters().get(economyAction.getConverterIndex());
         if (converter.getPhase() == Phase.Economy) {
+            econInput.add(converter.getInput());
+            econOutput.add(converter.getOutput());
+            econDonations.add(converter.getDonations());
+        }
+        if (card.getType() == CardType.Colony && ((Colony) card).isDoubledWithCaylion()) {
             econInput.add(converter.getInput());
             econOutput.add(converter.getOutput());
             econDonations.add(converter.getDonations());

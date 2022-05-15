@@ -7,6 +7,7 @@ import com.bakholdin.siderealconfluence.model.GameState;
 import com.bakholdin.siderealconfluence.model.Phase;
 import com.bakholdin.siderealconfluence.model.Player;
 import com.bakholdin.siderealconfluence.model.PlayerBid;
+import com.bakholdin.siderealconfluence.model.RaceName;
 import com.bakholdin.siderealconfluence.model.Resources;
 import com.bakholdin.siderealconfluence.model.cards.Card;
 import com.bakholdin.siderealconfluence.model.cards.CardType;
@@ -105,13 +106,21 @@ public class CardActionService {
         Player player = playerService.get(playerId);
         PlayerBid playerBid = player.getPlayerBid();
         double bid = gameState.getActiveBidTrack() == BidTrackType.Colony ? playerBid.getColonyBid() : playerBid.getResearchTeamBid();
-        int shipCost = (int) Math.round(Math.ceil(bid));
+        if (player.getRace().getName() == RaceName.Caylion && gameState.getActiveBidTrack() == BidTrackType.Colony) {
+            bid *= 2;
+        }
+        int shipCost = (int) Math.round(bid);
         Resources cost = Resources.builder().ships(shipCost).build();
         ValidationUtils.validatePlayerHasEnoughResources(player, cost);
         ValidationUtils.validatePlayerBidHighEnough(gameState, player, card);
 
         gameStateService.removeConfluenceCard(cardId);
         playerService.acquireCard(playerId, cardId);
+        if (player.getRace().getName() == RaceName.Caylion && card.getType() == CardType.Colony) {
+            Colony colony = (Colony) card;
+            colony.setDoubledWithCaylion(true);
+            cardSocketService.notifyClientOfUpdatedCard(colony);
+        }
         playerService.updatePlayerResources(playerId, cost, null, null);
         gameStateService.advanceBids();
     }

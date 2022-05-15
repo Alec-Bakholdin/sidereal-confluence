@@ -13,6 +13,7 @@ import java.util.List;
 public class Colony extends Card {
     private CardType type = CardType.Colony;
     private boolean isUpgraded = false;
+    private boolean doubledWithCaylion = false;
 
     private Converter frontConverter;
     private Converter upgradeConverter;

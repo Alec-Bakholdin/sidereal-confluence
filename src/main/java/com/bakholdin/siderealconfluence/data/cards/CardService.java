@@ -60,7 +60,11 @@ public class CardService {
         List<Card> startingCards = inactiveCards.stream()
                 .filter(card -> card.getType() == CardType.ConverterCard && ((ConverterCard) card).isStarting())
                 .collect(Collectors.toList());
-        startingCards.addAll(draw(race.getStartingColonies(), CardType.Colony));
+        List<Colony> startingColonies = colonyCardService.draw(race.getStartingColonies());
+        if (race.getName() == RaceName.Caylion) {
+            startingColonies.forEach(colony -> colony.setDoubledWithCaylion(true));
+        }
+        startingCards.addAll(startingColonies);
         startingCards.addAll(draw(race.getStartingResearchTeams(), CardType.ResearchTeam));
         return startingCards;
     }
