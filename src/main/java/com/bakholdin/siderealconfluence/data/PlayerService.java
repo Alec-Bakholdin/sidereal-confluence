@@ -157,6 +157,7 @@ public class PlayerService {
         return contains(playerId) && cardService.contains(cardId) && get(playerId).cardIds().contains(cardId);
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public boolean hasCardActive(String playerId, String cardId) {
         return playerId != null && hasCardActive(UUID.fromString(playerId), cardId);
     }
