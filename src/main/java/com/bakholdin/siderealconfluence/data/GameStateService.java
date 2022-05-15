@@ -9,6 +9,7 @@ import com.bakholdin.siderealconfluence.model.Player;
 import com.bakholdin.siderealconfluence.model.RaceName;
 import com.bakholdin.siderealconfluence.model.cards.Card;
 import com.bakholdin.siderealconfluence.model.cards.CardType;
+import com.bakholdin.siderealconfluence.service.CardSocketService;
 import com.bakholdin.siderealconfluence.service.GameStateSocketService;
 import com.bakholdin.siderealconfluence.service.model.UpdateGameStateServerMessage;
 import lombok.RequiredArgsConstructor;
@@ -26,20 +27,23 @@ public class GameStateService {
     private final ConfluenceService confluenceService;
     private final EconomyService economyService;
     private final GameStateSocketService gameStateSocketService;
+    private final CardSocketService cardSocketService;
 
     private GameState gameState = null;
 
     public GameState getGameState() {
         if (gameState == null) {
-            return startNewGame();
+            return resetGame(false);
         }
         return gameState;
     }
 
-    public GameState startNewGame() {
-        gameState = new GameState();
+    public GameState resetGame(boolean keepPlayers) {
         cardService.resetCards();
-        playerService.resetPlayers();
+        if (gameState == null || !keepPlayers) {
+            gameState = new GameState();
+            playerService.resetPlayers();
+        }
         return gameState;
     }
 
@@ -105,8 +109,8 @@ public class GameStateService {
         return getGameState().isGameStarted() && !gameState.isGameOver();
     }
 
-    public GameState startGame() {
-        GameState gameState = getGameState();
+    public void startGame() {
+        GameState gameState = resetGame(true);
         int numPlayers = gameState.getPlayers().size();
         if (numPlayers < 4 || numPlayers > 9) {
             throw new UnsupportedOperationException("Number of players must be between 4 and 9, inclusive");
@@ -125,7 +129,12 @@ public class GameStateService {
         gameState.setResearchTeamBidTrack(confluenceService.getBidTrack(numPlayers, BidTrackType.ResearchTeam));
         gameState.setAvailableResearchTeams(cardService.drawIds(numPlayers, CardType.ResearchTeam));
 
-        return gameState;
+        for (Player player : gameState.getPlayers().values()) {
+            playerService.resetPlayerWithoutSocket(player.getId());
+        }
+
+        gameStateSocketService.updateGameStateWholesale(gameState);
+        cardSocketService.updateAllCards(cardService.getCurrentGameCards());
     }
 
     public void advancePhase() {
@@ -145,7 +154,7 @@ public class GameStateService {
             economyService.resolveEconomyStep();
         }
 
-        msgBuilder.isGameOver(gameState.isGameOver());
+        msgBuilder.gameOver(gameState.isGameOver());
         gameStateSocketService.updateGameState(msgBuilder.build());
     }
 

@@ -10,4 +10,7 @@ public class OutgoingSocketTopics {
     public static final String TOPIC_REMOVED_ACTIVE_CARD = "/topic/removeActiveCard";
     public static final String TOPIC_ERROR = "/topic/error";
     public static final String TOPIC_UPDATE_CARD = "/topic/updateCard";
+    public static final String TOPIC_UPDATE_GAME_STATE_WHOLESALE = "/topic/updateGameStateWholesale";
+    public static final String TOPIC_UPDATE_ALL_CARDS = "/topic/updateAllCards";
+
 }

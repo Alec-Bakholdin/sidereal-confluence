@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -26,11 +27,11 @@ public class Player {
 
     @JsonProperty("cards")
     public List<String> cardIds() {
-        return cards.stream().map(Card::getId).collect(Collectors.toList());
+        return cards != null ? cards.stream().map(Card::getId).collect(Collectors.toList()) : new ArrayList<>();
     }
 
     @JsonProperty("inactiveCards")
     public List<String> inactiveCardIds() {
-        return inactiveCards.stream().map(Card::getId).collect(Collectors.toList());
+        return inactiveCards != null ? inactiveCards.stream().map(Card::getId).collect(Collectors.toList()) : new ArrayList<>();
     }
 }

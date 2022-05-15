@@ -27,7 +27,7 @@ public class ConverterCardCardService {
         numberOfRaceInstancesInGame.clear();
     }
 
-    protected Map<String, ConverterCard> loadRaceConverterCards(RaceName race, boolean startingCards) {
+    protected Map<String, ConverterCard> loadRaceConverterCards(RaceName race) {
         List<ConverterCard> raceConverters = loadConverterCardsForRace(race);
 
         // basically, when adding duplicate races, we need to add a suffix _1, _2, etc. to the end of the ids
@@ -37,9 +37,7 @@ public class ConverterCardCardService {
         String occurrenceSuffix = raceOccurrenceInGame == 0 ? "" : String.format("_%s", raceOccurrenceInGame);
         raceConverters.forEach(card -> card.setId(card.getId() + occurrenceSuffix));
 
-        return raceConverters.stream()
-                .filter(converter -> converter.isStarting() == startingCards)
-                .collect(Collectors.toMap(Card::getId, card -> card));
+        return raceConverters.stream().collect(Collectors.toMap(Card::getId, card -> card));
     }
 
     private int getNumberOfTimesRaceHasBeenAddedToGame(RaceName race) {

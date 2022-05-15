@@ -1,5 +1,6 @@
 package com.bakholdin.siderealconfluence.service;
 
+import com.bakholdin.siderealconfluence.model.GameState;
 import com.bakholdin.siderealconfluence.service.model.OutgoingSocketTopics;
 import com.bakholdin.siderealconfluence.service.model.UpdateGameStateServerMessage;
 import lombok.RequiredArgsConstructor;
@@ -16,5 +17,10 @@ public class GameStateSocketService {
     public void updateGameState(UpdateGameStateServerMessage message) {
         log.info(message);
         simpMessagingTemplate.convertAndSend(OutgoingSocketTopics.TOPIC_UPDATE_GAME_STATE, message);
+    }
+
+    public void updateGameStateWholesale(GameState gameState) {
+        log.info("Wholesale gameState update");
+        simpMessagingTemplate.convertAndSend(OutgoingSocketTopics.TOPIC_UPDATE_GAME_STATE_WHOLESALE, gameState);
     }
 }

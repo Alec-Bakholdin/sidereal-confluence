@@ -32,14 +32,22 @@ public class PlayerService {
                 .id(UUID.randomUUID())
                 .name(name)
                 .race(race)
-                .resources(DataUtils.deepCopy(race.getStartingResources()))
-                .donations(new Resources())
-                .cards(cardService.getStartingCards(race))
-                .inactiveCards(cardService.getInactiveCards(race))
                 .build();
 
         players.put(newPlayer.getId(), newPlayer);
         return newPlayer;
+    }
+
+    public void resetPlayerWithoutSocket(UUID playerId) {
+        if (!contains(playerId)) {
+            throw new IllegalArgumentException("Player does not exist");
+        }
+        Player player = get(playerId);
+        Race race = player.getRace();
+        player.setInactiveCards(cardService.getInactiveCards(race));
+        player.setCards(cardService.getStartingCards(player.getInactiveCards(), race));
+        player.setResources(race.getStartingResources());
+        player.setDonations(new Resources());
     }
 
     public void acquireCardFromInactiveCards(UUID playerId, String cardId) {
@@ -115,7 +123,7 @@ public class PlayerService {
 
     public void updatePlayerResources(UUID playerId, Resources cost, Resources output, Resources donations) {
         if (!contains(playerId)) {
-            return;
+            throw new IllegalArgumentException("Player does not exist");
         }
         Player player = get(playerId);
         player.getResources().subtract(cost);
@@ -126,9 +134,26 @@ public class PlayerService {
 
     public void updatePlayerResources(String playerId, Resources cost, Resources output, Resources donations) {
         if (playerId == null) {
-            return;
+            throw new IllegalArgumentException("Player id cannot be null");
         }
         updatePlayerResources(UUID.fromString(playerId), cost, output, donations);
+    }
+
+    public void setPlayerResources(UUID playerId, Resources total, Resources donations) {
+        if (!contains(playerId)) {
+            throw new IllegalArgumentException("Player does not exist");
+        }
+        Player player = get(playerId);
+        player.setResources(total);
+        player.setDonations(donations);
+        playerSocketService.notifyClientOfUpdatedResources(player);
+    }
+
+    public void setPlayerResources(String playerId, Resources resources, Resources donations) {
+        if (playerId == null) {
+            throw new IllegalArgumentException("Player id cannot be null");
+        }
+        setPlayerResources(UUID.fromString(playerId), resources, donations);
     }
 
     public void transferCard(String currentOwnerPlayerId, String newOwnerPlayerId, String cardId) {

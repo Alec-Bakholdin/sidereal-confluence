@@ -41,7 +41,7 @@ public class InitializationController {
 
     @PostMapping("/startNewGame")
     public GameState startNewGame() {
-        return gameStateService.startNewGame();
+        return gameStateService.resetGame(false);
     }
 
     @GetMapping("/allCards")

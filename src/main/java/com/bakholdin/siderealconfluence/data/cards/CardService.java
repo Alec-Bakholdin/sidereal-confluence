@@ -26,8 +26,8 @@ public class CardService {
 
     private Map<String, Card> gameCards = new HashMap<>();
 
-    private List<Card> loadRaceConverterCards(RaceName raceName, boolean startingCards) {
-        Map<String, ConverterCard> raceConverterCards = converterCardCardService.loadRaceConverterCards(raceName, startingCards);
+    private List<Card> loadRaceConverterCards(RaceName raceName) {
+        Map<String, ConverterCard> raceConverterCards = converterCardCardService.loadRaceConverterCards(raceName);
         gameCards.putAll(raceConverterCards);
         return raceConverterCards.values().stream().map(card -> (Card) card).collect(Collectors.toList());
     }
@@ -56,15 +56,17 @@ public class CardService {
         return draw(n, cardType).stream().map(Card::getId).collect(Collectors.toList());
     }
 
-    public List<Card> getStartingCards(Race race) {
-        List<Card> startingCards = loadRaceConverterCards(race.getName(), true);
+    public List<Card> getStartingCards(List<Card> inactiveCards, Race race) {
+        List<Card> startingCards = inactiveCards.stream()
+                .filter(card -> card.getType() == CardType.ConverterCard && ((ConverterCard) card).isStarting())
+                .collect(Collectors.toList());
         startingCards.addAll(draw(race.getStartingColonies(), CardType.Colony));
         startingCards.addAll(draw(race.getStartingResearchTeams(), CardType.ResearchTeam));
         return startingCards;
     }
 
     public List<Card> getInactiveCards(Race race) {
-        return loadRaceConverterCards(race.getName(), false);
+        return loadRaceConverterCards(race.getName());
     }
 
     public Map<String, Card> resetCards() {

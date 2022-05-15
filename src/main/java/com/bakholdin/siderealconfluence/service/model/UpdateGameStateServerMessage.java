@@ -14,8 +14,8 @@ import java.util.List;
 public class UpdateGameStateServerMessage {
     private Integer turn;
     private Phase phase;
-    private Boolean isGameOver;
-    private Boolean isGameStarted;
+    private Boolean gameOver;
+    private Boolean gameStarted;
 
     private List<Confluence> confluenceList;
     private List<String> availableColonies;
