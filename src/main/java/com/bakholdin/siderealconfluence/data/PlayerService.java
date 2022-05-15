@@ -63,7 +63,7 @@ public class PlayerService {
         setReadyStatus(UUID.fromString(playerId), ready);
     }
 
-    public void setPlayerBid(UUID playerId, int colonyBid, int researchTeamBid) {
+    public void setPlayerBid(UUID playerId, double colonyBid, double researchTeamBid) {
         ValidationUtils.validatePlayerExists(this, playerId);
         Player player = get(playerId);
         PlayerBid playerBid = PlayerBid.builder()
@@ -75,7 +75,7 @@ public class PlayerService {
         player.setPlayerBid(playerBid);
     }
 
-    public void setPlayerBid(String playerId, int colonyBid, int researchTeamBid) {
+    public void setPlayerBid(String playerId, double colonyBid, double researchTeamBid) {
         ValidationUtils.validateNonNullPlayerId(playerId);
         setPlayerBid(UUID.fromString(playerId), colonyBid, researchTeamBid);
     }

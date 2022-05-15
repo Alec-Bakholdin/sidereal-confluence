@@ -139,7 +139,7 @@ public class ValidationUtils {
         int index = cardIdList.indexOf(card.getId());
         int minNecessaryShips = bidTrack.get(index);
         PlayerBid playerBid = player.getPlayerBid();
-        int bidShips = isColonyTrack ? playerBid.getColonyBid() : playerBid.getResearchTeamBid();
+        double bidShips = isColonyTrack ? playerBid.getColonyBid() : playerBid.getResearchTeamBid();
         if (bidShips < minNecessaryShips) {
             throw new IllegalArgumentException("Player bid is too low");
         }

@@ -104,7 +104,8 @@ public class CardActionService {
         ValidationUtils.validatePlayerExists(playerService, playerId);
         Player player = playerService.get(playerId);
         PlayerBid playerBid = player.getPlayerBid();
-        int shipCost = gameState.getActiveBidTrack() == BidTrackType.Colony ? playerBid.getColonyBid() : playerBid.getResearchTeamBid();
+        double bid = gameState.getActiveBidTrack() == BidTrackType.Colony ? playerBid.getColonyBid() : playerBid.getResearchTeamBid();
+        int shipCost = (int) Math.round(Math.ceil(bid));
         Resources cost = Resources.builder().ships(shipCost).build();
         ValidationUtils.validatePlayerHasEnoughResources(player, cost);
         ValidationUtils.validatePlayerBidHighEnough(gameState, player, card);

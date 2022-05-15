@@ -9,6 +9,6 @@ import java.util.UUID;
 @Builder
 public class PlayerBid {
     private UUID playerId;
-    private int colonyBid;
-    private int researchTeamBid;
+    private double colonyBid;
+    private double researchTeamBid;
 }
