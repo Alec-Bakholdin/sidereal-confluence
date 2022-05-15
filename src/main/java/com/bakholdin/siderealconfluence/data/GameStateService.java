@@ -6,6 +6,7 @@ import com.bakholdin.siderealconfluence.model.Confluence;
 import com.bakholdin.siderealconfluence.model.GameState;
 import com.bakholdin.siderealconfluence.model.Phase;
 import com.bakholdin.siderealconfluence.model.Player;
+import com.bakholdin.siderealconfluence.model.PlayerBid;
 import com.bakholdin.siderealconfluence.model.RaceName;
 import com.bakholdin.siderealconfluence.model.cards.Card;
 import com.bakholdin.siderealconfluence.model.cards.CardType;
@@ -16,7 +17,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Log4j2
 @Service
@@ -98,6 +101,10 @@ public class GameStateService {
 
     public void setPlayerReadyStatus(String playerId, boolean ready) {
         GameState gameState = getGameState();
+        // don't update ready status if currently resolving bids
+        if (gameState.getActiveBidTrack() != null) {
+            return;
+        }
         playerService.setReadyStatus(playerId, ready);
         for (Player player : gameState.getPlayers().values()) {
             if (!player.isReady()) {
@@ -105,7 +112,60 @@ public class GameStateService {
             }
         }
         // only if all players are ready
-        advancePhase();
+        if (gameState.getPhase() == Phase.Confluence) {
+            List<PlayerBid> playerBids = gameState.getPlayers().values().stream()
+                    .map(Player::getPlayerBid)
+                    .filter(bid -> bid != null && (bid.getColonyBid() > 0 || bid.getResearchTeamBid() > 0))
+                    .collect(Collectors.toList());
+            gameStateSocketService.revealPlayerBids(playerBids);
+            advanceBids();
+        } else {
+            advancePhase();
+        }
+    }
+
+    public void advanceBids() {
+        GameState gameState = getGameState();
+
+        if (gameState.getActiveBidder() != null) {
+            Player player = playerService.get(gameState.getActiveBidder());
+            ValidationUtils.validateNonNullBidTrack(gameState.getActiveBidTrack());
+            boolean isColonyTrack = gameState.getActiveBidTrack() == BidTrackType.Colony;
+            if (isColonyTrack) {
+                playerService.setPlayerBid(player.getId(), 0, player.getPlayerBid().getResearchTeamBid());
+            } else {
+                playerService.setPlayerBid(player.getId(), player.getPlayerBid().getColonyBid(), 0);
+            }
+        }
+
+        List<PlayerBid> playerBids = gameState.getPlayers().values().stream()
+                .map(Player::getPlayerBid)
+                .filter(bid -> bid != null && (bid.getColonyBid() > 0 || bid.getResearchTeamBid() > 0))
+                .collect(Collectors.toList());
+        List<PlayerBid> colonyBids = playerBids.stream()
+                .filter(bid -> bid.getColonyBid() > 0)
+                .sorted(Comparator.comparing(PlayerBid::getColonyBid).reversed())
+                .collect(Collectors.toList());
+        List<PlayerBid> researchTeamBids = playerBids.stream()
+                .filter(bid -> bid.getResearchTeamBid() > 0)
+                .sorted(Comparator.comparing(PlayerBid::getResearchTeamBid).reversed())
+                .collect(Collectors.toList());
+        if (colonyBids.size() > 0) {
+            gameState.setActiveBidTrack(BidTrackType.Colony);
+            gameState.setActiveBidder(colonyBids.get(0).getPlayerId());
+            colonyBids.remove(0);
+        } else if (researchTeamBids.size() > 0) {
+            gameState.setActiveBidTrack(BidTrackType.ResearchTeam);
+            gameState.setActiveBidder(researchTeamBids.get(0).getPlayerId());
+            researchTeamBids.remove(0);
+        } else {
+            advancePhase();
+        }
+        UpdateGameStateServerMessage msg = UpdateGameStateServerMessage.builder()
+                .activeBidTrack(gameState.getActiveBidTrack())
+                .activeBidder(gameState.getActiveBidder())
+                .build();
+        gameStateSocketService.updateGameState(msg);
     }
 
     public void startGame() {
@@ -142,12 +202,8 @@ public class GameStateService {
         msgBuilder.phase(gameState.getPhase());
 
         if (gameState.getPhase() == Phase.Trade) {
-            advanceTurn(gameState);
-            msgBuilder.turn(gameState.getTurn());
-            msgBuilder.availableColonies(gameState.getAvailableColonies());
-            msgBuilder.availableResearchTeams(gameState.getAvailableResearchTeams());
-            msgBuilder.pendingResearches(gameState.getPendingResearches());
-        } else if (gameState.getPhase() == Phase.Confluence) {
+            advanceTurn(gameState, msgBuilder);
+        } else if (gameState.getPhase() == Phase.Economy) {
             economyService.resolveEconomyStep();
         }
         for (Player player : gameState.getPlayers().values()) {
@@ -158,15 +214,24 @@ public class GameStateService {
         gameStateSocketService.updateGameState(msgBuilder.build());
     }
 
-    private void advanceTurn(GameState gameState) {
+    private void advanceTurn(GameState gameState, UpdateGameStateServerMessage.Builder msgBuilder) {
         if (gameState.getTurn() == 6) {
             gameState.setGameOver(true);
+            msgBuilder.gameOver(true);
             return;
         }
 
         gameState.setTurn(gameState.getTurn() + 1);
+        msgBuilder.turn(gameState.getTurn());
+
         resetBidTrack(gameState.getAvailableColonies(), gameState.getColonyBidTrack(), BidTrackType.Colony);
+        msgBuilder.availableColonies(gameState.getAvailableColonies());
+        msgBuilder.colonyBidTrack(gameState.getColonyBidTrack());
+
         resetBidTrack(gameState.getAvailableResearchTeams(), gameState.getResearchTeamBidTrack(), BidTrackType.ResearchTeam);
+        msgBuilder.availableResearchTeams(gameState.getAvailableResearchTeams());
+        msgBuilder.researchTeamBidTrack(gameState.getResearchTeamBidTrack());
+
         for (String pendingTech : gameState.getPendingResearches()) {
             for (Player player : gameState.getPlayers().values()) {
                 try {
@@ -177,6 +242,12 @@ public class GameStateService {
             }
         }
         gameState.getPendingResearches().clear();
+        msgBuilder.pendingResearches(gameState.getPendingResearches());
+
+        gameState.setActiveBidder(null);
+        msgBuilder.activeBidder(null);
+        gameState.setActiveBidTrack(null);
+        msgBuilder.activeBidTrack(null);
     }
 
     private void resetBidTrack(List<String> availableCards, List<Integer> bidTrack, BidTrackType bidTrackType) {
@@ -208,5 +279,11 @@ public class GameStateService {
             default:
                 throw new IllegalArgumentException("Unknown phase: " + phase);
         }
+    }
+
+    public void skipBid() {
+        ValidationUtils.validatePhase(this, Phase.Confluence);
+        ValidationUtils.validateNonNullBidTrack(getGameState().getActiveBidTrack());
+        advanceBids();
     }
 }

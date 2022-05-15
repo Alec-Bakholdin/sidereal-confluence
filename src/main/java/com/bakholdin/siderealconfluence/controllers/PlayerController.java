@@ -1,11 +1,14 @@
 package com.bakholdin.siderealconfluence.controllers;
 
 import com.bakholdin.siderealconfluence.controllers.model.IncomingSocketTopics;
+import com.bakholdin.siderealconfluence.controllers.model.SetPlayerBidsClientMessage;
 import com.bakholdin.siderealconfluence.controllers.model.TransferCardClientMessage;
 import com.bakholdin.siderealconfluence.controllers.model.UpdateEconomyActionsClientMessage;
 import com.bakholdin.siderealconfluence.controllers.model.UpdatePlayerResourcesClientMessage;
 import com.bakholdin.siderealconfluence.data.EconomyService;
+import com.bakholdin.siderealconfluence.data.GameStateService;
 import com.bakholdin.siderealconfluence.data.PlayerService;
+import com.bakholdin.siderealconfluence.model.Phase;
 import com.bakholdin.siderealconfluence.model.Player;
 import com.bakholdin.siderealconfluence.service.PlayerSocketService;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +23,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class PlayerController {
     private final PlayerService playerService;
+    private final GameStateService gameStateService;
     private final PlayerSocketService playerSocketService;
     private final EconomyService economyService;
 
@@ -55,4 +59,11 @@ public class PlayerController {
         playerService.transferCard(currentOwner, newOwner, cardId);
     }
 
+    @MessageMapping(IncomingSocketTopics.APP_SET_PLAYER_BIDS)
+    public void setPlayerBids(SetPlayerBidsClientMessage payload) {
+        if (gameStateService.getGameState().getPhase() != Phase.Confluence) {
+            throw new IllegalArgumentException("Can't set bids in this phase");
+        }
+        playerService.setPlayerBid(payload.getPlayerId(), payload.getColonyBid(), payload.getResearchTeamBid());
+    }
 }

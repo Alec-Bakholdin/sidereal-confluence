@@ -16,7 +16,7 @@ public class GameState {
     private boolean isGameOver = false;
 
     private List<Confluence> confluenceList = new ArrayList<>();
-    
+
     private List<String> availableColonies = new ArrayList<>();
     private List<String> availableResearchTeams = new ArrayList<>();
 
@@ -25,5 +25,7 @@ public class GameState {
 
     private List<String> pendingResearches = new ArrayList<>();
 
+    private UUID activeBidder;
+    private BidTrackType activeBidTrack;
     private Map<UUID, Player> players = new HashMap<>();
 }

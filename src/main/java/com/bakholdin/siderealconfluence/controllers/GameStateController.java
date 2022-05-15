@@ -33,4 +33,9 @@ public class GameStateController {
     public void updatePlayerReadyStatus(UpdatePlayerReadyStatusClientMessage message) {
         gameStateService.setPlayerReadyStatus(message.getPlayerId(), message.isReady());
     }
+
+    @MessageMapping(IncomingSocketTopics.APP_SKIP_BID)
+    public void skipBid() {
+        gameStateService.skipBid();
+    }
 }

@@ -1,10 +1,12 @@
 package com.bakholdin.siderealconfluence.data;
 
 import com.bakholdin.siderealconfluence.data.cards.CardService;
+import com.bakholdin.siderealconfluence.model.BidTrackType;
 import com.bakholdin.siderealconfluence.model.Converter;
 import com.bakholdin.siderealconfluence.model.GameState;
 import com.bakholdin.siderealconfluence.model.Phase;
 import com.bakholdin.siderealconfluence.model.Player;
+import com.bakholdin.siderealconfluence.model.PlayerBid;
 import com.bakholdin.siderealconfluence.model.Resources;
 import com.bakholdin.siderealconfluence.model.cards.Card;
 import com.bakholdin.siderealconfluence.model.cards.CardType;
@@ -97,14 +99,19 @@ public class CardActionService {
         ValidationUtils.validatePhase(gameStateService, Phase.Confluence);
         ValidationUtils.validateCardExists(cardService, cardId);
         GameState gameState = gameStateService.getGameState();
-        if (!gameState.getAvailableColonies().contains(cardId) && !gameState.getAvailableResearchTeams().contains(cardId)) {
-            throw new IllegalArgumentException("Card with id " + cardId + " is not available in confluence bid track");
-        }
         Card card = cardService.get(cardId);
-        ValidationUtils.validateCardType(CardType.Colony, CardType.ResearchTeam, card);
+        ValidationUtils.validateConfluenceCardPresentInProperTrack(gameState, card);
         ValidationUtils.validatePlayerExists(playerService, playerId);
+        Player player = playerService.get(playerId);
+        PlayerBid playerBid = player.getPlayerBid();
+        int shipCost = gameState.getActiveBidTrack() == BidTrackType.Colony ? playerBid.getColonyBid() : playerBid.getResearchTeamBid();
+        Resources cost = Resources.builder().ships(shipCost).build();
+        ValidationUtils.validatePlayerHasEnoughResources(player, cost);
+        ValidationUtils.validatePlayerBidHighEnough(gameState, player, card);
 
         gameStateService.removeConfluenceCard(cardId);
         playerService.acquireCard(playerId, cardId);
+        playerService.updatePlayerResources(playerId, cost, null, null);
+        gameStateService.advanceBids();
     }
 }

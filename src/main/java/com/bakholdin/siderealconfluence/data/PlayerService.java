@@ -2,6 +2,7 @@ package com.bakholdin.siderealconfluence.data;
 
 import com.bakholdin.siderealconfluence.data.cards.CardService;
 import com.bakholdin.siderealconfluence.model.Player;
+import com.bakholdin.siderealconfluence.model.PlayerBid;
 import com.bakholdin.siderealconfluence.model.Race;
 import com.bakholdin.siderealconfluence.model.RaceName;
 import com.bakholdin.siderealconfluence.model.Resources;
@@ -42,6 +43,8 @@ public class PlayerService {
         ValidationUtils.validatePlayerExists(this, playerId);
         Player player = get(playerId);
         Race race = player.getRace();
+        player.setPlayerBid(null);
+        player.setReady(false);
         player.setInactiveCards(cardService.getInactiveCards(race));
         player.setCards(cardService.getStartingCards(player.getInactiveCards(), race));
         player.setResources(race.getStartingResources());
@@ -58,6 +61,33 @@ public class PlayerService {
     public void setReadyStatus(String playerId, boolean ready) {
         ValidationUtils.validateNonNullPlayerId(playerId);
         setReadyStatus(UUID.fromString(playerId), ready);
+    }
+
+    public void setPlayerBid(UUID playerId, int colonyBid, int researchTeamBid) {
+        ValidationUtils.validatePlayerExists(this, playerId);
+        Player player = get(playerId);
+        PlayerBid playerBid = PlayerBid.builder()
+                .playerId(player.getId())
+                .colonyBid(colonyBid)
+                .researchTeamBid(researchTeamBid)
+                .build();
+        ValidationUtils.validatePlayerHasEnoughShips(this, playerBid);
+        player.setPlayerBid(playerBid);
+    }
+
+    public void setPlayerBid(String playerId, int colonyBid, int researchTeamBid) {
+        ValidationUtils.validateNonNullPlayerId(playerId);
+        setPlayerBid(UUID.fromString(playerId), colonyBid, researchTeamBid);
+    }
+
+    public void setPlayerBid(UUID playerId, PlayerBid playerBid) {
+        ValidationUtils.validatePlayerExists(this, playerId);
+        get(playerId).setPlayerBid(playerBid);
+    }
+
+    public void setPlayerBid(String playerId, PlayerBid playerBid) {
+        ValidationUtils.validateNonNullPlayerId(playerId);
+        setPlayerBid(UUID.fromString(playerId), playerBid);
     }
 
     public void acquireCardFromInactiveCards(UUID playerId, String cardId) {
@@ -92,6 +122,7 @@ public class PlayerService {
         ValidationUtils.validatePlayerExists(this, playerId);
         if (ownsCard(playerId, cardId)) {
             log.warn("Player {} already has card {}", playerId, cardId);
+            return;
         }
         Player player = get(playerId);
         Card card = cardService.get(cardId);

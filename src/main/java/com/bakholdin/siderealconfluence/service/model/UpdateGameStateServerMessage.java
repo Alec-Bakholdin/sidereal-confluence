@@ -1,5 +1,6 @@
 package com.bakholdin.siderealconfluence.service.model;
 
+import com.bakholdin.siderealconfluence.model.BidTrackType;
 import com.bakholdin.siderealconfluence.model.Confluence;
 import com.bakholdin.siderealconfluence.model.Phase;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -7,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.util.List;
+import java.util.UUID;
 
 @Data
 @Builder(builderClassName = "Builder")
@@ -24,4 +26,9 @@ public class UpdateGameStateServerMessage {
     private List<Integer> researchTeamBidTrack;
 
     private List<String> pendingResearches;
+
+    @JsonInclude
+    private UUID activeBidder;
+    @JsonInclude
+    private BidTrackType activeBidTrack;
 }

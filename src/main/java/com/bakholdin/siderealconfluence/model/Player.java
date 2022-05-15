@@ -21,6 +21,8 @@ public class Player {
     private Race race;
     private boolean isReady;
     @JsonIgnore
+    private PlayerBid playerBid;
+    @JsonIgnore
     private List<Card> cards;
     @JsonIgnore
     private List<Card> inactiveCards;

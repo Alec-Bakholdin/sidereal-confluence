@@ -11,4 +11,6 @@ public class IncomingSocketTopics {
     public static final String APP_UPGRADE_COLONY = "/upgradeColony";
     public static final String APP_UPGRADE_CONVERTER_CARD = "/upgradeConverterCard";
     public static final String APP_ACQUIRE_CONFLUENCE_CARD = "/acquireConfluenceCard";
+    public static final String APP_SET_PLAYER_BIDS = "/setBids";
+    public static final String APP_SKIP_BID = "/skipBid";
 }
