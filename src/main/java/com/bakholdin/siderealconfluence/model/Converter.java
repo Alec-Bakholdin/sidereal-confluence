@@ -1,8 +1,6 @@
 package com.bakholdin.siderealconfluence.model;
 
 
-import com.bakholdin.siderealconfluence.model.side_effects.SideEffect;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
@@ -12,8 +10,6 @@ public class Converter {
     private Resources input = new Resources();
     private Resources output = new Resources();
     private Resources donations = new Resources();
-    @JsonIgnore
-    private SideEffect sideEffect;
 
     private Phase phase;
 }
