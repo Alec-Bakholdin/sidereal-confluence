@@ -5,9 +5,8 @@ import com.bakholdin.siderealconfluence.model.cards.Card;
 import com.bakholdin.siderealconfluence.service.model.AcquireCardServerMessage;
 import com.bakholdin.siderealconfluence.service.model.OutgoingSocketTopics;
 import com.bakholdin.siderealconfluence.service.model.RemoveActiveCardServerMessage;
-import com.bakholdin.siderealconfluence.service.model.TransferCardServerMessage;
 import com.bakholdin.siderealconfluence.service.model.UpdatePlayerReadyStatusServerMessage;
-import com.bakholdin.siderealconfluence.service.model.UpdatePlayerResourcesServerMessage;
+import com.bakholdin.siderealconfluence.service.model.UpdatePlayerServerMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
@@ -21,23 +20,30 @@ public class PlayerSocketService {
 
 
     public void notifyClientOfUpdatedResources(Player player) {
-        UpdatePlayerResourcesServerMessage msg = UpdatePlayerResourcesServerMessage.builder()
+        UpdatePlayerServerMessage msg = UpdatePlayerServerMessage.builder()
+                .playerId(player.getId())
                 .resources(player.getResources())
                 .donations(player.getDonations())
-                .playerId(player.getId().toString())
                 .build();
         log.info(msg);
-        simpMessagingTemplate.convertAndSend(OutgoingSocketTopics.TOPIC_PLAYER_UPDATED_RESOURCES, msg);
+        simpMessagingTemplate.convertAndSend(OutgoingSocketTopics.TOPIC_UPDATE_PLAYER, msg);
     }
 
     public void notifyClientOfCardTransfer(Player currentOwner, Player newPlayer, String cardId) {
-        TransferCardServerMessage msg = TransferCardServerMessage.builder()
-                .currentOwnerPlayerId(currentOwner.getId().toString())
-                .newOwnerPlayerId(newPlayer.getId().toString())
-                .cardId(cardId)
+        UpdatePlayerServerMessage currentOwnerMsg = UpdatePlayerServerMessage.builder()
+                .playerId(currentOwner.getId())
+                .cards(currentOwner.cardIds())
+                .inactiveCards(currentOwner.inactiveCardIds())
                 .build();
-        log.info(msg);
-        simpMessagingTemplate.convertAndSend(OutgoingSocketTopics.TOPIC_TRANSFER_CARD, msg);
+        log.info(currentOwnerMsg);
+        simpMessagingTemplate.convertAndSend(OutgoingSocketTopics.TOPIC_UPDATE_PLAYER, currentOwnerMsg);
+        UpdatePlayerServerMessage newPlayerMsg = UpdatePlayerServerMessage.builder()
+                .playerId(newPlayer.getId())
+                .cards(newPlayer.cardIds())
+                .inactiveCards(newPlayer.inactiveCardIds())
+                .build();
+        log.info(newPlayerMsg);
+        simpMessagingTemplate.convertAndSend(OutgoingSocketTopics.TOPIC_UPDATE_PLAYER, newPlayerMsg);
     }
 
     public void notifyClientOfAcquiredCard(Player player, Card card) {

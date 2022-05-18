@@ -13,4 +13,5 @@ public class OutgoingSocketTopics {
     public static final String TOPIC_UPDATE_ALL_CARDS = "/topic/updateAllCards";
     public static final String TOPIC_UPDATE_READY_STATUS = "/topic/updateReadyStatus";
     public static final String TOPIC_REVEAL_BIDS = "/topic/revealBids";
+    public static final String TOPIC_UPDATE_PLAYER = "/topic/updatePlayer";
 }

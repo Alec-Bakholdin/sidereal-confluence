@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -47,6 +48,7 @@ public class PlayerService {
         player.setReady(false);
         player.setInactiveCards(cardService.getInactiveCards(race));
         player.setCards(cardService.getStartingCards(player.getInactiveCards(), race));
+        player.setResearchedTechnologies(new ArrayList<>());
         player.setResources(DataUtils.deepCopy(race.getStartingResources()));
         player.setDonations(new Resources());
     }
@@ -112,13 +114,27 @@ public class PlayerService {
     }
 
     public void tryAcquireTechnology(UUID playerId, String technology) {
-        ValidationUtils.validatePlayerExists(this, playerId);
         Player player = get(playerId);
         Card newConverterCard = player.getInactiveCards().stream()
                 .filter(c -> c.getType() == CardType.ConverterCard && c.getName().equals(technology))
                 .findFirst()
                 .orElseThrow(() -> new UnsupportedOperationException("No converter card found for technology " + technology));
         acquireCardFromInactiveCards(playerId, newConverterCard.getId());
+    }
+
+    public void tryAcquireTechnology(String playerId, String technology) {
+        ValidationUtils.validateNonNullPlayerId(playerId);
+        tryAcquireTechnology(UUID.fromString(playerId), technology);
+    }
+
+    public void addResearchedTechnology(UUID playerId, String technology) {
+        Player player = get(playerId);
+        player.getResearchedTechnologies().add(technology);
+    }
+
+    public void addResearchedTechnology(String playerId, String technology) {
+        ValidationUtils.validateNonNullPlayerId(playerId);
+        addResearchedTechnology(UUID.fromString(playerId), technology);
     }
 
     public void acquireCard(UUID playerId, String cardId) {
@@ -232,6 +248,7 @@ public class PlayerService {
     }
 
     public Player get(UUID id) {
+        ValidationUtils.validatePlayerExists(this, id);
         return players.get(id);
     }
 

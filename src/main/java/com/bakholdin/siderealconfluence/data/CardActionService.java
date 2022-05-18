@@ -53,7 +53,16 @@ public class CardActionService {
         playerService.removeCardFromActive(playerId, cardId);
 
         // add researched technology to pending researches
-        gameStateService.addResearchedTechnology(researchTeam.getResultingTechnology());
+        if (player.getRace().getName() != RaceName.Yengii) {
+            gameStateService.addResearchedTechnology(researchTeam.getResultingTechnology());
+        }
+    }
+
+    public void leaseTechnologyToUser(String leasingPlayerId, String receivingPlayerId, String technologyName) {
+        ValidationUtils.validatePlayerExists(playerService, leasingPlayerId);
+        ValidationUtils.validatePlayerExists(playerService, receivingPlayerId);
+
+        playerService.tryAcquireTechnology(receivingPlayerId, technologyName);
     }
 
     public void upgradeColony(String playerId, String cardId) {

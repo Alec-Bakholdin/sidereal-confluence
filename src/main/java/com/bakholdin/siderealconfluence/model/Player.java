@@ -20,6 +20,7 @@ public class Player {
     private Resources donations;
     private Race race;
     private boolean isReady;
+    private List<String> researchedTechnologies;
     @JsonIgnore
     private PlayerBid playerBid;
     @JsonIgnore
