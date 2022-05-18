@@ -20,13 +20,6 @@ public class ResearchTeam extends Card {
     private int points;
     private boolean isResearched = false;
 
-    public void flip() {
-        if (isResearched) {
-            return;
-        }
-        isResearched = true;
-    }
-
     @Override
     public List<Converter> activeConverters() {
         throw new UnsupportedOperationException("Research teams do not have active converters");

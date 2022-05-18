@@ -11,7 +11,5 @@ public abstract class Card {
     private String name;
     private CardType type;
 
-    public abstract void flip();
-
     public abstract List<Converter> activeConverters();
 }

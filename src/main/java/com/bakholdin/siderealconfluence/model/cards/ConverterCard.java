@@ -29,11 +29,6 @@ public class ConverterCard extends Card {
     private List<Converter> backConverters;
 
     @Override
-    public void flip() {
-        isUpgraded = true;
-    }
-
-    @Override
     public List<Converter> activeConverters() {
         if (isUpgraded) {
             return backConverters;

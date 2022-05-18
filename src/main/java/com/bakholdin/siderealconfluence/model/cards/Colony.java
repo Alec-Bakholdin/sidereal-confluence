@@ -23,11 +23,6 @@ public class Colony extends Card {
     private ColonyType backType;
 
     @Override
-    public void flip() {
-        isUpgraded = true;
-    }
-
-    @Override
     public List<Converter> activeConverters() {
         if (isUpgraded) {
             return List.of(upgradeConverter);
