@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:h2:./data/sidereal_confluence;AUTO_SERVER=TRUE
+    username: sidereal-confluence
+    password: password
+    driver-class-name: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+  session:
+    jdbc:
+      initialize-schema: always

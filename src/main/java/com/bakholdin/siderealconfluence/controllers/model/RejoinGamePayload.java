@@ -1,6 +1,6 @@
 package com.bakholdin.siderealconfluence.controllers.model;
 
-import com.bakholdin.siderealconfluence.model.RaceName;
+import com.bakholdin.siderealconfluence.model.RaceName1;
 import lombok.Builder;
 import lombok.Data;
 
@@ -9,5 +9,5 @@ import lombok.Data;
 public class RejoinGamePayload {
     private String playerId;
     private String playerName;
-    private RaceName raceName;
+    private RaceName1 raceName;
 }

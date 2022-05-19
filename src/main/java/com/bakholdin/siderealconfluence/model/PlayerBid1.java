@@ -7,7 +7,7 @@ import java.util.UUID;
 
 @Data
 @Builder
-public class PlayerBid {
+public class PlayerBid1 {
     private UUID playerId;
     private double colonyBid;
     private double researchTeamBid;

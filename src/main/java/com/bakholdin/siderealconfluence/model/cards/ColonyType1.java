@@ -1,6 +1,6 @@
 package com.bakholdin.siderealconfluence.model.cards;
 
-public enum ColonyType {
+public enum ColonyType1 {
     Desert,
     Ice,
     Jungle,

@@ -1,12 +1,12 @@
 package com.bakholdin.siderealconfluence.data.cards;
 
-import com.bakholdin.siderealconfluence.model.Race;
-import com.bakholdin.siderealconfluence.model.RaceName;
-import com.bakholdin.siderealconfluence.model.cards.Card;
-import com.bakholdin.siderealconfluence.model.cards.CardType;
-import com.bakholdin.siderealconfluence.model.cards.Colony;
-import com.bakholdin.siderealconfluence.model.cards.ConverterCard;
-import com.bakholdin.siderealconfluence.model.cards.ResearchTeam;
+import com.bakholdin.siderealconfluence.model.Race1;
+import com.bakholdin.siderealconfluence.model.RaceName1;
+import com.bakholdin.siderealconfluence.model.cards.Card1;
+import com.bakholdin.siderealconfluence.model.cards.CardType1;
+import com.bakholdin.siderealconfluence.model.cards.Colony1;
+import com.bakholdin.siderealconfluence.model.cards.ConverterCard1;
+import com.bakholdin.siderealconfluence.model.cards.ResearchTeam1;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -24,56 +24,56 @@ public class CardService {
     private final ConverterCardCardService converterCardCardService;
     private final ResearchTeamCardService researchTeamService;
 
-    private Map<String, Card> gameCards = new HashMap<>();
+    private Map<String, Card1> gameCards = new HashMap<>();
 
-    private List<Card> loadRaceConverterCards(RaceName raceName) {
-        Map<String, ConverterCard> raceConverterCards = converterCardCardService.loadRaceConverterCards(raceName);
+    private List<Card1> loadRaceConverterCards(RaceName1 raceName) {
+        Map<String, ConverterCard1> raceConverterCards = converterCardCardService.loadRaceConverterCards(raceName);
         gameCards.putAll(raceConverterCards);
-        return raceConverterCards.values().stream().map(card -> (Card) card).collect(Collectors.toList());
+        return raceConverterCards.values().stream().map(card -> (Card1) card).collect(Collectors.toList());
     }
 
-    public List<Colony> drawColonies(int n) {
+    public List<Colony1> drawColonies(int n) {
         return colonyCardService.draw(n);
     }
 
-    public List<ResearchTeam> drawResearchTeams(int n) {
+    public List<ResearchTeam1> drawResearchTeams(int n) {
         return researchTeamService.draw(n);
     }
 
-    public List<Card> draw(int n, CardType cardType) {
-        switch (cardType) {
+    public List<Card1> draw(int n, CardType1 cardType1) {
+        switch (cardType1) {
             case Colony:
-                return drawColonies(n).stream().map(card -> (Card) card).collect(Collectors.toList());
+                return drawColonies(n).stream().map(card -> (Card1) card).collect(Collectors.toList());
             case ResearchTeam:
-                return researchTeamService.draw(n).stream().map(card -> (Card) card).collect(Collectors.toList());
+                return researchTeamService.draw(n).stream().map(card -> (Card1) card).collect(Collectors.toList());
             case ConverterCard:
             default:
-                throw new IllegalArgumentException("Invalid card type to draw: " + cardType);
+                throw new IllegalArgumentException("Invalid card type to draw: " + cardType1);
         }
     }
 
-    public List<String> drawIds(int n, CardType cardType) {
-        return draw(n, cardType).stream().map(Card::getId).collect(Collectors.toList());
+    public List<String> drawIds(int n, CardType1 cardType1) {
+        return draw(n, cardType1).stream().map(Card1::getId).collect(Collectors.toList());
     }
 
-    public List<Card> getStartingCards(List<Card> inactiveCards, Race race) {
-        List<Card> startingCards = inactiveCards.stream()
-                .filter(card -> card.getType() == CardType.ConverterCard && ((ConverterCard) card).isStarting())
+    public List<Card1> getStartingCards(List<Card1> inactiveCard1s, Race1 race) {
+        List<Card1> startingCard1s = inactiveCard1s.stream()
+                .filter(card -> card.getType() == CardType1.ConverterCard && ((ConverterCard1) card).isStarting())
                 .collect(Collectors.toList());
-        List<Colony> startingColonies = colonyCardService.draw(race.getStartingColonies());
-        if (race.getName() == RaceName.Caylion) {
+        List<Colony1> startingColonies = colonyCardService.draw(race.getStartingColonies());
+        if (race.getName() == RaceName1.Caylion) {
             startingColonies.forEach(colony -> colony.setDoubledWithCaylion(true));
         }
-        startingCards.addAll(startingColonies);
-        startingCards.addAll(draw(race.getStartingResearchTeams(), CardType.ResearchTeam));
-        return startingCards;
+        startingCard1s.addAll(startingColonies);
+        startingCard1s.addAll(draw(race.getStartingResearchTeams(), CardType1.ResearchTeam));
+        return startingCard1s;
     }
 
-    public List<Card> getInactiveCards(Race race) {
+    public List<Card1> getInactiveCards(Race1 race) {
         return loadRaceConverterCards(race.getName());
     }
 
-    public Map<String, Card> resetCards() {
+    public Map<String, Card1> resetCards() {
         gameCards = new HashMap<>();
 
         converterCardCardService.reset();
@@ -83,14 +83,14 @@ public class CardService {
         return gameCards;
     }
 
-    public Map<String, Card> getCurrentGameCards() {
+    public Map<String, Card1> getCurrentGameCards() {
         if (gameCards == null) {
             return resetCards();
         }
         return gameCards;
     }
 
-    public Card get(String id) {
+    public Card1 get(String id) {
         return getCurrentGameCards().get(id);
     }
 

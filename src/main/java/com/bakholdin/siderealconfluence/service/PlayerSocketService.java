@@ -1,7 +1,7 @@
 package com.bakholdin.siderealconfluence.service;
 
-import com.bakholdin.siderealconfluence.model.Player;
-import com.bakholdin.siderealconfluence.model.cards.Card;
+import com.bakholdin.siderealconfluence.model.Player1;
+import com.bakholdin.siderealconfluence.model.cards.Card1;
 import com.bakholdin.siderealconfluence.service.model.AcquireCardServerMessage;
 import com.bakholdin.siderealconfluence.service.model.OutgoingSocketTopics;
 import com.bakholdin.siderealconfluence.service.model.RemoveActiveCardServerMessage;
@@ -19,7 +19,7 @@ public class PlayerSocketService {
     private final SimpMessagingTemplate simpMessagingTemplate;
 
 
-    public void notifyClientOfUpdatedResources(Player player) {
+    public void notifyClientOfUpdatedResources(Player1 player) {
         UpdatePlayerServerMessage msg = UpdatePlayerServerMessage.builder()
                 .playerId(player.getId())
                 .resources(player.getResources())
@@ -29,7 +29,7 @@ public class PlayerSocketService {
         simpMessagingTemplate.convertAndSend(OutgoingSocketTopics.TOPIC_UPDATE_PLAYER, msg);
     }
 
-    public void notifyClientOfCardTransfer(Player currentOwner, Player newPlayer, String cardId) {
+    public void notifyClientOfCardTransfer(Player1 currentOwner, Player1 newPlayer, String cardId) {
         UpdatePlayerServerMessage currentOwnerMsg = UpdatePlayerServerMessage.builder()
                 .playerId(currentOwner.getId())
                 .cards(currentOwner.cardIds())
@@ -46,25 +46,25 @@ public class PlayerSocketService {
         simpMessagingTemplate.convertAndSend(OutgoingSocketTopics.TOPIC_UPDATE_PLAYER, newPlayerMsg);
     }
 
-    public void notifyClientOfAcquiredCard(Player player, Card card) {
+    public void notifyClientOfAcquiredCard(Player1 player, Card1 card1) {
         AcquireCardServerMessage msg = AcquireCardServerMessage.builder()
                 .playerId(player.getId())
-                .cardId(card.getId())
+                .cardId(card1.getId())
                 .build();
         log.info(msg);
         simpMessagingTemplate.convertAndSend(OutgoingSocketTopics.TOPIC_ACQUIRED_CARD, msg);
     }
 
-    public void notifyClientOfRemovedActiveCard(Player player, Card card) {
+    public void notifyClientOfRemovedActiveCard(Player1 player, Card1 card1) {
         RemoveActiveCardServerMessage msg = RemoveActiveCardServerMessage.builder()
                 .playerId(player.getId())
-                .cardId(card.getId())
+                .cardId(card1.getId())
                 .build();
         log.info(msg);
         simpMessagingTemplate.convertAndSend(OutgoingSocketTopics.TOPIC_REMOVED_ACTIVE_CARD, msg);
     }
 
-    public void notifyClientOfUpdatedReadyStatus(Player player) {
+    public void notifyClientOfUpdatedReadyStatus(Player1 player) {
         UpdatePlayerReadyStatusServerMessage msg = UpdatePlayerReadyStatusServerMessage.builder()
                 .playerId(player.getId())
                 .ready(player.isReady())

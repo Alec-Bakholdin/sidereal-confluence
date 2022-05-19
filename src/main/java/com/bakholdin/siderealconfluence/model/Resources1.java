@@ -13,7 +13,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class Resources implements Serializable {
+public class Resources1 implements Serializable {
     private int green;
     private int white;
     private int brown;
@@ -26,7 +26,7 @@ public class Resources implements Serializable {
     private int ships;
     private int points;
 
-    public void add(Resources resources) {
+    public void add(Resources1 resources) {
         if (resources == null) return;
 
         this.green += resources.getGreen();
@@ -42,7 +42,7 @@ public class Resources implements Serializable {
         this.points += resources.getPoints();
     }
 
-    public void subtract(Resources resources) {
+    public void subtract(Resources1 resources) {
         if (resources == null) return;
 
         this.green -= resources.getGreen();
@@ -58,7 +58,7 @@ public class Resources implements Serializable {
         this.points -= resources.getPoints();
     }
 
-    public boolean canPayFor(Resources cost) {
+    public boolean canPayFor(Resources1 cost) {
         if (cost == null) return true;
 
         return this.green >= cost.getGreen() &&
@@ -80,7 +80,7 @@ public class Resources implements Serializable {
      * @return true if this is a combination of the parent's resources, false otherwise
      * For example, {1 green} is an option of {1 green, 1 white} but not {1 black, 1 octagon}
      */
-    public boolean isAnOptionOf(Resources parent) {
+    public boolean isAnOptionOf(Resources1 parent) {
         if (parent == null) return false;
 
         return this.green == parent.getGreen() ||

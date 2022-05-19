@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class Confluence {
+public class Confluence1 {
     private int turn;
     private int sharingBonus;
     private int yengiiSharingBonus;

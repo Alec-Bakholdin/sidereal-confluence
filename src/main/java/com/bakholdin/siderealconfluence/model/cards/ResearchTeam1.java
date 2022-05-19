@@ -1,7 +1,7 @@
 package com.bakholdin.siderealconfluence.model.cards;
 
-import com.bakholdin.siderealconfluence.model.Converter;
-import com.bakholdin.siderealconfluence.model.Resources;
+import com.bakholdin.siderealconfluence.model.Converter1;
+import com.bakholdin.siderealconfluence.model.Resources1;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -11,17 +11,17 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class ResearchTeam extends Card {
-    private CardType type = CardType.ResearchTeam;
+public class ResearchTeam1 extends Card1 {
+    private CardType1 type = CardType1.ResearchTeam;
 
     private int era;
     private String resultingTechnology;
-    private Resources researchOptions;
+    private Resources1 researchOptions;
     private int points;
     private boolean isResearched = false;
 
     @Override
-    public List<Converter> activeConverters() {
+    public List<Converter1> activeConverters() {
         throw new UnsupportedOperationException("Research teams do not have active converters");
     }
 }

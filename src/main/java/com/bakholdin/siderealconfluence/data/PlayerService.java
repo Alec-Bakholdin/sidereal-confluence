@@ -1,13 +1,13 @@
 package com.bakholdin.siderealconfluence.data;
 
 import com.bakholdin.siderealconfluence.data.cards.CardService;
-import com.bakholdin.siderealconfluence.model.Player;
-import com.bakholdin.siderealconfluence.model.PlayerBid;
-import com.bakholdin.siderealconfluence.model.Race;
-import com.bakholdin.siderealconfluence.model.RaceName;
-import com.bakholdin.siderealconfluence.model.Resources;
-import com.bakholdin.siderealconfluence.model.cards.Card;
-import com.bakholdin.siderealconfluence.model.cards.CardType;
+import com.bakholdin.siderealconfluence.model.Player1;
+import com.bakholdin.siderealconfluence.model.PlayerBid1;
+import com.bakholdin.siderealconfluence.model.Race1;
+import com.bakholdin.siderealconfluence.model.RaceName1;
+import com.bakholdin.siderealconfluence.model.Resources1;
+import com.bakholdin.siderealconfluence.model.cards.Card1;
+import com.bakholdin.siderealconfluence.model.cards.CardType1;
 import com.bakholdin.siderealconfluence.service.PlayerSocketService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -26,11 +26,11 @@ public class PlayerService {
     private final RaceService raceService;
     private final PlayerSocketService playerSocketService;
 
-    private final Map<UUID, Player> players = new HashMap<>();
+    private final Map<UUID, Player1> players = new HashMap<>();
 
-    public Player createPlayer(String name, RaceName raceName) {
-        Race race = raceService.initializeRaceForGame(raceName);
-        Player newPlayer = Player.builder()
+    public Player1 createPlayer(String name, RaceName1 raceName) {
+        Race1 race = raceService.initializeRaceForGame(raceName);
+        Player1 newPlayer = Player1.builder()
                 .id(UUID.randomUUID())
                 .name(name)
                 .race(race)
@@ -42,20 +42,20 @@ public class PlayerService {
 
     public void resetPlayerWithoutSocket(UUID playerId) {
         ValidationUtils.validatePlayerExists(this, playerId);
-        Player player = get(playerId);
-        Race race = player.getRace();
+        Player1 player = get(playerId);
+        Race1 race = player.getRace();
         player.setPlayerBid(null);
         player.setReady(false);
-        player.setInactiveCards(cardService.getInactiveCards(race));
-        player.setCards(cardService.getStartingCards(player.getInactiveCards(), race));
+        player.setInactiveCard1s(cardService.getInactiveCards(race));
+        player.setCard1s(cardService.getStartingCards(player.getInactiveCard1s(), race));
         player.setResearchedTechnologies(new ArrayList<>());
         player.setResources(DataUtils.deepCopy(race.getStartingResources()));
-        player.setDonations(new Resources());
+        player.setDonations(new Resources1());
     }
 
     public void setReadyStatus(UUID playerId, boolean ready) {
         ValidationUtils.validatePlayerExists(this, playerId);
-        Player player = get(playerId);
+        Player1 player = get(playerId);
         player.setReady(ready);
         playerSocketService.notifyClientOfUpdatedReadyStatus(player);
     }
@@ -67,11 +67,11 @@ public class PlayerService {
 
     public void setPlayerBid(UUID playerId, double colonyBid, double researchTeamBid) {
         ValidationUtils.validatePlayerExists(this, playerId);
-        Player player = get(playerId);
-        if (player.getRace().getName() == RaceName.Caylion) {
+        Player1 player = get(playerId);
+        if (player.getRace().getName() == RaceName1.Caylion) {
             colonyBid /= 2;
         }
-        PlayerBid playerBid = PlayerBid.builder()
+        PlayerBid1 playerBid = PlayerBid1.builder()
                 .playerId(player.getId())
                 .colonyBid(colonyBid)
                 .researchTeamBid(researchTeamBid)
@@ -85,12 +85,12 @@ public class PlayerService {
         setPlayerBid(UUID.fromString(playerId), colonyBid, researchTeamBid);
     }
 
-    public void setPlayerBid(UUID playerId, PlayerBid playerBid) {
+    public void setPlayerBid(UUID playerId, PlayerBid1 playerBid) {
         ValidationUtils.validatePlayerExists(this, playerId);
         get(playerId).setPlayerBid(playerBid);
     }
 
-    public void setPlayerBid(String playerId, PlayerBid playerBid) {
+    public void setPlayerBid(String playerId, PlayerBid1 playerBid) {
         ValidationUtils.validateNonNullPlayerId(playerId);
         setPlayerBid(UUID.fromString(playerId), playerBid);
     }
@@ -101,11 +101,11 @@ public class PlayerService {
             log.warn("Player {} already has active card {}", playerId, cardId);
             return;
         }
-        Player player = get(playerId);
-        Card card = cardService.get(cardId);
-        player.getInactiveCards().remove(card);
-        player.getCards().add(card);
-        playerSocketService.notifyClientOfAcquiredCard(player, card);
+        Player1 player = get(playerId);
+        Card1 card1 = cardService.get(cardId);
+        player.getInactiveCard1s().remove(card1);
+        player.getCard1s().add(card1);
+        playerSocketService.notifyClientOfAcquiredCard(player, card1);
     }
 
     public void acquireCardFromInactiveCards(String playerId, String cardId) {
@@ -114,12 +114,12 @@ public class PlayerService {
     }
 
     public void tryAcquireTechnology(UUID playerId, String technology) {
-        Player player = get(playerId);
-        Card newConverterCard = player.getInactiveCards().stream()
-                .filter(c -> c.getType() == CardType.ConverterCard && c.getName().equals(technology))
+        Player1 player = get(playerId);
+        Card1 newConverterCard1 = player.getInactiveCard1s().stream()
+                .filter(c -> c.getType() == CardType1.ConverterCard && c.getName().equals(technology))
                 .findFirst()
                 .orElseThrow(() -> new UnsupportedOperationException("No converter card found for technology " + technology));
-        acquireCardFromInactiveCards(playerId, newConverterCard.getId());
+        acquireCardFromInactiveCards(playerId, newConverterCard1.getId());
     }
 
     public void tryAcquireTechnology(String playerId, String technology) {
@@ -128,7 +128,7 @@ public class PlayerService {
     }
 
     public void addResearchedTechnology(UUID playerId, String technology) {
-        Player player = get(playerId);
+        Player1 player = get(playerId);
         player.getResearchedTechnologies().add(technology);
     }
 
@@ -143,10 +143,10 @@ public class PlayerService {
             log.warn("Player {} already has card {}", playerId, cardId);
             return;
         }
-        Player player = get(playerId);
-        Card card = cardService.get(cardId);
-        player.getCards().add(card);
-        playerSocketService.notifyClientOfAcquiredCard(player, card);
+        Player1 player = get(playerId);
+        Card1 card1 = cardService.get(cardId);
+        player.getCard1s().add(card1);
+        playerSocketService.notifyClientOfAcquiredCard(player, card1);
     }
 
     public void acquireCard(String playerId, String cardId) {
@@ -156,10 +156,10 @@ public class PlayerService {
 
     public void removeCardFromActive(UUID playerId, String cardId) {
         ValidationUtils.validateOwnsCard(this, playerId, cardId);
-        Player player = get(playerId);
-        Card card = cardService.get(cardId);
-        player.getCards().remove(card);
-        playerSocketService.notifyClientOfRemovedActiveCard(player, card);
+        Player1 player = get(playerId);
+        Card1 card1 = cardService.get(cardId);
+        player.getCard1s().remove(card1);
+        playerSocketService.notifyClientOfRemovedActiveCard(player, card1);
     }
 
     public void removeCardFromActive(String playerId, String cardId) {
@@ -167,30 +167,30 @@ public class PlayerService {
         removeCardFromActive(UUID.fromString(playerId), cardId);
     }
 
-    public void updatePlayerResources(UUID playerId, Resources cost, Resources output, Resources donations) {
+    public void updatePlayerResources(UUID playerId, Resources1 cost, Resources1 output, Resources1 donations) {
         ValidationUtils.validatePlayerExists(this, playerId);
-        Player player = get(playerId);
+        Player1 player = get(playerId);
         player.getResources().subtract(cost);
         player.getResources().add(output);
         player.getDonations().add(donations);
         playerSocketService.notifyClientOfUpdatedResources(player);
     }
 
-    public void updatePlayerResources(String playerId, Resources cost, Resources output, Resources donations) {
+    public void updatePlayerResources(String playerId, Resources1 cost, Resources1 output, Resources1 donations) {
         ValidationUtils.validateNonNullPlayerId(playerId);
         updatePlayerResources(UUID.fromString(playerId), cost, output, donations);
     }
 
-    public void setPlayerResources(UUID playerId, Resources total, Resources donations) {
+    public void setPlayerResources(UUID playerId, Resources1 total, Resources1 donations) {
         ValidationUtils.validatePlayerExists(this, playerId);
 
-        Player player = get(playerId);
+        Player1 player = get(playerId);
         player.setResources(total);
         player.setDonations(donations);
         playerSocketService.notifyClientOfUpdatedResources(player);
     }
 
-    public void setPlayerResources(String playerId, Resources resources, Resources donations) {
+    public void setPlayerResources(String playerId, Resources1 resources, Resources1 donations) {
         ValidationUtils.validateNonNullPlayerId(playerId);
 
         setPlayerResources(UUID.fromString(playerId), resources, donations);
@@ -201,15 +201,15 @@ public class PlayerService {
         ValidationUtils.validatePlayerExists(this, newOwnerPlayerId);
         ValidationUtils.validateCardIsActive(this, currentOwnerPlayerId, cardId);
 
-        Player currentOwner = get(currentOwnerPlayerId);
-        Player newOwner = get(newOwnerPlayerId);
-        Card card = cardService.get(cardId);
+        Player1 currentOwner = get(currentOwnerPlayerId);
+        Player1 newOwner = get(newOwnerPlayerId);
+        Card1 card1 = cardService.get(cardId);
 
-        currentOwner.getCards().remove(card);
-        newOwner.getCards().add(card);
+        currentOwner.getCard1s().remove(card1);
+        newOwner.getCard1s().add(card1);
 
         playerSocketService.notifyClientOfCardTransfer(currentOwner, newOwner, cardId);
-        log.info("Transferred {} from {} to {}", card.getId(), currentOwner.getName(), newOwner.getName());
+        log.info("Transferred {} from {} to {}", card1.getId(), currentOwner.getName(), newOwner.getName());
     }
 
     public void transferCard(String currentOwnerPlayerId, String newOwnerPlayerId, String cardId) {
@@ -227,7 +227,7 @@ public class PlayerService {
     }
 
     public boolean hasCardInactive(UUID playerId, String cardId) {
-        return contains(playerId) && cardService.contains(cardId) && get(playerId).getInactiveCards().contains(cardService.get(cardId));
+        return contains(playerId) && cardService.contains(cardId) && get(playerId).getInactiveCard1s().contains(cardService.get(cardId));
     }
 
     public boolean hasCardInactive(String playerId, String cardId) {
@@ -247,12 +247,12 @@ public class PlayerService {
         players.clear();
     }
 
-    public Player get(UUID id) {
+    public Player1 get(UUID id) {
         ValidationUtils.validatePlayerExists(this, id);
         return players.get(id);
     }
 
-    public Player get(String id) {
+    public Player1 get(String id) {
         return id == null ? null : get(UUID.fromString(id));
     }
 

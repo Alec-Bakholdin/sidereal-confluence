@@ -1,8 +1,8 @@
 package com.bakholdin.siderealconfluence.service.model;
 
-import com.bakholdin.siderealconfluence.model.BidTrackType;
-import com.bakholdin.siderealconfluence.model.Confluence;
-import com.bakholdin.siderealconfluence.model.Phase;
+import com.bakholdin.siderealconfluence.model.BidTrackType1;
+import com.bakholdin.siderealconfluence.model.Confluence1;
+import com.bakholdin.siderealconfluence.model.Phase1;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Data;
@@ -15,11 +15,11 @@ import java.util.UUID;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UpdateGameStateServerMessage {
     private Integer turn;
-    private Phase phase;
+    private Phase1 phase;
     private Boolean gameOver;
     private Boolean gameStarted;
 
-    private List<Confluence> confluenceList;
+    private List<Confluence1> confluence1List;
     private List<String> availableColonies;
     private List<String> availableResearchTeams;
     private List<Integer> colonyBidTrack;
@@ -30,5 +30,5 @@ public class UpdateGameStateServerMessage {
     @JsonInclude
     private UUID activeBidder;
     @JsonInclude
-    private BidTrackType activeBidTrack;
+    private BidTrackType1 activeBidTrack;
 }

@@ -1,7 +1,7 @@
 package com.bakholdin.siderealconfluence.controllers.model;
 
-import com.bakholdin.siderealconfluence.model.GameState;
-import com.bakholdin.siderealconfluence.model.RaceName;
+import com.bakholdin.siderealconfluence.model.GameState1;
+import com.bakholdin.siderealconfluence.model.RaceName1;
 import lombok.Builder;
 import lombok.Data;
 
@@ -12,6 +12,6 @@ import java.util.UUID;
 public class JoinGameResponse {
     private UUID playerId;
     private String playerName;
-    private GameState gameState;
-    private RaceName raceName;
+    private GameState1 gameState;
+    private RaceName1 raceName;
 }

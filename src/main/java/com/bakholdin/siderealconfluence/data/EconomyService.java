@@ -2,13 +2,13 @@ package com.bakholdin.siderealconfluence.data;
 
 import com.bakholdin.siderealconfluence.controllers.model.EconomyAction;
 import com.bakholdin.siderealconfluence.data.cards.CardService;
-import com.bakholdin.siderealconfluence.model.Converter;
-import com.bakholdin.siderealconfluence.model.Phase;
-import com.bakholdin.siderealconfluence.model.Player;
-import com.bakholdin.siderealconfluence.model.Resources;
-import com.bakholdin.siderealconfluence.model.cards.Card;
-import com.bakholdin.siderealconfluence.model.cards.CardType;
-import com.bakholdin.siderealconfluence.model.cards.Colony;
+import com.bakholdin.siderealconfluence.model.Converter1;
+import com.bakholdin.siderealconfluence.model.Phase1;
+import com.bakholdin.siderealconfluence.model.Player1;
+import com.bakholdin.siderealconfluence.model.Resources1;
+import com.bakholdin.siderealconfluence.model.cards.Card1;
+import com.bakholdin.siderealconfluence.model.cards.CardType1;
+import com.bakholdin.siderealconfluence.model.cards.Colony1;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -36,10 +36,10 @@ public class EconomyService {
             if (!playerService.contains(playerId)) {
                 return;
             }
-            Player player = playerService.get(playerId);
-            Resources econInput = new Resources();
-            Resources econOutput = new Resources();
-            Resources econDonations = new Resources();
+            Player1 player = playerService.get(playerId);
+            Resources1 econInput = new Resources1();
+            Resources1 econOutput = new Resources1();
+            Resources1 econDonations = new Resources1();
 
             for (EconomyAction economyAction : economyActions) {
                 addEconActionToTotal(playerId, econInput, econOutput, econDonations, economyAction);
@@ -52,22 +52,22 @@ public class EconomyService {
         });
     }
 
-    private void addEconActionToTotal(UUID playerId, Resources econInput, Resources econOutput, Resources econDonations, EconomyAction economyAction) {
+    private void addEconActionToTotal(UUID playerId, Resources1 econInput, Resources1 econOutput, Resources1 econDonations, EconomyAction economyAction) {
         if (!playerService.hasCardActive(playerId, economyAction.getCardId())) {
             return;
         }
 
-        Card card = cardService.get(economyAction.getCardId());
-        Converter converter = card.activeConverters().get(economyAction.getConverterIndex());
-        if (converter.getPhase() == Phase.Economy) {
-            econInput.add(converter.getInput());
-            econOutput.add(converter.getOutput());
-            econDonations.add(converter.getDonations());
+        Card1 card1 = cardService.get(economyAction.getCardId());
+        Converter1 converter1 = card1.activeConverters().get(economyAction.getConverterIndex());
+        if (converter1.getPhase() == Phase1.Economy) {
+            econInput.add(converter1.getInput());
+            econOutput.add(converter1.getOutput());
+            econDonations.add(converter1.getDonations());
         }
-        if (card.getType() == CardType.Colony && ((Colony) card).isDoubledWithCaylion()) {
-            econInput.add(converter.getInput());
-            econOutput.add(converter.getOutput());
-            econDonations.add(converter.getDonations());
+        if (card1.getType() == CardType1.Colony && ((Colony1) card1).isDoubledWithCaylion()) {
+            econInput.add(converter1.getInput());
+            econOutput.add(converter1.getOutput());
+            econDonations.add(converter1.getDonations());
         }
     }
 }

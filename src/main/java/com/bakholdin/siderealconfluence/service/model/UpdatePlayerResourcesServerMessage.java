@@ -1,6 +1,6 @@
 package com.bakholdin.siderealconfluence.service.model;
 
-import com.bakholdin.siderealconfluence.model.Resources;
+import com.bakholdin.siderealconfluence.model.Resources1;
 import lombok.Builder;
 import lombok.Data;
 
@@ -8,6 +8,6 @@ import lombok.Data;
 @Builder
 public class UpdatePlayerResourcesServerMessage {
     private String playerId;
-    private Resources resources;
-    private Resources donations;
+    private Resources1 resources;
+    private Resources1 donations;
 }

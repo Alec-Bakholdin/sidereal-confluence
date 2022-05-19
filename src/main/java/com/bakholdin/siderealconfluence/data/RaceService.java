@@ -1,8 +1,8 @@
 package com.bakholdin.siderealconfluence.data;
 
 import com.bakholdin.siderealconfluence.data.cards.CardService;
-import com.bakholdin.siderealconfluence.model.Race;
-import com.bakholdin.siderealconfluence.model.RaceName;
+import com.bakholdin.siderealconfluence.model.Race1;
+import com.bakholdin.siderealconfluence.model.RaceName1;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 public class RaceService {
     private final CardService cardService;
 
-    private final Map<RaceName, Race> races = new HashMap<>();
+    private final Map<RaceName1, Race1> races = new HashMap<>();
 
     @Value(value = "classpath:game_data/races.json")
     private Resource raceJson;
@@ -32,14 +32,14 @@ public class RaceService {
     @PostConstruct
     private void initRaces() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        List<Race> jsonRaceList = objectMapper.readValue(raceJson.getFile(), new TypeReference<>() {
+        List<Race1> jsonRaceList = objectMapper.readValue(raceJson.getFile(), new TypeReference<>() {
         });
-        Map<RaceName, Race> raceMap = jsonRaceList.stream().collect(Collectors.toMap(Race::getName, race -> race));
+        Map<RaceName1, Race1> raceMap = jsonRaceList.stream().collect(Collectors.toMap(Race1::getName, race -> race));
         races.putAll(raceMap);
         log.info("Loaded {} races", races.size());
     }
 
-    public Race initializeRaceForGame(RaceName raceName) {
+    public Race1 initializeRaceForGame(RaceName1 raceName) {
         return races.get(raceName);
     }
 }

@@ -1,6 +1,6 @@
 package com.bakholdin.siderealconfluence.model;
 
-import com.bakholdin.siderealconfluence.model.cards.Card;
+import com.bakholdin.siderealconfluence.model.cards.Card1;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
@@ -13,28 +13,28 @@ import java.util.stream.Collectors;
 
 @Data
 @Builder
-public class Player {
+public class Player1 {
     private UUID id;
     private String name;
-    private Resources resources;
-    private Resources donations;
-    private Race race;
+    private Resources1 resources;
+    private Resources1 donations;
+    private Race1 race;
     private boolean isReady;
     private List<String> researchedTechnologies;
     @JsonIgnore
-    private PlayerBid playerBid;
+    private PlayerBid1 playerBid;
     @JsonIgnore
-    private List<Card> cards;
+    private List<Card1> card1s;
     @JsonIgnore
-    private List<Card> inactiveCards;
+    private List<Card1> inactiveCard1s;
 
     @JsonProperty("cards")
     public List<String> cardIds() {
-        return cards != null ? cards.stream().map(Card::getId).collect(Collectors.toList()) : new ArrayList<>();
+        return card1s != null ? card1s.stream().map(Card1::getId).collect(Collectors.toList()) : new ArrayList<>();
     }
 
     @JsonProperty("inactiveCards")
     public List<String> inactiveCardIds() {
-        return inactiveCards != null ? inactiveCards.stream().map(Card::getId).collect(Collectors.toList()) : new ArrayList<>();
+        return inactiveCard1s != null ? inactiveCard1s.stream().map(Card1::getId).collect(Collectors.toList()) : new ArrayList<>();
     }
 }

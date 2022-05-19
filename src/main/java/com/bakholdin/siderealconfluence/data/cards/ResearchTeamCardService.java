@@ -1,8 +1,8 @@
 package com.bakholdin.siderealconfluence.data.cards;
 
 import com.bakholdin.siderealconfluence.data.DataUtils;
-import com.bakholdin.siderealconfluence.model.cards.Card;
-import com.bakholdin.siderealconfluence.model.cards.ResearchTeam;
+import com.bakholdin.siderealconfluence.model.cards.Card1;
+import com.bakholdin.siderealconfluence.model.cards.ResearchTeam1;
 import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,17 +22,17 @@ public class ResearchTeamCardService {
     @Value(value = "classpath:game_data/cards/researchTeams.json")
     private Resource researchTeamsResource;
 
-    private List<ResearchTeam> availableResearchTeams = new ArrayList<>();
+    private List<ResearchTeam1> availableResearchTeam1s = new ArrayList<>();
 
-    protected ResearchTeam draw() {
-        if (availableResearchTeams.isEmpty()) {
+    protected ResearchTeam1 draw() {
+        if (availableResearchTeam1s.isEmpty()) {
             throw new RuntimeException("No more research teams available");
         }
-        return availableResearchTeams.remove(0);
+        return availableResearchTeam1s.remove(0);
     }
 
-    protected List<ResearchTeam> draw(int n) {
-        List<ResearchTeam> result = new ArrayList<>();
+    protected List<ResearchTeam1> draw(int n) {
+        List<ResearchTeam1> result = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             result.add(draw());
         }
@@ -40,15 +40,15 @@ public class ResearchTeamCardService {
     }
 
 
-    protected Map<String, ResearchTeam> reset() {
-        availableResearchTeams = DataUtils.loadListFromResource(researchTeamsResource, new TypeReference<>() {
+    protected Map<String, ResearchTeam1> reset() {
+        availableResearchTeam1s = DataUtils.loadListFromResource(researchTeamsResource, new TypeReference<>() {
         });
-        Map<String, ResearchTeam> researchTeamMap = availableResearchTeams.stream().collect(Collectors.toMap(Card::getId, card -> card));
+        Map<String, ResearchTeam1> researchTeamMap = availableResearchTeam1s.stream().collect(Collectors.toMap(Card1::getId, card -> card));
 
         // order randomly within each era
-        Collections.shuffle(availableResearchTeams);
-        availableResearchTeams.sort(Comparator.comparingInt(ResearchTeam::getEra));
-        log.info("Loaded {} research teams", availableResearchTeams.size());
+        Collections.shuffle(availableResearchTeam1s);
+        availableResearchTeam1s.sort(Comparator.comparingInt(ResearchTeam1::getEra));
+        log.info("Loaded {} research teams", availableResearchTeam1s.size());
         return researchTeamMap;
     }
 }

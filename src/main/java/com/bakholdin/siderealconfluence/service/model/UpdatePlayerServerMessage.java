@@ -1,7 +1,7 @@
 package com.bakholdin.siderealconfluence.service.model;
 
-import com.bakholdin.siderealconfluence.model.Race;
-import com.bakholdin.siderealconfluence.model.Resources;
+import com.bakholdin.siderealconfluence.model.Race1;
+import com.bakholdin.siderealconfluence.model.Resources1;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Data;
@@ -17,9 +17,9 @@ public class UpdatePlayerServerMessage {
     @NonNull
     private UUID playerId;
     private String name;
-    private Resources resources;
-    private Resources donations;
-    private Race race;
+    private Resources1 resources;
+    private Resources1 donations;
+    private Race1 race;
     private Boolean isReady;
     private List<String> researchedTechnologies;
     private List<String> cards;
