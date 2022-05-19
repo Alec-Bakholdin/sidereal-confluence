@@ -11,6 +11,8 @@ import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.stereotype.Controller;
 
+import static com.bakholdin.siderealconfluence.controllers.model.SessionHeaderKeys.SESSION_ID;
+
 @Log4j2
 @Controller
 @RequiredArgsConstructor
@@ -28,7 +30,7 @@ public class TestController {
     @MessageMapping("/test2")
     @SendToUser("/queue/reply")
     public String processMessageFromClient(@Payload String message, SimpMessageHeaderAccessor headers) {
-        String sessionId = DataUtils.getSessionHeader(headers, "sessionId");
+        String sessionId = DataUtils.getSessionHeader(headers, SESSION_ID);
         log.info("Received message from {}: {}", sessionId, message);
         return "Hello, " + message + "!";
     }

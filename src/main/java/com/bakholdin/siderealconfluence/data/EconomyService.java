@@ -1,8 +1,8 @@
 package com.bakholdin.siderealconfluence.data;
 
-import com.bakholdin.siderealconfluence.controllers.model.EconomyAction;
 import com.bakholdin.siderealconfluence.data.cards.CardService;
 import com.bakholdin.siderealconfluence.model.Converter1;
+import com.bakholdin.siderealconfluence.model.EconomyAction;
 import com.bakholdin.siderealconfluence.model.Phase1;
 import com.bakholdin.siderealconfluence.model.Player1;
 import com.bakholdin.siderealconfluence.model.Resources1;
