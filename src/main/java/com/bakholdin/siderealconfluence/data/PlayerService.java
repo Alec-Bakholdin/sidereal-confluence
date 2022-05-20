@@ -1,14 +1,14 @@
 package com.bakholdin.siderealconfluence.data;
 
 import com.bakholdin.siderealconfluence.data.cards.CardService;
-import com.bakholdin.siderealconfluence.model.Player1;
-import com.bakholdin.siderealconfluence.model.PlayerBid1;
-import com.bakholdin.siderealconfluence.model.Race1;
-import com.bakholdin.siderealconfluence.model.RaceName1;
-import com.bakholdin.siderealconfluence.model.Resources1;
-import com.bakholdin.siderealconfluence.model.cards.Card1;
-import com.bakholdin.siderealconfluence.model.cards.CardType1;
-import com.bakholdin.siderealconfluence.service.PlayerSocketService;
+import com.bakholdin.siderealconfluence.old_model.Player1;
+import com.bakholdin.siderealconfluence.old_model.PlayerBid1;
+import com.bakholdin.siderealconfluence.old_model.Race1;
+import com.bakholdin.siderealconfluence.old_model.RaceName1;
+import com.bakholdin.siderealconfluence.old_model.Resources1;
+import com.bakholdin.siderealconfluence.old_model.cards.Card1;
+import com.bakholdin.siderealconfluence.old_model.cards.CardType1;
+import com.bakholdin.siderealconfluence.old_service.PlayerSocketService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;

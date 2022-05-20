@@ -1,6 +1,6 @@
 package com.bakholdin.siderealconfluence.controllers;
 
-import com.bakholdin.siderealconfluence.service.model.OutgoingSocketTopics;
+import com.bakholdin.siderealconfluence.old_service.model.OutgoingSocketTopics;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.messaging.handler.annotation.MessageExceptionHandler;

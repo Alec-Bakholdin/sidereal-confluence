@@ -1,8 +1,8 @@
 package com.bakholdin.siderealconfluence.data;
 
-import com.bakholdin.siderealconfluence.model.BidTrackType1;
-import com.bakholdin.siderealconfluence.model.Confluence1;
-import com.bakholdin.siderealconfluence.model.ConfluenceBidTrack1;
+import com.bakholdin.siderealconfluence.old_model.BidTrackType1;
+import com.bakholdin.siderealconfluence.old_model.Confluence1;
+import com.bakholdin.siderealconfluence.old_model.ConfluenceBidTrack1;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;

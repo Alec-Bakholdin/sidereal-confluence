@@ -1,7 +1,7 @@
 package com.bakholdin.siderealconfluence.repository;
 
 import com.bakholdin.siderealconfluence.data.DataUtils;
-import com.bakholdin.siderealconfluence.model.cards.Colony1;
+import com.bakholdin.siderealconfluence.old_model.cards.Colony1;
 import com.bakholdin.siderealconfluence.repository.entity.Card;
 import com.bakholdin.siderealconfluence.repository.entity.CardType;
 import com.fasterxml.jackson.core.type.TypeReference;

@@ -1,8 +1,8 @@
 package com.bakholdin.siderealconfluence.data;
 
 import com.bakholdin.siderealconfluence.data.cards.CardService;
-import com.bakholdin.siderealconfluence.model.Race1;
-import com.bakholdin.siderealconfluence.model.RaceName1;
+import com.bakholdin.siderealconfluence.old_model.Race1;
+import com.bakholdin.siderealconfluence.old_model.RaceName1;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;

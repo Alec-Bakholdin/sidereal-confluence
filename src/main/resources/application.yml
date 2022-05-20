@@ -12,3 +12,5 @@ spring:
   session:
     jdbc:
       initialize-schema: always
+
+auth.cookie.hmac-key: MkNpO9WT9bXn+pySHrAj1HVLN4p9l5VXdrvGYR8st+FUThbZjPbfQK/LjhAFcyUwWNMRifX+4rqiskoRINV7rR6zrd55UNFL3DkprcKIgyZy4gB6pzeJ+/tD+ruMp0PhpDtV7WqjelUNSMtaUjF6iL+AbonOqhrx+RYvgZtaeuAmBKLYHceOu9B/+rTT+paui8OESIwfm2AiJIV3qMvTTIOdWjKIyZicoq6T8g==

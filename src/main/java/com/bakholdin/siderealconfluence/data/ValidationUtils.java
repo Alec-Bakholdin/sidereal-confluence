@@ -2,14 +2,14 @@ package com.bakholdin.siderealconfluence.data;
 
 
 import com.bakholdin.siderealconfluence.data.cards.CardService;
-import com.bakholdin.siderealconfluence.model.BidTrackType1;
-import com.bakholdin.siderealconfluence.model.GameState1;
-import com.bakholdin.siderealconfluence.model.Phase1;
-import com.bakholdin.siderealconfluence.model.Player1;
-import com.bakholdin.siderealconfluence.model.PlayerBid1;
-import com.bakholdin.siderealconfluence.model.Resources1;
-import com.bakholdin.siderealconfluence.model.cards.Card1;
-import com.bakholdin.siderealconfluence.model.cards.CardType1;
+import com.bakholdin.siderealconfluence.old_model.BidTrackType1;
+import com.bakholdin.siderealconfluence.old_model.GameState1;
+import com.bakholdin.siderealconfluence.old_model.Phase1;
+import com.bakholdin.siderealconfluence.old_model.Player1;
+import com.bakholdin.siderealconfluence.old_model.PlayerBid1;
+import com.bakholdin.siderealconfluence.old_model.Resources1;
+import com.bakholdin.siderealconfluence.old_model.cards.Card1;
+import com.bakholdin.siderealconfluence.old_model.cards.CardType1;
 
 import java.util.List;
 import java.util.UUID;

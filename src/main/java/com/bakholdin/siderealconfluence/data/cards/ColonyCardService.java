@@ -1,8 +1,8 @@
 package com.bakholdin.siderealconfluence.data.cards;
 
 import com.bakholdin.siderealconfluence.data.DataUtils;
-import com.bakholdin.siderealconfluence.model.cards.Card1;
-import com.bakholdin.siderealconfluence.model.cards.Colony1;
+import com.bakholdin.siderealconfluence.old_model.cards.Card1;
+import com.bakholdin.siderealconfluence.old_model.cards.Colony1;
 import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;

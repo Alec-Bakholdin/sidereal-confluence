@@ -60,10 +60,17 @@ public class DataUtils {
         }
         return accessor.getSessionAttributes();
     }
-    
+
     public static String getSessionHeader(SimpMessageHeaderAccessor accessor, String key) {
         Map<String, Object> headers = getSessionHeaders(accessor);
         Object value = headers.get(key);
         return value == null ? null : value.toString();
+    }
+
+    @NonNull
+    public static String getNonNullSessionHeader(SimpMessageHeaderAccessor accessor, String key) {
+        Map<String, Object> headers = getSessionHeaders(accessor);
+        Object value = headers.get(key);
+        return value == null ? "" : value.toString();
     }
 }

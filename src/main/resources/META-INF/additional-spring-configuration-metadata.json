@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "auth.cookie.hmac-key",
+      "type": "java.lang.String",
+      "description": "Description for auth.cookie.hmac-key."
+    }
+  ]
+}
