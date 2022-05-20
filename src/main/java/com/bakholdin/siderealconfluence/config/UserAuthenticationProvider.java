@@ -15,7 +15,7 @@ import java.util.Collections;
 
 @Component
 @RequiredArgsConstructor
-public class UserAuthProvider implements AuthenticationProvider {
+public class UserAuthenticationProvider implements AuthenticationProvider {
     private final AuthenticationService authenticationService;
 
     @Override
@@ -23,12 +23,12 @@ public class UserAuthProvider implements AuthenticationProvider {
         UserDto userDto = null;
 
         if (authentication instanceof UsernamePasswordAuthenticationToken) {
-            userDto = authenticationService.authenticate(new CredentialsDto(
+            userDto = authenticationService.authenticateUserPassword(new CredentialsDto(
                     (String) authentication.getPrincipal(),
                     (String) authentication.getCredentials()
             ));
         } else if (authentication instanceof PreAuthenticatedAuthenticationToken) {
-            userDto = authenticationService.findByToken((String) authentication.getPrincipal());
+            userDto = authenticationService.authenticateJwtToken((String) authentication.getPrincipal());
         }
 
         if (userDto == null) {

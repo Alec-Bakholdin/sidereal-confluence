@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class UsernamePasswordAuthFilter extends OncePerRequestFilter {
+public class UsernamePasswordAuthenticationFilter extends OncePerRequestFilter {
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
     @Override

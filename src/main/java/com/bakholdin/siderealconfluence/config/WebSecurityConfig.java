@@ -3,6 +3,7 @@ package com.bakholdin.siderealconfluence.config;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -23,15 +24,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .exceptionHandling().authenticationEntryPoint(userAuthenticationEntryPoint)
                 .and()
-                .addFilterBefore(new UsernamePasswordAuthFilter(), BasicAuthenticationFilter.class)
-                .addFilterBefore(new CookieAuthenticationFilter(), UsernamePasswordAuthFilter.class)
+                .addFilterBefore(new UsernamePasswordAuthenticationFilter(), BasicAuthenticationFilter.class)
+                .addFilterBefore(new CookieAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .logout().deleteCookies(CookieAuthenticationFilter.AUTH_COOKIE_NAME)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/login", "/register").permitAll()
+                .antMatchers(HttpMethod.POST, "/login", "/logout", "/register").permitAll()
                 .anyRequest().authenticated();
     }
 

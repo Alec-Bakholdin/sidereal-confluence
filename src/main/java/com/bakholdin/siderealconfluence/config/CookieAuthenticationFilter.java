@@ -22,15 +22,18 @@ public class CookieAuthenticationFilter extends OncePerRequestFilter {
             HttpServletRequest request,
             HttpServletResponse response,
             FilterChain filterChain) throws ServletException, IOException {
-        Optional<Cookie> cookieAuth = Stream.of(Optional.ofNullable(request.getCookies())
-                        .orElse(new Cookie[0]))
-                .filter(cookie -> cookie.getName().equals(AUTH_COOKIE_NAME))
-                .findFirst();
 
-        cookieAuth.ifPresent(cookie ->
-                SecurityContextHolder.getContext().setAuthentication(
-                        new PreAuthenticatedAuthenticationToken(cookie.getValue(), null)
-                ));
+        if (!"/register".equals(request.getServletPath())) {
+            Optional<Cookie> cookieAuth = Stream.of(Optional.ofNullable(request.getCookies())
+                            .orElse(new Cookie[0]))
+                    .filter(cookie -> cookie.getName().equals(AUTH_COOKIE_NAME))
+                    .findFirst();
+
+            cookieAuth.ifPresent(cookie ->
+                    SecurityContextHolder.getContext().setAuthentication(
+                            new PreAuthenticatedAuthenticationToken(cookie.getValue(), null)
+                    ));
+        }
 
         filterChain.doFilter(request, response);
     }

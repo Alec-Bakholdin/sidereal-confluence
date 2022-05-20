@@ -2,40 +2,39 @@ package com.bakholdin.siderealconfluence.service;
 
 import com.bakholdin.siderealconfluence.dto.CredentialsDto;
 import com.bakholdin.siderealconfluence.dto.UserDto;
+import com.bakholdin.siderealconfluence.entity.User;
+import com.bakholdin.siderealconfluence.mapper.UserMapper;
+import com.bakholdin.siderealconfluence.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.nio.CharBuffer;
+import javax.transaction.Transactional;
 
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
     private final JwtTokenService jwtTokenService;
     private final PasswordEncoder passwordEncoder;
+    private final UserRepository userRepository;
+    private final UserMapper userMapper;
 
-    public UserDto authenticate(CredentialsDto credentialsDto) {
-        String encodedPassword = passwordEncoder.encode(CharBuffer.wrap("password"));
-        UserDto userDto = findByUsername(credentialsDto.getUsername());
-        if (passwordEncoder.matches(CharBuffer.wrap(credentialsDto.getPassword()), encodedPassword)) {
-            return userDto;
+    @Transactional
+    public UserDto authenticateUserPassword(CredentialsDto credentialsDto) {
+        User user = userRepository.findByUsername(credentialsDto.getUsername())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        if (passwordEncoder.matches(credentialsDto.getPassword(), user.getPassword())) {
+            return userMapper.toUserDto(user);
         }
+
         throw new RuntimeException("Invalid password");
     }
 
-    public UserDto findByUsername(String username) {
-        if ("milkudders".equals(username)) {
-            return UserDto.builder()
-                    .username("milkudders")
-                    .name("Alec")
-                    .build();
-        }
-        throw new UsernameNotFoundException("User not found");
-    }
-
-    public UserDto findByToken(String token) {
+    @Transactional
+    public UserDto authenticateJwtToken(String token) {
         String username = jwtTokenService.getUsernameFromToken(token);
-        return findByUsername(username);
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        return userMapper.toUserDto(user);
     }
 }
