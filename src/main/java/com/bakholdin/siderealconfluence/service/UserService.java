@@ -1,6 +1,7 @@
 package com.bakholdin.siderealconfluence.service;
 
 import com.bakholdin.siderealconfluence.dto.RegisterDto;
+import com.bakholdin.siderealconfluence.dto.UpdatePasswordDto;
 import com.bakholdin.siderealconfluence.dto.UserDto;
 import com.bakholdin.siderealconfluence.entity.User;
 import com.bakholdin.siderealconfluence.mapper.UserMapper;
@@ -28,5 +29,15 @@ public class UserService {
                 .build();
         userRepository.save(user);
         return userMapper.toUserDto(user);
+    }
+
+    public void updatePassword(UserDto userDto, UpdatePasswordDto updatePasswordDto) {
+        User user = userRepository.findByUsername(userDto.getUsername())
+                .orElseThrow(() -> new RuntimeException("User not found!"));
+        if (!passwordEncoder.matches(updatePasswordDto.getOldPassword(), user.getPassword())) {
+            throw new RuntimeException("Old password is incorrect");
+        }
+        user.setPassword(passwordEncoder.encode(updatePasswordDto.getNewPassword()));
+        userRepository.save(user);
     }
 }
