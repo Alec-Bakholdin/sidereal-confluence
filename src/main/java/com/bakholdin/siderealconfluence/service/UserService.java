@@ -1,6 +1,6 @@
 package com.bakholdin.siderealconfluence.service;
 
-import com.bakholdin.siderealconfluence.dto.RegisterDto;
+import com.bakholdin.siderealconfluence.dto.SignUpDto;
 import com.bakholdin.siderealconfluence.dto.UpdatePasswordDto;
 import com.bakholdin.siderealconfluence.dto.UserDto;
 import com.bakholdin.siderealconfluence.entity.User;
@@ -17,15 +17,15 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
 
-    public UserDto registerUser(RegisterDto registerDto) {
-        userRepository.findByUsername(registerDto.getUsername())
+    public UserDto registerUser(SignUpDto signUpDto) {
+        userRepository.findByUsername(signUpDto.getUsername())
                 .ifPresent(u -> {
                     throw new RuntimeException("Username is already taken!");
                 });
 
         User user = User.builder()
-                .username(registerDto.getUsername())
-                .password(passwordEncoder.encode(registerDto.getPassword()))
+                .username(signUpDto.getUsername())
+                .password(passwordEncoder.encode(signUpDto.getPassword()))
                 .build();
         userRepository.save(user);
         return userMapper.toUserDto(user);

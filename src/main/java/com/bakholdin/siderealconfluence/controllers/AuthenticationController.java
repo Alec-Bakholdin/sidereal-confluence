@@ -1,7 +1,7 @@
 package com.bakholdin.siderealconfluence.controllers;
 
 import com.bakholdin.siderealconfluence.config.CookieAuthenticationFilter;
-import com.bakholdin.siderealconfluence.dto.RegisterDto;
+import com.bakholdin.siderealconfluence.dto.SignUpDto;
 import com.bakholdin.siderealconfluence.dto.UserDto;
 import com.bakholdin.siderealconfluence.service.JwtTokenService;
 import com.bakholdin.siderealconfluence.service.UserService;
@@ -33,8 +33,8 @@ public class AuthenticationController {
     }
 
     @PostMapping("/signUp")
-    public ResponseEntity<UserDto> signUp(@RequestBody RegisterDto registerDto, HttpServletResponse response) {
-        UserDto userDto = userService.registerUser(registerDto);
+    public ResponseEntity<UserDto> signUp(@RequestBody SignUpDto signUpDto, HttpServletResponse response) {
+        UserDto userDto = userService.registerUser(signUpDto);
         response.addCookie(jwtTokenService.generateJwtCookie(userDto));
         return ResponseEntity.ok(userDto);
     }
