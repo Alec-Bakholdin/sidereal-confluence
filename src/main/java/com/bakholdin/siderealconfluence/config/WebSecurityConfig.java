@@ -32,7 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout().deleteCookies(CookieAuthenticationFilter.AUTH_COOKIE_NAME)
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/login", "/logout", "/register").permitAll()
+                .antMatchers(HttpMethod.POST, "/signIn", "/signUp", "/signOut").permitAll()
                 .anyRequest().authenticated();
     }
 

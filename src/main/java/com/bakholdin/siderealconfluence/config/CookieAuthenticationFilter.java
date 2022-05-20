@@ -23,7 +23,7 @@ public class CookieAuthenticationFilter extends OncePerRequestFilter {
             HttpServletResponse response,
             FilterChain filterChain) throws ServletException, IOException {
 
-        if (!"/register".equals(request.getServletPath())) {
+        if (!"/signUp".equals(request.getServletPath())) {
             Optional<Cookie> cookieAuth = Stream.of(Optional.ofNullable(request.getCookies())
                             .orElse(new Cookie[0]))
                     .filter(cookie -> cookie.getName().equals(AUTH_COOKIE_NAME))

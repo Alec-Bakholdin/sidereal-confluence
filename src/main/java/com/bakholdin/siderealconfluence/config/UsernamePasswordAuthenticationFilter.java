@@ -22,7 +22,7 @@ public class UsernamePasswordAuthenticationFilter extends OncePerRequestFilter {
             HttpServletResponse response,
             FilterChain filterChain) throws ServletException, IOException {
 
-        if ("/login".equals(request.getServletPath()) && HttpMethod.POST.name().equals(request.getMethod())) {
+        if ("/signIn".equals(request.getServletPath()) && HttpMethod.POST.name().equals(request.getMethod())) {
             CredentialsDto credentialsDto = MAPPER.readValue(request.getInputStream(), CredentialsDto.class);
             SecurityContextHolder.getContext().setAuthentication(
                     new UsernamePasswordAuthenticationToken(
