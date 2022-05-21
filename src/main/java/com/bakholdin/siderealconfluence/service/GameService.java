@@ -25,10 +25,12 @@ public class GameService {
     public Game addUserToGame(JoinGameDto joinGameDto, UserDto userDto) {
         User user = userRepository.findByUsername(userDto.getUsername())
                 .orElseThrow(() -> new RuntimeException("User not found"));
+        if (user.getGame() != null) {
+            throw new RuntimeException("User already in game");
+        }
         Game game = gameRepository.findById(joinGameDto.getId())
                 .orElseThrow(() -> new RuntimeException("Game not found"));
         game.getUsers().add(user);
-        user.setGame(game);
         gameRepository.save(game);
         return game;
     }

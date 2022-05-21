@@ -34,14 +34,11 @@ public class GameController {
     }
 
     @PostMapping("/create")
-    public GameDto create() {
+    public GameDto create(@AuthenticationPrincipal UserDto userDto) {
         Game game = gameService.createGame();
-        return gameMapper.toGameDto(game);
-    }
-
-    @PostMapping("/destroy")
-    public void destroy(@RequestBody DestroyGameDto destroyGameDto) {
-        gameService.destroyGame(destroyGameDto);
+        JoinGameDto joinGameDto = JoinGameDto.builder().id(game.getId()).build();
+        Game gameWithUser = gameService.addUserToGame(joinGameDto, userDto);
+        return gameMapper.toGameDto(gameWithUser);
     }
 
     @PostMapping("/join")
@@ -50,4 +47,10 @@ public class GameController {
         Game game = gameService.addUserToGame(joinGameDto, userDto);
         return gameMapper.toGameDto(game);
     }
+
+    @PostMapping("/destroy")
+    public void destroy(@RequestBody DestroyGameDto destroyGameDto) {
+        gameService.destroyGame(destroyGameDto);
+    }
+
 }

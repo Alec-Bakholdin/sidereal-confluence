@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,13 +41,16 @@ public class AuthenticationController {
     }
 
     @PostMapping("/signOut")
-    public ResponseEntity<Void> signOut(HttpServletRequest request) {
-        //SecurityContextHolder.clearContext();
+    public ResponseEntity<Void> signOut(HttpServletRequest request, HttpServletResponse response) {
+        SecurityContextHolder.clearContext();
 
         Optional<Cookie> authCookie = Stream.of(Optional.ofNullable(request.getCookies()).orElse(new Cookie[0]))
                 .filter(cookie -> cookie.getName().equals(CookieAuthenticationFilter.AUTH_COOKIE_NAME))
                 .findFirst();
-        authCookie.ifPresent(cookie -> cookie.setMaxAge(0));
+        authCookie.ifPresent(cookie -> {
+            cookie.setMaxAge(0);
+            response.addCookie(cookie);
+        });
 
         return ResponseEntity.noContent().build();
     }
