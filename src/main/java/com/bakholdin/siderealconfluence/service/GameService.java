@@ -32,10 +32,9 @@ public class GameService {
         }
         Game game = gameRepository.findById(joinGameDto.getId())
                 .orElseThrow(() -> new RuntimeException("Game not found"));
-        Player player = Player.builder()
-                .user(user)
-                .game(game)
-                .build();
+        Player player = new Player();
+        player.setUser(user);
+        player.setGame(game);
         game.getPlayers().add(player);
         user.setGame(game);
         gameRepository.save(game);

@@ -11,4 +11,9 @@ import java.util.Optional;
 public interface PlayerRepository extends JpaRepository<Player, Long> {
     @Query(value = "select p from Player p where p.user.username = ?1")
     Optional<Player> findByUsername(String username);
+
+    default Player getByUsername(String username) {
+        return findByUsername(username)
+                .orElseThrow(() -> new RuntimeException(String.format("User %s is not in game", username)));
+    }
 }

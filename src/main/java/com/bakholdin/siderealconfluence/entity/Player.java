@@ -29,6 +29,8 @@ public class Player implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
+    private Boolean ready = false;
+
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(nullable = false)
     private User user;

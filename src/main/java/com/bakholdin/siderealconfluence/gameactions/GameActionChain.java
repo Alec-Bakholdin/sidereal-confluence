@@ -35,7 +35,7 @@ public class GameActionChain {
     }
 
     private void notifyOfGameUpdates(UserDto userDto, GameActionUpdateContainer gameActionUpdateContainer) {
-        if (gameActionUpdateContainer.getUpdateGameDtoBuilder() != null) {
+        if (gameActionUpdateContainer.getUpdateGameBuilder() != null) {
             String updateGameTopic = OutgoingSocketTopics.TOPIC_GAME_UPDATE_GAME(userDto.getGame().getId());
             UpdateGameDto updateGameDto = gameActionUpdateContainer.buildUpdateGameDto();
             simpMessagingTemplate.convertAndSend(updateGameTopic, updateGameDto);

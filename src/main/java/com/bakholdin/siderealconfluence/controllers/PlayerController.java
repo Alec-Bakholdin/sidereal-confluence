@@ -4,6 +4,7 @@ import com.bakholdin.siderealconfluence.controllers.socket.IncomingSocketTopics;
 import com.bakholdin.siderealconfluence.controllers.socket.SocketUtil;
 import com.bakholdin.siderealconfluence.gameactions.GameActionChain;
 import com.bakholdin.siderealconfluence.gameactions.dto.ChooseRaceDto;
+import com.bakholdin.siderealconfluence.gameactions.dto.PlayerReadyDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -19,10 +20,18 @@ import java.security.Principal;
 public class PlayerController {
     private final GameActionChain gameActionChain;
 
-    @MessageMapping(IncomingSocketTopics.APP_CHOOSE_RACE)
+    @MessageMapping(IncomingSocketTopics.PLAYER_CHOOSE_RACE)
     public void chooseRace(
             @Payload ChooseRaceDto chooseRaceDto,
             @AuthenticationPrincipal Principal principal) {
         gameActionChain.resolveAction(SocketUtil.getUserDto(principal), chooseRaceDto);
+    }
+
+    @MessageMapping(IncomingSocketTopics.PLAYER_READY)
+    public void ready(
+            @Payload PlayerReadyDto playerReadyDto,
+            @AuthenticationPrincipal Principal principal
+    ) {
+        gameActionChain.resolveAction(SocketUtil.getUserDto(principal), playerReadyDto);
     }
 }

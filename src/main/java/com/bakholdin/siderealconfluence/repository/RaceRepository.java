@@ -7,4 +7,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RaceRepository extends JpaRepository<Race, RaceType> {
+    default Race getByRaceType(RaceType raceType) {
+        return findById(raceType)
+                .orElseThrow(() -> new RuntimeException(String.format("Race %s does not exist", raceType)));
+    }
 }

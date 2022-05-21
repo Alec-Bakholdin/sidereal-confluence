@@ -4,7 +4,6 @@ import com.bakholdin.siderealconfluence.dto.UpdateGameDto;
 import com.bakholdin.siderealconfluence.dto.UpdatePlayerDto;
 import com.bakholdin.siderealconfluence.dto.UserDto;
 import com.bakholdin.siderealconfluence.mapper.UserMapper;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
@@ -14,7 +13,6 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 
-@Getter
 @ToString
 @RequiredArgsConstructor
 public class GameActionUpdateContainer {
@@ -24,7 +22,7 @@ public class GameActionUpdateContainer {
     private final Map<String, UpdatePlayerDto.Builder> updatePlayerDtoBuilderMap = new HashMap<>();
     private UpdateGameDto.Builder updateGameDtoBuilder;
 
-    public UpdatePlayerDto.Builder fetchPlayerUpdater(UserDto userDto) {
+    public UpdatePlayerDto.Builder getUpdatePlayerBuilder(UserDto userDto) {
         if (!updatePlayerDtoBuilderMap.containsKey(userDto.getUsername())) {
             updatePlayerDtoBuilderMap.put(
                     userDto.getUsername(),
@@ -41,7 +39,7 @@ public class GameActionUpdateContainer {
                 .collect(Collectors.toList());
     }
 
-    public UpdateGameDto.Builder fetchGameUpdater() {
+    public UpdateGameDto.Builder getUpdateGameBuilder() {
         if (updateGameDtoBuilder == null) {
             updateGameDtoBuilder = UpdateGameDto.builder().id(gameId);
         }
