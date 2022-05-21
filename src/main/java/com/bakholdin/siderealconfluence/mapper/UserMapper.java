@@ -1,21 +1,24 @@
 package com.bakholdin.siderealconfluence.mapper;
 
+import com.bakholdin.siderealconfluence.dto.GameDto;
 import com.bakholdin.siderealconfluence.dto.UserDto;
 import com.bakholdin.siderealconfluence.entity.Game;
 import com.bakholdin.siderealconfluence.entity.User;
-import org.mapstruct.BeforeMapping;
-import org.mapstruct.Builder;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Named;
 
-@Mapper(componentModel = "spring", builder = @Builder(disableBuilder = true))
+@Mapper(componentModel = "spring")
 public abstract class UserMapper {
 
-    @BeforeMapping
-    protected void ignoreGameUserRecursion(Game game) {
-        if (game != null && game.getUsers() != null) {
-            game.getUsers().forEach(user -> user.setGame(null));
-        }
-    }
-
+    @Mapping(target = "game", qualifiedByName = "toSafeGameDto")
     public abstract UserDto toUserDto(User user);
+
+    @Named("toUserDtoWithoutGame")
+    @Mapping(target = "game", expression = "java(null)")
+    protected abstract UserDto toUserDtoWithoutGame(User user);
+
+    @Named("toSafeGameDto")
+    @Mapping(target = "users", qualifiedByName = "toUserDtoWithoutGame")
+    protected abstract GameDto toSafeGameDto(Game game);
 }

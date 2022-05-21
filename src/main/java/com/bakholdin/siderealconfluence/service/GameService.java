@@ -19,6 +19,7 @@ public class GameService {
     public Game createGame() {
         Game game = new Game();
         gameRepository.save(game);
+        gameRepository.flush();
         return game;
     }
 
@@ -31,7 +32,9 @@ public class GameService {
         Game game = gameRepository.findById(joinGameDto.getId())
                 .orElseThrow(() -> new RuntimeException("Game not found"));
         game.getUsers().add(user);
+        user.setGame(game);
         gameRepository.save(game);
+        userRepository.save(user);
         return game;
     }
 

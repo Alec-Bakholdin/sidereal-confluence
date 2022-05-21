@@ -17,7 +17,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Set;
@@ -42,6 +41,5 @@ public class Game {
     private GamePhase phase;
 
     @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "game_id")
     private Set<User> users = new HashSet<>();
 }
