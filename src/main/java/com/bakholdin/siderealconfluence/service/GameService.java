@@ -4,6 +4,7 @@ import com.bakholdin.siderealconfluence.dto.DestroyGameDto;
 import com.bakholdin.siderealconfluence.dto.JoinGameDto;
 import com.bakholdin.siderealconfluence.dto.UserDto;
 import com.bakholdin.siderealconfluence.entity.Game;
+import com.bakholdin.siderealconfluence.entity.Player;
 import com.bakholdin.siderealconfluence.entity.User;
 import com.bakholdin.siderealconfluence.repository.GameRepository;
 import com.bakholdin.siderealconfluence.repository.UserRepository;
@@ -31,7 +32,9 @@ public class GameService {
         }
         Game game = gameRepository.findById(joinGameDto.getId())
                 .orElseThrow(() -> new RuntimeException("Game not found"));
-        game.getUsers().add(user);
+        Player player = new Player();
+        player.setUser(user);
+        game.getPlayers().add(player);
         user.setGame(game);
         gameRepository.save(game);
         userRepository.save(user);
@@ -41,9 +44,9 @@ public class GameService {
     public void destroyGame(DestroyGameDto destroyGameDto) {
         Game game = gameRepository.findById(destroyGameDto.getId())
                 .orElseThrow(() -> new RuntimeException("Game not found"));
-        game.getUsers().forEach(user -> {
-            user.setGame(null);
-            userRepository.save(user);
+        game.getPlayers().forEach(player -> {
+            player.getUser().setGame(null);
+            userRepository.save(player.getUser());
         });
         gameRepository.delete(game);
     }

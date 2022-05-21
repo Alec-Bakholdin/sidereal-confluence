@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -38,8 +39,9 @@ public class Game {
     private GameState state = GameState.Lobby;
 
     @Enumerated(EnumType.STRING)
-    private GamePhase phase;
+    @Column(nullable = false)
+    private GamePhase phase = GamePhase.Nothing;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    private Set<User> users = new HashSet<>();
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Player> players = new HashSet<>();
 }

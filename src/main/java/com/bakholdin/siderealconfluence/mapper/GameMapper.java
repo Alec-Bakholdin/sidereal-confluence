@@ -5,11 +5,10 @@ import com.bakholdin.siderealconfluence.entity.Game;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
-import org.mapstruct.ReportingPolicy;
 
-@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE, uses = {UserMapper.class})
+@Mapper(componentModel = "spring", uses = {PlayerMapper.class})
 public interface GameMapper {
     @Named("toGameDto")
-    @Mapping(target = "users", qualifiedByName = "toUserDtoWithoutGame")
+    @Mapping(target = "players", qualifiedByName = "toPlayerDtoWithoutGame")
     GameDto toGameDto(Game game);
 }

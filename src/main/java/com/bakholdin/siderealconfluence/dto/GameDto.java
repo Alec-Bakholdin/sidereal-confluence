@@ -12,5 +12,5 @@ public class GameDto {
     private GameState state;
     private GamePhase phase;
 
-    private Set<UserDto> users;
+    private Set<PlayerDto> players;
 }
