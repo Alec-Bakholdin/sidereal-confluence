@@ -5,6 +5,7 @@ import com.bakholdin.siderealconfluence.dto.ErrorDto;
 import com.bakholdin.siderealconfluence.entity.User;
 import com.bakholdin.siderealconfluence.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.messaging.handler.annotation.MessageExceptionHandler;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolv
 
 import java.security.Principal;
 
+@Log4j2
 @ControllerAdvice
 @RequiredArgsConstructor
 public class SocketControllerAdvice extends DefaultHandlerExceptionResolver {
@@ -26,6 +28,7 @@ public class SocketControllerAdvice extends DefaultHandlerExceptionResolver {
         ErrorDto errorDto = ErrorDto.builder()
                 .message(e.getMessage())
                 .build();
+        log.error(e.getMessage(), e);
         if (user.getGame() != null) {
             String errorTopic = OutgoingSocketTopics.TOPIC_GAME_ERRORS(user.getGame().getId());
             simpMessagingTemplate.convertAndSend(errorTopic, errorDto);
