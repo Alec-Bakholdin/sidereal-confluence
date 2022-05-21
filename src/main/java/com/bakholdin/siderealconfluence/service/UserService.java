@@ -18,6 +18,13 @@ public class UserService {
     private final UserMapper userMapper;
 
     public UserDto registerUser(SignUpDto signUpDto) {
+        if (signUpDto.getUsername() == null || signUpDto.getUsername().length() < 5) {
+            throw new RuntimeException("Username must be at least 5 characters long");
+        }
+        if (signUpDto.getPassword() == null || signUpDto.getPassword().length() < 5) {
+            throw new RuntimeException("Password must be at least 5 characters long");
+        }
+
         userRepository.findByUsername(signUpDto.getUsername())
                 .ifPresent(u -> {
                     throw new RuntimeException("Username is already taken!");
