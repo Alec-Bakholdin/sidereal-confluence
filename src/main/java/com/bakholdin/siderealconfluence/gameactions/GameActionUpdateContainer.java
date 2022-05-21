@@ -3,6 +3,7 @@ package com.bakholdin.siderealconfluence.gameactions;
 import com.bakholdin.siderealconfluence.dto.UpdateGameDto;
 import com.bakholdin.siderealconfluence.dto.UpdatePlayerDto;
 import com.bakholdin.siderealconfluence.dto.UserDto;
+import com.bakholdin.siderealconfluence.entity.User;
 import com.bakholdin.siderealconfluence.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
@@ -31,6 +32,10 @@ public class GameActionUpdateContainer {
             );
         }
         return updatePlayerDtoBuilderMap.get(userDto.getUsername());
+    }
+
+    public UpdatePlayerDto.Builder getUpdatePlayerBuilder(User userDto) {
+        return getUpdatePlayerBuilder(userMapper.toUserDto(userDto));
     }
 
     public List<UpdatePlayerDto> buildUpdatePlayerDtos() {

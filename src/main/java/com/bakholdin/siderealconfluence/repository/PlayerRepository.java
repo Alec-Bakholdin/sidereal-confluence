@@ -1,6 +1,7 @@
 package com.bakholdin.siderealconfluence.repository;
 
 import com.bakholdin.siderealconfluence.entity.Player;
+import com.bakholdin.siderealconfluence.exceptions.UserException;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -14,6 +15,6 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
 
     default Player getByUsername(String username) {
         return findByUsername(username)
-                .orElseThrow(() -> new RuntimeException(String.format("User %s is not in game", username)));
+                .orElseThrow(() -> new UserException(String.format("User %s is not in game", username)));
     }
 }
