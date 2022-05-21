@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import java.io.Serializable;
 
@@ -27,8 +28,8 @@ public class Player implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    
-    @OneToOne
+
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(nullable = false)
     private User user;
 
@@ -39,4 +40,11 @@ public class Player implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn
     private Resources donations = new Resources();
+
+    @ManyToOne
+    @JoinColumn
+    private Race race;
+
+    @ManyToOne
+    private Game game;
 }

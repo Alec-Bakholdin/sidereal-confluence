@@ -1,6 +1,6 @@
 package com.bakholdin.siderealconfluence.controllers;
 
-import com.bakholdin.siderealconfluence.controllers.socket.SocketTopics;
+import com.bakholdin.siderealconfluence.controllers.socket.OutgoingSocketTopics;
 import com.bakholdin.siderealconfluence.dto.DestroyGameDto;
 import com.bakholdin.siderealconfluence.dto.GameDto;
 import com.bakholdin.siderealconfluence.dto.JoinGameDto;
@@ -59,11 +59,9 @@ public class GameController {
         PlayerDto newPlayerDto = playerMapper.toDto(newPlayer);
 
         // notify everyone that someone new has joined
-        game.getPlayers().forEach(player ->
-                simpMessagingTemplate.convertAndSendToUser(
-                        player.getUser().getUsername(),
-                        SocketTopics.USER_PLAYER_JOINED,
-                        newPlayerDto)
+        simpMessagingTemplate.convertAndSend(
+                OutgoingSocketTopics.TOPIC_GAME_PLAYER_JOINED(game.getId()),
+                newPlayerDto
         );
         return gameMapper.toGameDto(game);
     }
