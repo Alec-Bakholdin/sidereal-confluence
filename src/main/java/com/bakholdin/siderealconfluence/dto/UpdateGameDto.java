@@ -2,15 +2,12 @@ package com.bakholdin.siderealconfluence.dto;
 
 import com.bakholdin.siderealconfluence.enums.GamePhase;
 import com.bakholdin.siderealconfluence.enums.GameState;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
-import java.util.Map;
-
 @Data
-public class GameDto {
-    private Long id;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class UpdateGameDto {
     private GameState state;
     private GamePhase phase;
-
-    private Map<String, PlayerDto> players;
 }

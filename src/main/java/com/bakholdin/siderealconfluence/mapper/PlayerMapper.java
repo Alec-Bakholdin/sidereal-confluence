@@ -4,13 +4,10 @@ import com.bakholdin.siderealconfluence.dto.PlayerDto;
 import com.bakholdin.siderealconfluence.entity.Player;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.Named;
 
-@Mapper(componentModel = "spring", uses = {UserMapper.class})
+@Mapper(componentModel = "spring", uses = {GameMapper.class})
 public interface PlayerMapper {
-    PlayerDto toPlayerDto(Player player);
 
-    @Named("toPlayerDtoWithoutGame")
-    @Mapping(target = "user", qualifiedByName = "toUserDtoWithoutGame")
-    PlayerDto toPlayerDtoWithoutGame(Player player);
+    @Mapping(target = "user", qualifiedByName = "toSafeUserDto")
+    PlayerDto toDto(Player player);
 }

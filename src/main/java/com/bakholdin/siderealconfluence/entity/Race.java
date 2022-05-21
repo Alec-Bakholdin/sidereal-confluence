@@ -1,5 +1,6 @@
 package com.bakholdin.siderealconfluence.entity;
 
+import com.bakholdin.siderealconfluence.enums.RaceType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -9,12 +10,11 @@ import lombok.ToString;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import java.io.Serializable;
 
 @Entity
 @Getter
@@ -23,20 +23,17 @@ import java.io.Serializable;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class Player implements Serializable {
+public class Race {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
-    
-    @OneToOne
-    @JoinColumn(nullable = false)
-    private User user;
+    @Enumerated(EnumType.STRING)
+    private RaceType name;
+
+    private Integer colonySupport;
+    private Integer tiebreaker;
+    private Integer startingColonies;
+    private Integer startingResearchTeams;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn
-    private Resources resources;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn
-    private Resources donations = new Resources();
+    private Resources startingResources;
 }

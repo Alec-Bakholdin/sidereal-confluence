@@ -1,15 +1,19 @@
 package com.bakholdin.siderealconfluence.controllers;
 
+import com.bakholdin.siderealconfluence.controllers.socket.SocketTopics;
 import com.bakholdin.siderealconfluence.dto.DestroyGameDto;
 import com.bakholdin.siderealconfluence.dto.GameDto;
 import com.bakholdin.siderealconfluence.dto.JoinGameDto;
+import com.bakholdin.siderealconfluence.dto.PlayerDto;
 import com.bakholdin.siderealconfluence.dto.UserDto;
 import com.bakholdin.siderealconfluence.entity.Game;
+import com.bakholdin.siderealconfluence.entity.Player;
 import com.bakholdin.siderealconfluence.mapper.GameMapper;
+import com.bakholdin.siderealconfluence.mapper.PlayerMapper;
 import com.bakholdin.siderealconfluence.repository.GameRepository;
 import com.bakholdin.siderealconfluence.service.GameService;
-import com.bakholdin.siderealconfluence.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,7 +29,8 @@ public class GameController {
     private final GameRepository gameRepository;
     private final GameService gameService;
     private final GameMapper gameMapper;
-    private final UserService userService;
+    private final PlayerMapper playerMapper;
+    private final SimpMessagingTemplate simpMessagingTemplate;
 
     @GetMapping("/{id}")
     public GameDto gameById(@PathVariable Long id) {
@@ -45,6 +50,21 @@ public class GameController {
     public GameDto join(@AuthenticationPrincipal UserDto userDto,
                         @RequestBody JoinGameDto joinGameDto) {
         Game game = gameService.addUserToGame(joinGameDto, userDto);
+
+        // find the newly added player
+        Player newPlayer = game.getPlayers().stream()
+                .filter(player -> player.getUser().getUsername().equals(userDto.getUsername()))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Somehow user disappeared"));
+        PlayerDto newPlayerDto = playerMapper.toDto(newPlayer);
+
+        // notify everyone that someone new has joined
+        game.getPlayers().forEach(player ->
+                simpMessagingTemplate.convertAndSendToUser(
+                        player.getUser().getUsername(),
+                        SocketTopics.USER_PLAYER_JOINED,
+                        newPlayerDto)
+        );
         return gameMapper.toGameDto(game);
     }
 

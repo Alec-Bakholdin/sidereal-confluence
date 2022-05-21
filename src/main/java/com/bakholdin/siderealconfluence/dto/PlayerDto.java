@@ -4,8 +4,7 @@ import lombok.Data;
 
 @Data
 public class PlayerDto {
-    private Long id;
+    private UserDto user;
     private ResourcesDto resources;
     private ResourcesDto donations;
-    private UserDto user;
 }
