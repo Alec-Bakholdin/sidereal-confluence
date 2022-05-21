@@ -4,7 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 
 @Data
-@Builder
+@Builder(builderClassName = "Builder")
 public class UpdatePlayerDto {
     private UserDto user;
     private ResourcesDto resources;
