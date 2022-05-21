@@ -21,6 +21,7 @@ public class RaceInit {
 
     @PostConstruct
     public void init() {
+        raceRepository.deleteAll();
         List<Race> raceList = InitUtils.readListFromResource(racesResource, new TypeReference<>() {
         });
         raceRepository.saveAll(raceList);
