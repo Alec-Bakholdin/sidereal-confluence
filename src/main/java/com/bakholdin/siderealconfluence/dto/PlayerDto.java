@@ -2,6 +2,8 @@ package com.bakholdin.siderealconfluence.dto;
 
 import lombok.Data;
 
+import java.util.Set;
+
 @Data
 public class PlayerDto {
     private UserDto user;
@@ -9,4 +11,5 @@ public class PlayerDto {
     private ResourcesDto resources;
     private ResourcesDto donations;
     private RaceDto race;
+    private Set<ActiveCardDto> activeCards;
 }

@@ -50,7 +50,7 @@ public class SocketControllerAdvice extends DefaultHandlerExceptionResolver {
     }
 
     private ErrorDto buildErrorDtoAndLogError(Exception e) {
-        log.error(e);
+        log.error(e.getMessage(), e);
         return ErrorDto.builder()
                 .message(e.getMessage())
                 .build();

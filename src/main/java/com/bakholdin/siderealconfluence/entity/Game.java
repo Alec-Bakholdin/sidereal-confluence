@@ -7,7 +7,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,13 +19,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Getter
 @Setter
 @Builder
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class Game {
@@ -44,4 +43,9 @@ public class Game {
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Player> players = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<ActiveCard> colonyDeck;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<ActiveCard> researchTeamDeck;
 }

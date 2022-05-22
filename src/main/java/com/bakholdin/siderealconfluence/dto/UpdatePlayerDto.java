@@ -3,6 +3,8 @@ package com.bakholdin.siderealconfluence.dto;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.Set;
+
 @Data
 @Builder(builderClassName = "Builder")
 public class UpdatePlayerDto {
@@ -11,4 +13,5 @@ public class UpdatePlayerDto {
     private ResourcesDto resources;
     private ResourcesDto donations;
     private RaceDto race;
+    private Set<ActiveCardDto> activeCards;
 }

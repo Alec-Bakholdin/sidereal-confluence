@@ -27,7 +27,7 @@ public class ActiveCard {
     @Id
     @GeneratedValue(generator = "uuid")
     private UUID id;
-    private Boolean upgraded;
+    private boolean upgraded;
 
     @ManyToOne
     @JoinColumn
