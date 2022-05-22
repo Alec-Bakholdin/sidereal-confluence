@@ -1,0 +1,3112 @@
+[
+  {
+    "id": "converterCard_1",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 1,
+      "starting": false,
+      "upgradeTech1": "Genetic Engineering",
+      "upgradeTech2": "Atomic Transmutation",
+      "race": "Caylion",
+      "frontName": "Nanotechnology",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "brown": "3"
+          },
+          "output": {
+            "octagon": "1",
+            "green": "1"
+          }
+        }
+      ],
+      "backName": "Nanofabricators",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "brown": "3"
+          },
+          "output": {
+            "octagon": "1",
+            "yellow": "1",
+            "green": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_2",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 1,
+      "starting": false,
+      "upgradeTech1": "Nanotechnology",
+      "upgradeTech2": "Clinical Immortality",
+      "race": "Caylion",
+      "frontName": "Genetic Engineering",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "green": "3"
+          },
+          "output": {
+            "yellow": "1",
+            "black": "1",
+            "brown": "1"
+          }
+        }
+      ],
+      "backName": "Genetic Resynthesis",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "green": "3"
+          },
+          "output": {
+            "yellow": "2",
+            "black": "1",
+            "brown": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_3",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 1,
+      "starting": false,
+      "upgradeTech1": "Ubiquitous Cultural Repository",
+      "upgradeTech2": "Quantum Computers",
+      "race": "Caylion",
+      "frontName": "Universal Translator",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "white": "3"
+          },
+          "output": {
+            "points": "1"
+          },
+          "donations": {
+            "black": "1"
+          }
+        }
+      ],
+      "backName": "Universal Empathetic Communication",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "white": "3"
+          },
+          "output": {
+            "points": "1"
+          },
+          "donations": {
+            "black": "1",
+            "white": "1",
+            "brown": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_4",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 2,
+      "starting": false,
+      "upgradeTech1": "Hyperspace Mining",
+      "upgradeTech2": "Organic Construction",
+      "race": "Caylion",
+      "frontName": "Antimatter Power",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "brown": "4"
+          },
+          "output": {
+            "yellow": "2",
+            "black": "1",
+            "white": "1"
+          }
+        }
+      ],
+      "backName": "Antimatter Compounds",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "brown": "4"
+          },
+          "output": {
+            "yellow": "2",
+            "black": "1",
+            "green": "1",
+            "white": "2"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_5",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 2,
+      "starting": false,
+      "upgradeTech1": "Cross Species Ethical Equality",
+      "upgradeTech2": "Organic Construction",
+      "race": "Caylion",
+      "frontName": "Interspecies Medical Exchange",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "green": "4"
+          },
+          "output": {
+            "points": "1",
+            "white": "1"
+          },
+          "donations": {
+            "green": "1",
+            "brown": "1"
+          }
+        }
+      ],
+      "backName": "Panbiologic Medicine",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "green": "4"
+          },
+          "output": {
+            "points": "1",
+            "yellow": "1",
+            "white": "1",
+            "brown": "1"
+          },
+          "donations": {
+            "brown": "1",
+            "green": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_6",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 2,
+      "starting": false,
+      "upgradeTech1": "Interspecies Medical Exchange",
+      "upgradeTech2": "Achronal Analysis",
+      "race": "Caylion",
+      "frontName": "Cross Species Ethical Equality",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "white": "4"
+          },
+          "output": {
+            "points": "1"
+          },
+          "donations": {
+            "points": "1",
+            "brown": "1"
+          }
+        }
+      ],
+      "backName": "Concrete Universal Metaethics",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "white": "4"
+          },
+          "output": {
+            "octagon": "1",
+            "points": "1"
+          },
+          "donations": {
+            "points": "1",
+            "brown": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_7",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 3,
+      "starting": false,
+      "upgradeTech1": "Megastructures",
+      "upgradeTech2": "Social Exodus",
+      "race": "Caylion",
+      "frontName": "Xeno Cultural Exchange",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "brown": "5"
+          },
+          "output": {
+            "black": "1",
+            "white": "3",
+            "green": "1",
+            "points": "1"
+          },
+          "donations": {
+            "points": "1"
+          }
+        }
+      ],
+      "backName": "Multispecies Hybrid Cultures",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "brown": "5"
+          },
+          "output": {
+            "black": "1",
+            "white": "3",
+            "green": "1",
+            "points": "2"
+          },
+          "donations": {
+            "points": "1",
+            "white": "1",
+            "black": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_8",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 3,
+      "starting": false,
+      "upgradeTech1": "Galactic Telecomm Control",
+      "upgradeTech2": "Xeno Cultural Exchange",
+      "race": "Caylion",
+      "frontName": "Poly Species Corporations",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "green": "5"
+          },
+          "output": {
+            "ships": "2",
+            "points": "1",
+            "yellow": "2"
+          },
+          "donations": {
+            "brown": "3",
+            "green": "1"
+          }
+        }
+      ],
+      "backName": "Full Interspecies Integration",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "green": "5"
+          },
+          "output": {
+            "ships": "2",
+            "points": "2",
+            "yellow": "2"
+          },
+          "donations": {
+            "brown": "3",
+            "white": "1",
+            "green": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_9",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 3,
+      "starting": false,
+      "upgradeTech1": "Galactic Telecomm Control",
+      "upgradeTech2": "Xeno Cultural Exchange",
+      "race": "Caylion",
+      "frontName": "Social Exodus",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "white": "5"
+          },
+          "output": {
+            "ships": "2",
+            "points": "1",
+            "black": "1"
+          },
+          "donations": {
+            "ships": "2",
+            "points": "1",
+            "yellow": "1",
+            "blue": "1"
+          }
+        }
+      ],
+      "backName": "Galactic Colonization",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "white": "5"
+          },
+          "output": {
+            "ships": "2",
+            "points": "2",
+            "black": "1"
+          },
+          "donations": {
+            "ships": "2",
+            "points": "1",
+            "yellow": "1",
+            "blue": "1",
+            "brown": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_10",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 1,
+      "starting": false,
+      "upgradeTech1": "Universal Translator",
+      "upgradeTech2": "Clinical Immortality",
+      "race": "Caylion",
+      "frontName": "Quantum Computers",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "black": "2"
+          },
+          "output": {
+            "blue": "1",
+            "yellow": "1",
+            "green": "1"
+          }
+        }
+      ],
+      "backName": "Nondeterministic Polynomial Collapse",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "black": "2"
+          },
+          "output": {
+            "blue": "1",
+            "yellow": "2",
+            "green": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_11",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 1,
+      "starting": false,
+      "upgradeTech1": "Genetic Engineering",
+      "upgradeTech2": "Atomic Transmutation",
+      "race": "Caylion",
+      "frontName": "Clinical Immortality",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "blue": "2"
+          },
+          "output": {
+            "points": "1",
+            "white": "1"
+          }
+        }
+      ],
+      "backName": "Practical Immortality",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "blue": "2"
+          },
+          "output": {
+            "points": "1",
+            "yellow": "1",
+            "white": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_12",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 1,
+      "starting": false,
+      "upgradeTech1": "Universal Translator",
+      "upgradeTech2": "Quantum Computers",
+      "race": "Caylion",
+      "frontName": "Ubiquitous Cultural Repository",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "yellow": "2"
+          },
+          "output": {
+            "points": "1",
+            "green": "1"
+          }
+        }
+      ],
+      "backName": "Memetic Lifeforms",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "yellow": "2"
+          },
+          "output": {
+            "points": "1",
+            "black": "1",
+            "green": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_13",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 2,
+      "starting": false,
+      "upgradeTech1": "Antimatter Power",
+      "upgradeTech2": "Singularity Control",
+      "race": "Caylion",
+      "frontName": "Achronal Analysis",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "black": "3"
+          },
+          "output": {
+            "octagon": "1",
+            "yellow": "1",
+            "white": "1",
+            "brown": "1"
+          }
+        }
+      ],
+      "backName": "Time Viewers",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "black": "3"
+          },
+          "output": {
+            "octagon": "1",
+            "yellow": "1",
+            "blue": "1",
+            "white": "2",
+            "brown": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_14",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 2,
+      "starting": false,
+      "upgradeTech1": "Interspecies Medical Exchange",
+      "upgradeTech2": "Cross Species Medical Equality",
+      "race": "Caylion",
+      "frontName": "Organic Construction",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "blue": "3"
+          },
+          "output": {
+            "ships": "2",
+            "white": "1",
+            "brown": "2",
+            "green": "1"
+          }
+        }
+      ],
+      "backName": "Living Infrastructure",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "blue": "3"
+          },
+          "output": {
+            "ships": "2",
+            "white": "1",
+            "brown": "2",
+            "green": "1",
+            "yellow": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_15",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 2,
+      "starting": false,
+      "upgradeTech1": "Antimatter Power",
+      "upgradeTech2": "Singularity Control",
+      "race": "Caylion",
+      "frontName": "Hyperspace Mining",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "yellow": "3"
+          },
+          "output": {
+            "octagon": "1",
+            "black": "1"
+          },
+          "donations": {
+            "yellow": "2"
+          }
+        }
+      ],
+      "backName": "Hyperspace Settlements",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "yellow": "3"
+          },
+          "output": {
+            "octagon": "1",
+            "black": "2",
+            "white": "1",
+            "brown": "1"
+          },
+          "donations": {
+            "yellow": "2"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_16",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 3,
+      "starting": false,
+      "upgradeTech1": "Poly Species Corporations",
+      "upgradeTech2": "Social Exodus",
+      "race": "Caylion",
+      "frontName": "Galactic Telecomm Control",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "black": "4"
+          },
+          "output": {
+            "points": "3",
+            "brown": "2",
+            "white": "1"
+          }
+        }
+      ],
+      "backName": "Galactic Domination",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "black": "4"
+          },
+          "output": {
+            "points": "4",
+            "yellow": "1",
+            "brown": "2",
+            "white": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_17",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 3,
+      "starting": false,
+      "upgradeTech1": "Megastructures",
+      "upgradeTech2": "Matter Generation",
+      "race": "Caylion",
+      "frontName": "Temporal Dilation",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "blue": "4"
+          },
+          "output": {
+            "points": "2",
+            "octagon": "1",
+            "white": "1",
+            "green": "2"
+          }
+        }
+      ],
+      "backName": "Stasis Field",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "blue": "4"
+          },
+          "output": {
+            "points": "3",
+            "octagon": "1",
+            "white": "1",
+            "green": "2"
+          },
+          "donations": {
+            "octagon": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_18",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 3,
+      "starting": false,
+      "upgradeTech1": "Poly Species Corporations",
+      "upgradeTech2": "Temporal Dilation",
+      "race": "Caylion",
+      "frontName": "Matter Generation",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "yellow": "4"
+          },
+          "output": {
+            "points": "2",
+            "octagon": "1",
+            "blue": "1",
+            "white": "1",
+            "brown": "1"
+          }
+        }
+      ],
+      "backName": "Macroscale Teleportation",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "yellow": "2"
+          },
+          "output": {
+            "points": "3",
+            "octagon": "1",
+            "blue": "1",
+            "white": "1",
+            "brown": "2"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_19",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 2,
+      "starting": true,
+      "upgradeTech1": "",
+      "upgradeTech2": "Organic Construction",
+      "race": "Caylion",
+      "frontName": "Lunar Mining Consortium",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "blue": "2"
+          },
+          "output": {
+            "ships": "2",
+            "black": "1",
+            "white": "1"
+          }
+        }
+      ],
+      "backName": "Auxonic Outersystem Harvesting",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "blue": "2"
+          },
+          "output": {
+            "ships": "2",
+            "black": "1",
+            "yellow": "1",
+            "white": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_20",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 1,
+      "starting": true,
+      "upgradeTech1": "",
+      "upgradeTech2": "Genetic Engineering",
+      "race": "Caylion",
+      "frontName": "Planetary Ecological Dominance",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "output": {
+            "ships": "1",
+            "green": "3",
+            "white": "1"
+          }
+        }
+      ],
+      "backName": "Systemwide Gravitic Dominance",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "output": {
+            "ships": "1",
+            "blue": "1",
+            "green": "3",
+            "white": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_21",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 1,
+      "starting": false,
+      "upgradeTech1": "Ubiquitous Cultural Repository",
+      "upgradeTech2": "Nanotechnology",
+      "race": "Caylion",
+      "frontName": "Atomic Transmutation",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "octagon": "1"
+          },
+          "output": {
+            "yellow": "1",
+            "blue": "1",
+            "brown": "1"
+          }
+        }
+      ],
+      "backName": "Pseudomaterials",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "octagon": "1"
+          },
+          "output": {
+            "yellow": "1",
+            "blue": "2",
+            "brown": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_22",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 2,
+      "starting": true,
+      "upgradeTech1": "",
+      "upgradeTech2": "Antimatter Power",
+      "race": "Caylion",
+      "frontName": "Oceanic Processing",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "green": "2"
+          },
+          "output": {
+            "blue": "1",
+            "brown": "1"
+          }
+        }
+      ],
+      "backName": "Planetwide Industrial Mariculture",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "green": "2"
+          },
+          "output": {
+            "black": "1",
+            "blue": "1",
+            "green": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_23",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 1,
+      "starting": true,
+      "upgradeTech1": "",
+      "upgradeTech2": "Ubiquitous Cultural Repository",
+      "race": "Caylion",
+      "frontName": "Distributed Telenet",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "black": "1"
+          },
+          "output": {
+            "brown": "1",
+            "white": "1"
+          }
+        }
+      ],
+      "backName": "Ansible Driven Intersystem Society",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "black": "1"
+          },
+          "output": {
+            "blue": "1",
+            "brown": "1",
+            "white": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_24",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 2,
+      "starting": false,
+      "upgradeTech1": "Hyperspace Mining",
+      "upgradeTech2": "Achronal Analysis",
+      "race": "Caylion",
+      "frontName": "Singularity Control",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "octagon": "2"
+          },
+          "output": {
+            "ships": "1",
+            "yellow": "1",
+            "blue": "2",
+            "white": "1",
+            "green": "1",
+            "brown": "1"
+          }
+        }
+      ],
+      "backName": "Wormhole Grid",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "octagon": "2"
+          },
+          "output": {
+            "ships": "1",
+            "yellow": "1",
+            "blue": "2",
+            "white": "1",
+            "green": "1",
+            "brown": "3"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_26",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 3,
+      "starting": false,
+      "upgradeTech1": "Temporal Dilation",
+      "upgradeTech2": "Matter Generation",
+      "race": "Caylion",
+      "frontName": "Megastructures",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "octagon": "3"
+          },
+          "output": {
+            "points": "5",
+            "white": "1",
+            "brown": "1"
+          }
+        }
+      ],
+      "backName": "Dyson Swarms",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "octagon": "3"
+          },
+          "output": {
+            "points": "6",
+            "blue": "1",
+            "white": "1",
+            "brown": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_71",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 1,
+      "starting": false,
+      "upgradeTech1": "Genetic Engineering",
+      "upgradeTech2": "Atomic Transmutation",
+      "race": "Faderan",
+      "frontName": "Nanotechnology",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "brown": "3"
+          },
+          "output": {
+            "octagon": "1",
+            "green": "1"
+          }
+        }
+      ],
+      "backName": "Nanofabricators",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "brown": "3"
+          },
+          "output": {
+            "octagon": "1",
+            "yellow": "1",
+            "green": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_72",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 1,
+      "starting": false,
+      "upgradeTech1": "Nanotechnology",
+      "upgradeTech2": "Clinical Immortality",
+      "race": "Faderan",
+      "frontName": "Genetic Engineering",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "green": "3"
+          },
+          "output": {
+            "blue": "1",
+            "white": "1",
+            "black": "1"
+          }
+        }
+      ],
+      "backName": "Genetic Resynthesis",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "green": "3"
+          },
+          "output": {
+            "blue": "2",
+            "black": "1",
+            "white": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_73",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 1,
+      "starting": false,
+      "upgradeTech1": "Ubiquitous Cultural Repository",
+      "upgradeTech2": "Quantum Computers",
+      "race": "Faderan",
+      "frontName": "Universal Translator",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "white": "3"
+          },
+          "output": {
+            "points": "1"
+          },
+          "donations": {
+            "black": "1"
+          }
+        }
+      ],
+      "backName": "Universal Empathetic Communication",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "white": "3"
+          },
+          "output": {
+            "points": "1"
+          },
+          "donations": {
+            "black": "1",
+            "white": "1",
+            "brown": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_74",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 2,
+      "starting": false,
+      "upgradeTech1": "Hyperspace Mining",
+      "upgradeTech2": "Organic Construction",
+      "race": "Faderan",
+      "frontName": "Antimatter Power",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "brown": "4"
+          },
+          "output": {
+            "yellow": "2",
+            "blue": "1",
+            "green": "1"
+          }
+        }
+      ],
+      "backName": "Antimatter Compounds",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "brown": "4"
+          },
+          "output": {
+            "yellow": "2",
+            "blue": "1",
+            "green": "2",
+            "white": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_75",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 2,
+      "starting": false,
+      "upgradeTech1": "Cross Species Ethical Equality",
+      "upgradeTech2": "Organic Construction",
+      "race": "Faderan",
+      "frontName": "Interspecies Medical Exchange",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "green": "4"
+          },
+          "output": {
+            "points": "1",
+            "brown": "1"
+          },
+          "donations": {
+            "green": "2"
+          }
+        }
+      ],
+      "backName": "Panbiologic Medicine",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "green": "4"
+          },
+          "output": {
+            "points": "1",
+            "blue": "1",
+            "white": "1",
+            "brown": "1"
+          },
+          "donations": {
+            "green": "2"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_76",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 2,
+      "starting": false,
+      "upgradeTech1": "Interspecies Medical Exchange",
+      "upgradeTech2": "Achronal Analysis",
+      "race": "Faderan",
+      "frontName": "Cross Species Ethical Equality",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "white": "4"
+          },
+          "output": {
+            "points": "1"
+          },
+          "donations": {
+            "points": "1",
+            "white": "1"
+          }
+        }
+      ],
+      "backName": "Concrete Universal Metaethics",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "white": "4"
+          },
+          "output": {
+            "octagon": "1",
+            "points": "1"
+          },
+          "donations": {
+            "points": "1",
+            "white": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_77",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 3,
+      "starting": false,
+      "upgradeTech1": "Megastructures",
+      "upgradeTech2": "Social Exodus",
+      "race": "Faderan",
+      "frontName": "Xeno Cultural Exchange",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "brown": "5"
+          },
+          "output": {
+            "points": "1",
+            "black": "1",
+            "white": "2",
+            "green": "2"
+          },
+          "donations": {
+            "points": "1"
+          }
+        }
+      ],
+      "backName": "Multispecies Hybrid Cultures",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "brown": "5"
+          },
+          "output": {
+            "points": "2",
+            "black": "1",
+            "white": "2",
+            "green": "2"
+          },
+          "donations": {
+            "points": "1",
+            "blue": "1",
+            "white": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_78",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 3,
+      "starting": false,
+      "upgradeTech1": "Galactic Telecomm Control",
+      "upgradeTech2": "Xeno Cultural Exchange",
+      "race": "Faderan",
+      "frontName": "Poly Species Corporations",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "green": "5"
+          },
+          "output": {
+            "ships": "2",
+            "points": "1",
+            "yellow": "1",
+            "black": "1"
+          },
+          "donations": {
+            "brown": "2",
+            "green": "1",
+            "white": "1"
+          }
+        }
+      ],
+      "backName": "Full Interspecies Integration",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "green": "5"
+          },
+          "output": {
+            "ships": "2",
+            "points": "2",
+            "yellow": "1",
+            "black": "1"
+          },
+          "donations": {
+            "brown": "2",
+            "green": "1",
+            "white": "2"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_79",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 3,
+      "starting": false,
+      "upgradeTech1": "Galactic Telecomm Control",
+      "upgradeTech2": "Xeno Cultural Exchange",
+      "race": "Faderan",
+      "frontName": "Social Exodus",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "white": "5"
+          },
+          "output": {
+            "ships": "2",
+            "points": "1",
+            "yellow": "1"
+          },
+          "donations": {
+            "ships": "2",
+            "points": "1",
+            "yellow": "1",
+            "blue": "1"
+          }
+        }
+      ],
+      "backName": "Galactic Colonization",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "white": "5"
+          },
+          "output": {
+            "ships": "2",
+            "points": "2",
+            "yellow": "1"
+          },
+          "donations": {
+            "ships": "2",
+            "points": "1",
+            "yellow": "1",
+            "blue": "1",
+            "green": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_80",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 1,
+      "starting": false,
+      "upgradeTech1": "Universal Translator",
+      "upgradeTech2": "Clinical Immortality",
+      "race": "Faderan",
+      "frontName": "Quantum Computers",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "black": "2"
+          },
+          "output": {
+            "blue": "1",
+            "yellow": "1",
+            "brown": "1"
+          }
+        }
+      ],
+      "backName": "Nondeterministic Polynomial Collapse",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "black": "2"
+          },
+          "output": {
+            "blue": "1",
+            "yellow": "2",
+            "brown": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_81",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 1,
+      "starting": false,
+      "upgradeTech1": "Genetic Engineering",
+      "upgradeTech2": "Atomic Transmutation",
+      "race": "Faderan",
+      "frontName": "Clinical Immortality",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "blue": "2"
+          },
+          "output": {
+            "points": "1",
+            "green": "1"
+          }
+        }
+      ],
+      "backName": "Practical Immortality",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "blue": "2"
+          },
+          "output": {
+            "points": "1",
+            "black": "1",
+            "green": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_82",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 1,
+      "starting": false,
+      "upgradeTech1": "Universal Translator",
+      "upgradeTech2": "Quantum Computers",
+      "race": "Faderan",
+      "frontName": "Ubiquitous Cultural Repository",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "yellow": "2"
+          },
+          "output": {
+            "points": "1",
+            "white": "1"
+          }
+        }
+      ],
+      "backName": "Memetic Lifeforms",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "yellow": "2"
+          },
+          "output": {
+            "points": "1",
+            "black": "1",
+            "white": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_83",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 2,
+      "starting": false,
+      "upgradeTech1": "Antimatter Power",
+      "upgradeTech2": "Singularity Control",
+      "race": "Faderan",
+      "frontName": "Achronal Analysis",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "black": "3"
+          },
+          "output": {
+            "octagon": "1",
+            "blue": "1",
+            "white": "1",
+            "brown": "1"
+          }
+        }
+      ],
+      "backName": "Time Viewers",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "black": "3"
+          },
+          "output": {
+            "octagon": "1",
+            "blue": "1",
+            "yellow": "1",
+            "brown": "1",
+            "white": "2"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_84",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 2,
+      "starting": false,
+      "upgradeTech1": "Interspecies Medical Exchange",
+      "upgradeTech2": "Cross Species Ethical Equality",
+      "race": "Faderan",
+      "frontName": "Organic Construction",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "blue": "3"
+          },
+          "output": {
+            "ships": "2",
+            "white": "1",
+            "brown": "2",
+            "green": "1"
+          }
+        }
+      ],
+      "backName": "Living Infrastructure",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "blue": "3"
+          },
+          "output": {
+            "ships": "2",
+            "yellow": "1",
+            "white": "1",
+            "brown": "2",
+            "green": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_85",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 2,
+      "starting": false,
+      "upgradeTech1": "Antimatter Power",
+      "upgradeTech2": "Singularity Control",
+      "race": "Faderan",
+      "frontName": "Hyperspace Mining",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "yellow": "3"
+          },
+          "output": {
+            "octagon": "1",
+            "black": "1"
+          },
+          "donations": {
+            "yellow": "1",
+            "black": "1"
+          }
+        }
+      ],
+      "backName": "Hyperspace Settlements",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "yellow": "3"
+          },
+          "output": {
+            "octagon": "1",
+            "black": "2",
+            "brown": "2"
+          },
+          "donations": {
+            "yellow": "1",
+            "black": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_86",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 3,
+      "starting": false,
+      "upgradeTech1": "Poly Species Corporations",
+      "upgradeTech2": "Social Exodus",
+      "race": "Faderan",
+      "frontName": "Galactic Telecom Control",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "black": "4"
+          },
+          "output": {
+            "points": "3",
+            "white": "2",
+            "green": "1"
+          }
+        }
+      ],
+      "backName": "Galactic Domination",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "black": "4"
+          },
+          "output": {
+            "points": "4",
+            "yellow": "1",
+            "white": "2",
+            "green": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_87",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 3,
+      "starting": false,
+      "upgradeTech1": "Megastructures",
+      "upgradeTech2": "Matter Generation",
+      "race": "Faderan",
+      "frontName": "Temporal Dilation",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "blue": "4"
+          },
+          "output": {
+            "points": "2",
+            "octagon": "1",
+            "green": "1",
+            "brown": "2"
+          }
+        }
+      ],
+      "backName": "Stasis Field",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "blue": "4"
+          },
+          "output": {
+            "points": "3",
+            "octagon": "1",
+            "green": "1",
+            "brown": "2"
+          },
+          "donations": {
+            "octagon": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_88",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 3,
+      "starting": false,
+      "upgradeTech1": "Poly Species Corporations",
+      "upgradeTech2": "Temporal Dilation",
+      "race": "Faderan",
+      "frontName": "Matter Generation",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "yellow": "4"
+          },
+          "output": {
+            "points": "2",
+            "octagon": "1",
+            "blue": "1",
+            "green": "1",
+            "brown": "1"
+          }
+        }
+      ],
+      "backName": "Macroscale Teleportation",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "yellow": "4"
+          },
+          "output": {
+            "points": "3",
+            "octagon": "1",
+            "blue": "1",
+            "green": "1",
+            "brown": "2"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_89",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 2,
+      "starting": true,
+      "upgradeTech1": "Achronal Analysis",
+      "upgradeTech2": "Antimatter Power",
+      "race": "Faderan",
+      "frontName": "Relic Repurposing",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "brown": "2"
+          },
+          "output": {
+            "ships": "2",
+            "white": "1"
+          }
+        }
+      ],
+      "backName": "Relic Manufacturing",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "brown": "2"
+          },
+          "output": {
+            "ships": "2",
+            "white": "2",
+            "green": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_90",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 2,
+      "starting": true,
+      "upgradeTech1": "Singularity Control",
+      "upgradeTech2": "Hyperspace Mining",
+      "race": "Faderan",
+      "frontName": "Archaic Automated Support Network",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "output": {
+            "ships": "1",
+            "white": "1",
+            "green": "1",
+            "brown": "1"
+          }
+        }
+      ],
+      "backName": "Domesticated Automated Support Network",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "output": {
+            "ships": "1",
+            "white": "1",
+            "green": "1",
+            "brown": "1"
+          },
+          "donations": {
+            "black": "1",
+            "yellow": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_91",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 1,
+      "starting": false,
+      "upgradeTech1": "Ubiquitous Cultural Repository",
+      "upgradeTech2": "Nanotechnology",
+      "race": "Faderan",
+      "frontName": "Atomic Transmutation",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "octagon": "1"
+          },
+          "output": {
+            "blue": "1",
+            "yellow": "1",
+            "brown": "1"
+          }
+        }
+      ],
+      "backName": "Pseudomaterials",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "octagon": "1"
+          },
+          "output": {
+            "blue": "2",
+            "yellow": "1",
+            "brown": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_92",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 2,
+      "starting": true,
+      "upgradeTech1": "Cross Species Ethical Equality",
+      "upgradeTech2": "Interspecies Medical Exchange",
+      "race": "Faderan",
+      "frontName": "Ritual Government",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "white": "4"
+          },
+          "output": {
+            "octagon": "1",
+            "black": "1",
+            "green": "1"
+          }
+        }
+      ],
+      "backName": "Interspecies Capital",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "white": "4"
+          },
+          "output": {
+            "octagon": "1",
+            "black": "1",
+            "green": "1"
+          },
+          "donations": {
+            "points": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_93",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 1,
+      "starting": true,
+      "upgradeTech1": "Genetic Engineering",
+      "upgradeTech2": "Clinical Immortality",
+      "race": "Faderan",
+      "frontName": "Non-Indigenous Fauna",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "green": "3"
+          },
+          "output": {
+            "blue": "1",
+            "yellow": "1",
+            "brown": "1"
+          }
+        }
+      ],
+      "backName": "Genetically Pliable Fauna",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "green": "3"
+          },
+          "output": {
+            "blue": "2",
+            "yellow": "1",
+            "brown": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_94",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 2,
+      "starting": false,
+      "upgradeTech1": "Hyperspace Mining",
+      "upgradeTech2": "Achronal Analysis",
+      "race": "Faderan",
+      "frontName": "Singularity Control",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "octagon": "2"
+          },
+          "output": {
+            "ships": "1",
+            "black": "2",
+            "blue": "1",
+            "brown": "1",
+            "green": "1",
+            "white": "1"
+          }
+        }
+      ],
+      "backName": "Wormhole Grid",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "octagon": "2"
+          },
+          "output": {
+            "ships": "1",
+            "blue": "1",
+            "black": "2",
+            "green": "3",
+            "white": "1",
+            "brown": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_96",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 3,
+      "starting": false,
+      "upgradeTech1": "Temporal Dilation",
+      "upgradeTech2": "Matter Generation",
+      "race": "Faderan",
+      "frontName": "Megastructures",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "octagon": "3"
+          },
+          "output": {
+            "points": "5",
+            "white": "1",
+            "brown": "1"
+          }
+        }
+      ],
+      "backName": "Dyson Swarms",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "octagon": "3"
+          },
+          "output": {
+            "points": "6",
+            "black": "1",
+            "white": "1",
+            "brown": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_130",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 1,
+      "starting": false,
+      "upgradeTech1": "Genetic Engineering",
+      "upgradeTech2": "Atomic Transmutation",
+      "race": "Kjasjavikalimm",
+      "frontName": "Nanotechnology",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "brown": "3"
+          },
+          "output": {
+            "octagon": "1",
+            "green": "1"
+          }
+        }
+      ],
+      "backName": "Nanofabricators",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "brown": "3"
+          },
+          "output": {
+            "octagon": "1",
+            "black": "1",
+            "green": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_131",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 1,
+      "starting": false,
+      "upgradeTech1": "Nanotechnology",
+      "upgradeTech2": "Clinical Immortality",
+      "race": "Kjasjavikalimm",
+      "frontName": "Genetic Engineering",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "green": "3"
+          },
+          "output": {
+            "blue": "1",
+            "black": "1",
+            "white": "1"
+          }
+        }
+      ],
+      "backName": "Genetic Resynthesis",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "green": "3"
+          },
+          "output": {
+            "blue": "1",
+            "black": "2",
+            "white": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_132",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 1,
+      "starting": false,
+      "upgradeTech1": "Ubiquitous Cultural Repository",
+      "upgradeTech2": "Quantum Computers",
+      "race": "Kjasjavikalimm",
+      "frontName": "Universal Translator",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "white": "3"
+          },
+          "output": {
+            "points": "1"
+          },
+          "donations": {
+            "black": "1"
+          }
+        }
+      ],
+      "backName": "Universal Empathetic Communication",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "white": "3"
+          },
+          "output": {
+            "points": "1"
+          },
+          "donations": {
+            "black": "1",
+            "white": "1",
+            "green": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_133",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 2,
+      "starting": false,
+      "upgradeTech1": "Hyperspace Mining",
+      "upgradeTech2": "Organic Construction",
+      "race": "Kjasjavikalimm",
+      "frontName": "Antimatter Power",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "brown": "4"
+          },
+          "output": {
+            "black": "2",
+            "yellow": "1",
+            "white": "1"
+          }
+        }
+      ],
+      "backName": "Antimatter Compounds",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "brown": "4"
+          },
+          "output": {
+            "yellow": "1",
+            "black": "2",
+            "green": "1",
+            "white": "2"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_134",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 2,
+      "starting": false,
+      "upgradeTech1": "Cross Species Ethical Equality",
+      "upgradeTech2": "Organic Construction",
+      "race": "Kjasjavikalimm",
+      "frontName": "Interspecies Medical Exchange",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "green": "4"
+          },
+          "output": {
+            "points": "1",
+            "white": "1"
+          },
+          "donations": {
+            "green": "2"
+          }
+        }
+      ],
+      "backName": "Panbiologic Medicine",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "green": "4"
+          },
+          "output": {
+            "points": "1",
+            "black": "1",
+            "white": "2"
+          },
+          "donations": {
+            "green": "2"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_135",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 2,
+      "starting": false,
+      "upgradeTech1": "Interspecies Medical Exchange",
+      "upgradeTech2": "Achronal Analysis",
+      "race": "Kjasjavikalimm",
+      "frontName": "Cross Species Ethical Equality",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "white": "4"
+          },
+          "output": {
+            "points": "1"
+          },
+          "donations": {
+            "points": "1",
+            "white": "1"
+          }
+        }
+      ],
+      "backName": "Concrete Universal Metaethics",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "white": "4"
+          },
+          "output": {
+            "octagon": "1",
+            "points": "1"
+          },
+          "donations": {
+            "points": "1",
+            "white": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_136",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 3,
+      "starting": false,
+      "upgradeTech1": "Megastructures",
+      "upgradeTech2": "Social Exodus",
+      "race": "Kjasjavikalimm",
+      "frontName": "Xeno Cultural Exchange",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "brown": "5"
+          },
+          "output": {
+            "points": "1",
+            "black": "1",
+            "white": "1",
+            "green": "3"
+          },
+          "donations": {
+            "points": "1"
+          }
+        }
+      ],
+      "backName": "Multispecies Hybrid Cultures",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "brown": "5"
+          },
+          "output": {
+            "points": "2",
+            "black": "1",
+            "white": "1",
+            "green": "3"
+          },
+          "donations": {
+            "points": "1",
+            "black": "1",
+            "brown": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_137",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 3,
+      "starting": false,
+      "upgradeTech1": "Galactic Telecomm Control",
+      "upgradeTech2": "Xeno Cultural Exchange",
+      "race": "Kjasjavikalimm",
+      "frontName": "Poly Species Corporations",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "green": "5"
+          },
+          "output": {
+            "ships": "2",
+            "points": "1",
+            "yellow": "2"
+          },
+          "donations": {
+            "brown": "1",
+            "green": "1",
+            "white": "2"
+          }
+        }
+      ],
+      "backName": "Full Interspecies Integration",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "green": "5"
+          },
+          "output": {
+            "ships": "2",
+            "points": "2",
+            "yellow": "2"
+          },
+          "donations": {
+            "brown": "2",
+            "green": "1",
+            "white": "2"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_138",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 3,
+      "starting": false,
+      "upgradeTech1": "Galactic Telecomm Control",
+      "upgradeTech2": "Xeno Cultural Exchange",
+      "race": "Kjasjavikalimm",
+      "frontName": "Social Exodus",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "white": "5"
+          },
+          "output": {
+            "ships": "2",
+            "points": "1",
+            "blue": "1"
+          },
+          "donations": {
+            "ships": "2",
+            "points": "1",
+            "black": "1",
+            "blue": "1"
+          }
+        }
+      ],
+      "backName": "Galactic Colonization",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "white": "5"
+          },
+          "output": {
+            "ships": "2",
+            "points": "2",
+            "blue": "1"
+          },
+          "donations": {
+            "ships": "2",
+            "points": "1",
+            "black": "1",
+            "blue": "1",
+            "green": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_139",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 1,
+      "starting": false,
+      "upgradeTech1": "Universal Translator",
+      "upgradeTech2": "Clinical Immortality",
+      "race": "Kjasjavikalimm",
+      "frontName": "Quantum Computers",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "black": "2"
+          },
+          "output": {
+            "blue": "1",
+            "yellow": "1",
+            "white": "1"
+          }
+        }
+      ],
+      "backName": "Nondeterministic Polynomial Collapse",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "black": "2"
+          },
+          "output": {
+            "blue": "1",
+            "yellow": "2",
+            "white": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_140",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 1,
+      "starting": false,
+      "upgradeTech1": "Genetic Engineering",
+      "upgradeTech2": "Atomic Transmutation",
+      "race": "Kjasjavikalimm",
+      "frontName": "Clinical Immortality",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "blue": "2"
+          },
+          "output": {
+            "points": "1",
+            "green": "1"
+          }
+        }
+      ],
+      "backName": "Practical Immortality",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "blue": "2"
+          },
+          "output": {
+            "points": "1",
+            "black": "1",
+            "green": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_141",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 1,
+      "starting": false,
+      "upgradeTech1": "Universal Translator",
+      "upgradeTech2": "Quantum Computers",
+      "race": "Kjasjavikalimm",
+      "frontName": "Ubiquitous Cultural Repository",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "yellow": "2"
+          },
+          "output": {
+            "points": "1",
+            "green": "1"
+          }
+        }
+      ],
+      "backName": "Memetic Lifeforms",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "yellow": "2"
+          },
+          "output": {
+            "points": "1",
+            "black": "1",
+            "green": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_142",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 2,
+      "starting": false,
+      "upgradeTech1": "Antimatter Power",
+      "upgradeTech2": "Singularity Control",
+      "race": "Kjasjavikalimm",
+      "frontName": "Achronal Analysis",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "black": "3"
+          },
+          "output": {
+            "octagon": "1",
+            "blue": "1",
+            "white": "1",
+            "brown": "1"
+          }
+        }
+      ],
+      "backName": "Time Viewers",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "black": "3"
+          },
+          "output": {
+            "octagon": "1",
+            "blue": "1",
+            "yellow": "1",
+            "green": "1",
+            "brown": "1",
+            "white": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_143",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 2,
+      "starting": false,
+      "upgradeTech1": "Interspecies Medical Exchange",
+      "upgradeTech2": "Cross Species Ethical Equality",
+      "race": "Kjasjavikalimm",
+      "frontName": "Organic Construction",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "blue": "3"
+          },
+          "output": {
+            "ships": "2",
+            "white": "1",
+            "brown": "1",
+            "green": "2"
+          }
+        }
+      ],
+      "backName": "Living Infrastructure",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "blue": "3"
+          },
+          "output": {
+            "ships": "2",
+            "black": "1",
+            "white": "1",
+            "brown": "1",
+            "green": "2"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_144",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 2,
+      "starting": false,
+      "upgradeTech1": "Antimatter Power",
+      "upgradeTech2": "Singularity Control",
+      "race": "Kjasjavikalimm",
+      "frontName": "Hyperspace Mining",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "yellow": "3"
+          },
+          "output": {
+            "octagon": "1",
+            "black": "1"
+          },
+          "donations": {
+            "black": "2"
+          }
+        }
+      ],
+      "backName": "Hyperspace Settlements",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "yellow": "3"
+          },
+          "output": {
+            "octagon": "1",
+            "blue": "1",
+            "black": "1",
+            "white": "1",
+            "green": "1"
+          },
+          "donations": {
+            "black": "2"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_145",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 3,
+      "starting": false,
+      "upgradeTech1": "Poly Species Corporations",
+      "upgradeTech2": "Social Exodus",
+      "race": "Kjasjavikalimm",
+      "frontName": "Galactic Telecomm Control",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "black": "4"
+          },
+          "output": {
+            "points": "3",
+            "brown": "2",
+            "white": "1"
+          }
+        }
+      ],
+      "backName": "Galactic Domination",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "black": "4"
+          },
+          "output": {
+            "points": "4",
+            "blue": "1",
+            "brown": "2",
+            "white": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_146",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 3,
+      "starting": false,
+      "upgradeTech1": "Megastructures",
+      "upgradeTech2": "Matter Generation",
+      "race": "Kjasjavikalimm",
+      "frontName": "Temporal Dilation",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "blue": "4"
+          },
+          "output": {
+            "points": "2",
+            "octagon": "1",
+            "white": "1",
+            "green": "2"
+          }
+        }
+      ],
+      "backName": "Stasis Field",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "blue": "4"
+          },
+          "output": {
+            "points": "3",
+            "octagon": "1",
+            "white": "1",
+            "green": "2"
+          },
+          "donations": {
+            "octagon": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_147",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 3,
+      "starting": false,
+      "upgradeTech1": "Poly Species Corporations",
+      "upgradeTech2": "Temporal Dilation",
+      "race": "Kjasjavikalimm",
+      "frontName": "Matter Generation",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "yellow": "4"
+          },
+          "output": {
+            "points": "2",
+            "octagon": "1",
+            "blue": "1",
+            "white": "1",
+            "brown": "1"
+          }
+        }
+      ],
+      "backName": "Macroscale Teleportation",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "yellow": "4"
+          },
+          "output": {
+            "points": "3",
+            "octagon": "1",
+            "blue": "1",
+            "white": "1",
+            "brown": "2"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_148",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 2,
+      "starting": true,
+      "upgradeTech1": "Hyperspace Mining",
+      "upgradeTech2": "Singularity Control",
+      "race": "Kjasjavikalimm",
+      "frontName": "Starstrider Jumpcores",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "blue": "2"
+          },
+          "output": {
+            "ships": "4",
+            "green": "1"
+          }
+        }
+      ],
+      "backName": "Fastjump Network",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "blue": "2"
+          },
+          "output": {
+            "ships": "5",
+            "points": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_149",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 2,
+      "starting": true,
+      "upgradeTech1": "Organic Construction",
+      "upgradeTech2": "Antimatter Power",
+      "race": "Kjasjavikalimm",
+      "frontName": "Underground Cities",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "output": {
+            "ships": "3",
+            "brown": "2"
+          }
+        }
+      ],
+      "backName": "Asteroid Mine Network",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "output": {
+            "ships": "3",
+            "blue": "1",
+            "brown": "2"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_150",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 1,
+      "starting": false,
+      "upgradeTech1": "Ubiquitous Cultural Repository",
+      "upgradeTech2": "Nanotechnology",
+      "race": "Kjasjavikalimm",
+      "frontName": "Atomic Transmutation",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "octagon": "1"
+          },
+          "output": {
+            "yellow": "1",
+            "black": "1",
+            "brown": "1"
+          }
+        }
+      ],
+      "backName": "Pseudomaterials",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "octagon": "1"
+          },
+          "output": {
+            "blue": "1",
+            "black": "1",
+            "yellow": "1",
+            "brown": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_151",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 1,
+      "starting": true,
+      "upgradeTech1": "Genetic Engineering",
+      "upgradeTech2": "Nanotechnology",
+      "race": "Kjasjavikalimm",
+      "frontName": "Perfume Pheromone Loyalty",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "brown": "4"
+          },
+          "output": {
+            "yellow": "1",
+            "blue": "1",
+            "black": "1",
+            "white": "1"
+          }
+        }
+      ],
+      "backName": "Multiconformal Pheromonics",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "brown": "4"
+          },
+          "output": {
+            "yellow": "1",
+            "black": "1",
+            "blue": "1",
+            "white": "1"
+          },
+          "donations": {
+            "brown": "1",
+            "green": "1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_152",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 2,
+      "starting": false,
+      "upgradeTech1": "Hyperspace Mining",
+      "upgradeTech2": "Achronal Analysis",
+      "race": "Kjasjavikalimm",
+      "frontName": "Singularity Control",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "octagon": "2"
+          },
+          "output": {
+            "ships": "1",
+            "black": "1",
+            "yellow": "1",
+            "blue": "1",
+            "white": "2",
+            "brown": "1"
+          }
+        }
+      ],
+      "backName": "Wormhole Grid",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "octagon": "2"
+          },
+          "output": {
+            "ships": "1",
+            "black": "1",
+            "yellow": "1",
+            "blue": "1",
+            "white": "3",
+            "brown": "2"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "converterCard_154",
+    "cardType": "ConverterCard",
+    "converterCard": {
+      "era": 3,
+      "starting": false,
+      "upgradeTech1": "Temporal Dilation",
+      "upgradeTech2": "Matter Generation",
+      "race": "Kjasjavikalimm",
+      "frontName": "Megastructures",
+      "frontConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "octagon": "3"
+          },
+          "output": {
+            "points": "5",
+            "white": "1",
+            "green": "1"
+          }
+        }
+      ],
+      "backName": "Dyson Swarms",
+      "backConverters": [
+        {
+          "phase": "Economy",
+          "input": {
+            "octagon": "3"
+          },
+          "output": {
+            "points": "6",
+            "yellow": "1",
+            "white": "1",
+            "green": "1"
+          }
+        }
+      ]
+    }
+  }
+]

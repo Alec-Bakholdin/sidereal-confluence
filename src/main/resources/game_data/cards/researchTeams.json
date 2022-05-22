@@ -1,453 +1,576 @@
 [
   {
     "id": "researchTeam_319",
-    "name": "Mechanical Engineers",
-    "era": 1,
-    "points": 1,
-    "resultingTechnology": "Nanotechnology",
-    "researchOptions": {
-      "yellow": "4",
-      "octagon": "2"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Mechanical Engineers",
+      "era": 1,
+      "points": 1,
+      "researchOptions": {
+        "yellow": "4",
+        "octagon": "2"
+      },
+      "resultingTechnology": "Nanotechnology"
     }
   },
   {
     "id": "researchTeam_320",
-    "name": "Computational Theoreticians",
-    "era": 1,
-    "points": 1,
-    "resultingTechnology": "Quantum Computers",
-    "researchOptions": {
-      "white": "6",
-      "blue": "4"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Computational Theoreticians",
+      "era": 1,
+      "points": 1,
+      "researchOptions": {
+        "white": "6",
+        "blue": "4"
+      },
+      "resultingTechnology": "Quantum Computers"
     }
   },
   {
     "id": "researchTeam_321",
-    "name": "Linguistic Analysts",
-    "era": 1,
-    "points": 1,
-    "resultingTechnology": "Universal Translator",
-    "researchOptions": {
-      "green": "6",
-      "black": "4"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Linguistic Analysts",
+      "era": 1,
+      "points": 1,
+      "researchOptions": {
+        "green": "6",
+        "black": "4"
+      },
+      "resultingTechnology": "Universal Translator"
     }
   },
   {
     "id": "researchTeam_322",
-    "name": "Organic Chemists",
-    "era": 1,
-    "points": 1,
-    "resultingTechnology": "Genetic Engineering",
-    "researchOptions": {
-      "brown": "6",
-      "blue": "4"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Organic Chemists",
+      "era": 1,
+      "points": 1,
+      "researchOptions": {
+        "brown": "6",
+        "blue": "4"
+      },
+      "resultingTechnology": "Genetic Engineering"
     }
   },
   {
     "id": "researchTeam_323",
-    "name": "Pharmaceutical Scientists",
-    "era": 1,
-    "points": 1,
-    "resultingTechnology": "Clinical Immortality",
-    "researchOptions": {
-      "green": "6",
-      "octagon": "2"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Pharmaceutical Scientists",
+      "era": 1,
+      "points": 1,
+      "researchOptions": {
+        "green": "6",
+        "octagon": "2"
+      },
+      "resultingTechnology": "Clinical Immortality"
     }
   },
   {
     "id": "researchTeam_324",
-    "name": "Sociologists",
-    "era": 1,
-    "points": 1,
-    "resultingTechnology": "Ubiquitous Cultural Repository",
-    "researchOptions": {
-      "white": "6",
-      "black": "4"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Sociologists",
+      "era": 1,
+      "points": 1,
+      "researchOptions": {
+        "white": "6",
+        "black": "4"
+      },
+      "resultingTechnology": "Ubiquitous Cultural Repository"
     }
   },
   {
     "id": "researchTeam_325",
-    "name": "Nuclear Physicists",
-    "era": 1,
-    "points": 1,
-    "resultingTechnology": "Atomic Transmutation",
-    "researchOptions": {
-      "brown": "6",
-      "yellow": "4"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Nuclear Physicists",
+      "era": 1,
+      "points": 1,
+      "researchOptions": {
+        "brown": "6",
+        "yellow": "4"
+      },
+      "resultingTechnology": "Atomic Transmutation"
     }
   },
   {
     "id": "researchTeam_326",
-    "name": "Comparative Physiologists",
-    "era": 2,
-    "points": 3,
-    "resultingTechnology": "Interspecies Medical Exchange",
-    "researchOptions": {
-      "brown": "9",
-      "black": "6"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Comparative Physiologists",
+      "era": 2,
+      "points": 3,
+      "researchOptions": {
+        "brown": "9",
+        "black": "6"
+      },
+      "resultingTechnology": "Interspecies Medical Exchange"
     }
   },
   {
     "id": "researchTeam_327",
-    "name": "N-Space Mathematicians",
-    "era": 2,
-    "points": 4,
-    "resultingTechnology": "Hyperspace Mining",
-    "researchOptions": {
-      "blue": "8",
-      "octagon": "4"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "N-Space Mathematicians",
+      "era": 2,
+      "points": 4,
+      "researchOptions": {
+        "blue": "8",
+        "octagon": "4"
+      },
+      "resultingTechnology": "Hyperspace Mining"
     }
   },
   {
     "id": "researchTeam_328",
-    "name": "Gravitic Topologists",
-    "era": 2,
-    "points": 4,
-    "resultingTechnology": "Singularity Control",
-    "researchOptions": {
-      "brown": "12",
-      "green": "12"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Gravitic Topologists",
+      "era": 2,
+      "points": 4,
+      "researchOptions": {
+        "brown": "12",
+        "green": "12"
+      },
+      "resultingTechnology": "Singularity Control"
     }
   },
   {
     "id": "researchTeam_329",
-    "name": "Metaethicists",
-    "era": 2,
-    "points": 4,
-    "resultingTechnology": "Cross Species Ethical Equality",
-    "researchOptions": {
-      "yellow": "7",
-      "black": "7"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Metaethicists",
+      "era": 2,
+      "points": 4,
+      "researchOptions": {
+        "yellow": "7",
+        "black": "7"
+      },
+      "resultingTechnology": "Cross Species Ethical Equality"
     }
   },
   {
     "id": "researchTeam_330",
-    "name": "Quantum Theoreticians",
-    "era": 2,
-    "points": 3,
-    "resultingTechnology": "Antimatter Power",
-    "researchOptions": {
-      "green": "9",
-      "blue": "6"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Quantum Theoreticians",
+      "era": 2,
+      "points": 3,
+      "researchOptions": {
+        "green": "9",
+        "blue": "6"
+      },
+      "resultingTechnology": "Antimatter Power"
     }
   },
   {
     "id": "researchTeam_331",
-    "name": "Quantum Statisticians",
-    "era": 2,
-    "points": 4,
-    "resultingTechnology": "Achronal Analysis",
-    "researchOptions": {
-      "white": "12",
-      "octagon": "4"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Quantum Statisticians",
+      "era": 2,
+      "points": 4,
+      "researchOptions": {
+        "white": "12",
+        "octagon": "4"
+      },
+      "resultingTechnology": "Achronal Analysis"
     }
   },
   {
     "id": "researchTeam_332",
-    "name": "Organic Architects",
-    "era": 2,
-    "points": 3,
-    "resultingTechnology": "Organic Construction",
-    "researchOptions": {
-      "white": "9",
-      "yellow": "6"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Organic Architects",
+      "era": 2,
+      "points": 3,
+      "researchOptions": {
+        "white": "9",
+        "yellow": "6"
+      },
+      "resultingTechnology": "Organic Construction"
     }
   },
   {
     "id": "researchTeam_333",
-    "name": "Stellar Architectural Planners",
-    "era": 3,
-    "points": 11,
-    "resultingTechnology": "Megastructures",
-    "researchOptions": {
-      "blue": "14",
-      "yellow": "14"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Stellar Architectural Planners",
+      "era": 3,
+      "points": 11,
+      "researchOptions": {
+        "blue": "14",
+        "yellow": "14"
+      },
+      "resultingTechnology": "Megastructures"
     }
   },
   {
     "id": "researchTeam_334",
-    "name": "Psychohistorians",
-    "era": 3,
-    "points": 9,
-    "resultingTechnology": "Social Exodus",
-    "researchOptions": {
-      "black": "12",
-      "octagon": "6"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Psychohistorians",
+      "era": 3,
+      "points": 9,
+      "researchOptions": {
+        "black": "12",
+        "octagon": "6"
+      },
+      "resultingTechnology": "Social Exodus"
     }
   },
   {
     "id": "researchTeam_335",
-    "name": "Subquantum Manipulators",
-    "era": 3,
-    "points": 9,
-    "resultingTechnology": "Matter Generation",
-    "researchOptions": {
-      "green": "18",
-      "white": "18"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Subquantum Manipulators",
+      "era": 3,
+      "points": 9,
+      "researchOptions": {
+        "green": "18",
+        "white": "18"
+      },
+      "resultingTechnology": "Matter Generation"
     }
   },
   {
     "id": "researchTeam_336",
-    "name": "Memetic Artists",
-    "era": 3,
-    "points": 9,
-    "resultingTechnology": "Galactic Telecomm Control",
-    "researchOptions": {
-      "brown": "18",
-      "white": "18"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Memetic Artists",
+      "era": 3,
+      "points": 9,
+      "researchOptions": {
+        "brown": "18",
+        "white": "18"
+      },
+      "resultingTechnology": "Galactic Telecomm Control"
     }
   },
   {
     "id": "researchTeam_337",
-    "name": "Interspecies Managers",
-    "era": 3,
-    "points": 8,
-    "resultingTechnology": "Poly Species Corporations",
-    "researchOptions": {
-      "blue": "11",
-      "black": "11"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Interspecies Managers",
+      "era": 3,
+      "points": 8,
+      "researchOptions": {
+        "blue": "11",
+        "black": "11"
+      },
+      "resultingTechnology": "Poly Species Corporations"
     }
   },
   {
     "id": "researchTeam_338",
-    "name": "Cultural Diffusionologists",
-    "era": 3,
-    "points": 7,
-    "resultingTechnology": "Xeno Cultural Exchange",
-    "researchOptions": {
-      "green": "15",
-      "yellow": "10"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Cultural Diffusionologists",
+      "era": 3,
+      "points": 7,
+      "researchOptions": {
+        "green": "15",
+        "yellow": "10"
+      },
+      "resultingTechnology": "Xeno Cultural Exchange"
     }
   },
   {
     "id": "researchTeam_339",
-    "name": "Chronophysicists",
-    "era": 3,
-    "points": 9,
-    "resultingTechnology": "Temporal Dilation",
-    "researchOptions": {
-      "brown": "18",
-      "octagon": "6"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Chronophysicists",
+      "era": 3,
+      "points": 9,
+      "researchOptions": {
+        "brown": "18",
+        "octagon": "6"
+      },
+      "resultingTechnology": "Temporal Dilation"
     }
   },
   {
     "id": "researchTeam_340",
-    "name": "Cultural Polymorphologists",
-    "era": 4,
-    "points": 8,
-    "researchOptions": {
-      "white": "18",
-      "brown": "18",
-      "octagon": "6"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Cultural Polymorphologists",
+      "era": 4,
+      "points": 8,
+      "researchOptions": {
+        "white": "18",
+        "brown": "18",
+        "octagon": "6"
+      }
     }
   },
   {
     "id": "researchTeam_341",
-    "name": "Reconstructive Paleobotanists",
-    "era": 4,
-    "points": 10,
-    "researchOptions": {
-      "white": "21",
-      "green": "21",
-      "octagon": "7"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Reconstructive Paleobotanists",
+      "era": 4,
+      "points": 10,
+      "researchOptions": {
+        "white": "21",
+        "green": "21",
+        "octagon": "7"
+      }
     }
   },
   {
     "id": "researchTeam_342",
-    "name": "Abiotic Pathologists",
-    "era": 4,
-    "points": 12,
-    "researchOptions": {
-      "white": "24",
-      "yellow": "16",
-      "octagon": "8"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Abiotic Pathologists",
+      "era": 4,
+      "points": 12,
+      "researchOptions": {
+        "white": "24",
+        "yellow": "16",
+        "octagon": "8"
+      }
     }
   },
   {
     "id": "researchTeam_343",
-    "name": "Interphasal Theoreticians",
-    "era": 4,
-    "points": 12,
-    "researchOptions": {
-      "brown": "24",
-      "green": "24",
-      "octagon": "8"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Interphasal Theoreticians",
+      "era": 4,
+      "points": 12,
+      "researchOptions": {
+        "brown": "24",
+        "green": "24",
+        "octagon": "8"
+      }
     }
   },
   {
     "id": "researchTeam_344",
-    "name": "Mesoscale Geoengineers",
-    "era": 4,
-    "points": 14,
-    "researchOptions": {
-      "brown": "27",
-      "yellow": "18",
-      "octagon": "9"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Mesoscale Geoengineers",
+      "era": 4,
+      "points": 14,
+      "researchOptions": {
+        "brown": "27",
+        "yellow": "18",
+        "octagon": "9"
+      }
     }
   },
   {
     "id": "researchTeam_345",
-    "name": "Sapience Developers",
-    "era": 4,
-    "points": 10,
-    "researchOptions": {
-      "white": "21",
-      "yellow": "14",
-      "black": "14"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Sapience Developers",
+      "era": 4,
+      "points": 10,
+      "researchOptions": {
+        "white": "21",
+        "yellow": "14",
+        "black": "14"
+      }
     }
   },
   {
     "id": "researchTeam_346",
-    "name": "Autonomic Teleoperators",
-    "era": 4,
-    "points": 8,
-    "researchOptions": {
-      "blue": "12",
-      "yellow": "12",
-      "black": "12"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Autonomic Teleoperators",
+      "era": 4,
+      "points": 8,
+      "researchOptions": {
+        "blue": "12",
+        "yellow": "12",
+        "black": "12"
+      }
     }
   },
   {
     "id": "researchTeam_347",
-    "name": "Fractal Microbiologists",
-    "era": 4,
-    "points": 10,
-    "researchOptions": {
-      "white": "21",
-      "green": "21",
-      "blue": "14"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Fractal Microbiologists",
+      "era": 4,
+      "points": 10,
+      "researchOptions": {
+        "white": "21",
+        "green": "21",
+        "blue": "14"
+      }
     }
   },
   {
     "id": "researchTeam_348",
-    "name": "Stellar Plasma Flow Engineers",
-    "era": 4,
-    "points": 10,
-    "researchOptions": {
-      "white": "21",
-      "blue": "14",
-      "black": "14"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Stellar Plasma Flow Engineers",
+      "era": 4,
+      "points": 10,
+      "researchOptions": {
+        "white": "21",
+        "blue": "14",
+        "black": "14"
+      }
     }
   },
   {
     "id": "researchTeam_349",
-    "name": "Chaos Theoreticians",
-    "era": 4,
-    "points": 8,
-    "researchOptions": {
-      "green": "18",
-      "yellow": "12",
-      "black": "12"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Chaos Theoreticians",
+      "era": 4,
+      "points": 8,
+      "researchOptions": {
+        "green": "18",
+        "yellow": "12",
+        "black": "12"
+      }
     }
   },
   {
     "id": "researchTeam_350",
-    "name": "Oceanographic Biotechnicians",
-    "era": 4,
-    "points": 8,
-    "researchOptions": {
-      "brown": "18",
-      "blue": "12",
-      "octagon": "6"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Oceanographic Biotechnicians",
+      "era": 4,
+      "points": 8,
+      "researchOptions": {
+        "brown": "18",
+        "blue": "12",
+        "octagon": "6"
+      }
     }
   },
   {
     "id": "researchTeam_351",
-    "name": "Recursive Metatheoreticians",
-    "era": 4,
-    "points": 16,
-    "researchOptions": {
-      "white": "30",
-      "brown": "30",
-      "black": "20"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Recursive Metatheoreticians",
+      "era": 4,
+      "points": 16,
+      "researchOptions": {
+        "white": "30",
+        "brown": "30",
+        "black": "20"
+      }
     }
   },
   {
     "id": "researchTeam_352",
-    "name": "Singularity Control Technicians",
-    "era": 4,
-    "points": 16,
-    "researchOptions": {
-      "black": "20",
-      "blue": "20",
-      "octagon": "10"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Singularity Control Technicians",
+      "era": 4,
+      "points": 16,
+      "researchOptions": {
+        "black": "20",
+        "blue": "20",
+        "octagon": "10"
+      }
     }
   },
   {
     "id": "researchTeam_353",
-    "name": "Applied Topologists",
-    "era": 4,
-    "points": 16,
-    "researchOptions": {
-      "white": "30",
-      "brown": "30",
-      "yellow": "20"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Applied Topologists",
+      "era": 4,
+      "points": 16,
+      "researchOptions": {
+        "white": "30",
+        "brown": "30",
+        "yellow": "20"
+      }
     }
   },
   {
     "id": "researchTeam_354",
-    "name": "Metacognitive Ecologists",
-    "era": 4,
-    "points": 16,
-    "researchOptions": {
-      "green": "30",
-      "blue": "20",
-      "octagon": "10"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Metacognitive Ecologists",
+      "era": 4,
+      "points": 16,
+      "researchOptions": {
+        "green": "30",
+        "blue": "20",
+        "octagon": "10"
+      }
     }
   },
   {
     "id": "researchTeam_355",
-    "name": "Plasma Auxonologists",
-    "era": 4,
-    "points": 12,
-    "researchOptions": {
-      "green": "24",
-      "brown": "24",
-      "yellow": "16"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Plasma Auxonologists",
+      "era": 4,
+      "points": 12,
+      "researchOptions": {
+        "green": "24",
+        "brown": "24",
+        "yellow": "16"
+      }
     }
   },
   {
     "id": "researchTeam_356",
-    "name": "Psychohistorial Ethicists",
-    "era": 4,
-    "points": 14,
-    "researchOptions": {
-      "green": "27",
-      "white": "27",
-      "black": "18"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Psychohistorial Ethicists",
+      "era": 4,
+      "points": 14,
+      "researchOptions": {
+        "green": "27",
+        "white": "27",
+        "black": "18"
+      }
     }
   },
   {
     "id": "researchTeam_357",
-    "name": "Tachyon Astrotechnicians",
-    "era": 4,
-    "points": 16,
-    "researchOptions": {
-      "green": "30",
-      "yellow": "20",
-      "blue": "20"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Tachyon Astrotechnicians",
+      "era": 4,
+      "points": 16,
+      "researchOptions": {
+        "green": "30",
+        "yellow": "20",
+        "blue": "20"
+      }
     }
   },
   {
     "id": "researchTeam_358",
-    "name": "In Situ Genetic Editors",
-    "era": 4,
-    "points": 12,
-    "researchOptions": {
-      "green": "24",
-      "brown": "24",
-      "black": "16"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "In Situ Genetic Editors",
+      "era": 4,
+      "points": 12,
+      "researchOptions": {
+        "green": "24",
+        "brown": "24",
+        "black": "16"
+      }
     }
   },
   {
     "id": "researchTeam_359",
-    "name": "Macroscale Biophysicists",
-    "era": 4,
-    "points": 14,
-    "researchOptions": {
-      "brown": "27",
-      "black": "18",
-      "blue": "18"
+    "cardType": "ResearchTeam",
+    "researchTeam": {
+      "name": "Macroscale Biophysicists",
+      "era": 4,
+      "points": 14,
+      "researchOptions": {
+        "brown": "27",
+        "black": "18",
+        "blue": "18"
+      }
     }
   }
 ]

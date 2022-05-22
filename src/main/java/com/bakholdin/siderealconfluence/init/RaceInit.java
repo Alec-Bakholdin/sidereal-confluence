@@ -17,7 +17,8 @@ import java.util.stream.Collectors;
 @Component
 @RequiredArgsConstructor
 public class RaceInit {
-
+    private static final TypeReference<List<Race>> RACE_TYPE_REFERENCE = new TypeReference<>() {
+    };
     private final RaceRepository raceRepository;
     @Value("classpath:game_data/races.json")
     private Resource racesResource;
@@ -27,8 +28,7 @@ public class RaceInit {
         Set<RaceType> presentRaces = raceRepository.findAll().stream()
                 .map(Race::getName)
                 .collect(Collectors.toSet());
-        List<Race> raceList = InitUtils.readListFromResource(racesResource, new TypeReference<>() {
-        });
+        List<Race> raceList = InitUtils.readListFromResource(racesResource, RACE_TYPE_REFERENCE);
         raceRepository.saveAll(raceList.stream()
                 .filter(race -> !presentRaces.contains(race.getName()))
                 .collect(Collectors.toList())
