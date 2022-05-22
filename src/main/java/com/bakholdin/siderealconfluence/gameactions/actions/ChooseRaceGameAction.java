@@ -4,6 +4,8 @@ import com.bakholdin.siderealconfluence.dto.UpdatePlayerDto;
 import com.bakholdin.siderealconfluence.dto.UserDto;
 import com.bakholdin.siderealconfluence.entity.Player;
 import com.bakholdin.siderealconfluence.entity.Race;
+import com.bakholdin.siderealconfluence.enums.GameState;
+import com.bakholdin.siderealconfluence.exceptions.UserException;
 import com.bakholdin.siderealconfluence.gameactions.GameAction;
 import com.bakholdin.siderealconfluence.gameactions.GameActionDto;
 import com.bakholdin.siderealconfluence.gameactions.GameActionOrder;
@@ -28,7 +30,10 @@ public class ChooseRaceGameAction implements GameAction {
     public void validate(UserDto userDto, GameActionDto gameActionDto) {
         ChooseRaceDto chooseRaceDto = (ChooseRaceDto) gameActionDto;
         raceRepository.getByRaceType(chooseRaceDto.getRaceType());
-        playerRepository.getByUsername(userDto.getUsername());
+        Player player = playerRepository.getByUsername(userDto.getUsername());
+        if (player.getGame().getState() != GameState.Lobby) {
+            throw new UserException("Race is only selectable in Lobby");
+        }
     }
 
     @Override
